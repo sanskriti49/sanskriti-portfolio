@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Copy, Check, Send, Sparkles } from "lucide-react";
-import {
-	FaGithub,
-	FaLinkedin,
-	FaInstagram,
-	FaRegEnvelope,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaRegEnvelope } from "react-icons/fa";
 import GridMotion from "./GridMotion";
 
 const gridKeywords = [

@@ -1,0 +1,153 @@
+.noscroll {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.intro {
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.intro::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: 250px;
+	pointer-events: none;
+	z-index: 4;
+}
+
+/* .gridMotion-container {
+	gap: 1rem;
+	flex: none;
+	position: relative;
+	width: 150vw;
+	height: 150vh;
+	display: grid;
+	grid-template-rows: repeat(4, 1fr);
+	grid-template-columns: 100%;
+	transform: rotate(-15deg);
+	transform-origin: center center;
+	z-index: 2;
+}
+
+.row {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(7, 1fr);
+	will-change: transform, filter;
+}
+
+.row__item {
+	position: relative;
+}
+
+.row__item-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border-radius: 10px;
+	background-color: #111;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 1.5rem;
+} */
+
+.gridMotion-container {
+	gap: 1.5rem; /* Slightly wider gaps for premium layout tracking */
+	flex: none;
+	position: relative;
+	width: 200vw; /* Increased to ensure no empty corners appear when sliding */
+	height: 200vh; /* Increased viewport scaling override */
+	display: grid;
+	grid-template-rows: repeat(4, 1fr);
+	grid-template-columns: 100%;
+	transform: rotate(-15deg);
+	transform-origin: center center;
+	z-index: 2;
+}
+
+.row {
+	display: grid;
+	gap: 1.5rem; /* Kept uniform with container track gaps */
+	grid-template-columns: repeat(7, 1fr);
+	will-change: transform, filter;
+}
+
+.row__item-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border-radius: 16px; /* Smoother, modern curves matching standard UI trends */
+	background-color: rgba(20, 20, 25, 0.6); /* Translucent plate look */
+	border: 1px solid rgba(255, 255, 255, 0.03); /* Subtle card highlight ring */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgba(
+		255,
+		255,
+		255,
+		0.15
+	); /* Faded low-contrast text style like the background image placeholders */
+	font-size: 1.1rem; /* Balanced font sizing to let long words fit easily */
+	font-weight: 700;
+	letter-spacing: 0.15em; /* Clean letter tracking for capitalized keywords */
+	text-transform: uppercase;
+	transition:
+		color 0.3s ease,
+		border-color 0.3s ease;
+}
+
+/* Optional hover interaction tweak */
+.row__item-inner:hover {
+	color: rgba(
+		244,
+		63,
+		94,
+		0.4
+	); /* Glow tint accent color matched to your rose-500 themes */
+	border-color: rgba(244, 63, 94, 0.15);
+}
+
+.row__item-img {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: 50% 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.row__item-content {
+	padding: 1rem;
+	text-align: center;
+	z-index: 1;
+}
+
+.fullview {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.fullview .row__item-inner {
+	border-radius: 0px;
+}

@@ -790,7 +790,7 @@ const PortfolioMain = () => {
 				/>
 				<div className="absolute top-32 right-8 hidden lg:flex flex-col items-center gap-3 text-slate-700 z-10">
 					<span className="text-[9px] uppercase tracking-[0.4em] rotate-90 origin-center whitespace-nowrap">
-						Full-Stack Developer
+						Software Developer
 					</span>
 				</div>
 
@@ -842,7 +842,7 @@ const PortfolioMain = () => {
 							>
 								Hi, I'm{" "}
 								<span className="text-white font-medium">Sanskriti</span>. A
-								full-stack developer focused on creating clean software across{" "}
+								software developer focused on creating clean software across{" "}
 								<span className="text-rose-400 font-medium border-b border-rose-500/20 pb-px">
 									<Typewriter
 										words={[
@@ -913,7 +913,7 @@ const PortfolioMain = () => {
 										Sanskriti Gupta
 									</span>
 									<span className="text-xs text-slate-500 uppercase mt-1 tracking-wider">
-										Full-Stack Developer
+										Software Developer
 									</span>
 								</div>
 								<div className="absolute bottom-4 left-4 right-4 py-2.5 px-3.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/[0.06] flex items-center gap-2.5">
@@ -1073,7 +1073,7 @@ const PortfolioMain = () => {
 						Sanskriti<span className="text-rose-500/50">·</span>
 					</span>
 					<p className="text-slate-700 text-[10px] tracking-widest uppercase">
-						&copy; {new Date().getFullYear()} Sanskriti Gupta · Built with care.
+						&copy; {new Date().getFullYear()} Sanskriti Gupta · Built with ❤️.
 					</p>
 				</div>
 			</footer>

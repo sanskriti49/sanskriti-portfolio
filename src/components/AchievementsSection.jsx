@@ -63,7 +63,7 @@ const AchievementsSection = () => {
 		>
 			<div className="container mx-auto px-6 max-w-6xl">
 				{/* Section Header */}
-				<div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+				<div className="mb-12">
 					<motion.div
 						initial={{ opacity: 0, y: 12 }}
 						whileInView={{ opacity: 1, y: 0 }}
@@ -79,10 +79,6 @@ const AchievementsSection = () => {
 							Certifications & Milestones
 						</h3>
 					</motion.div>
-					<p className="text-slate-400 text-sm max-w-md">
-						Recognized by industry leaders in cloud engineering, global
-						competitive programming, and academic performance.
-					</p>
 				</div>
 
 				{/* Cards Grid */}
@@ -97,45 +93,45 @@ const AchievementsSection = () => {
 								viewport={{ once: true }}
 								transition={{ delay: idx * 0.12, duration: 0.4 }}
 								whileHover={{ y: -4 }}
-								className={`relative group rounded-2xl p-7 border border-white/[0.05] bg-gradient-to-b ${item.accent} ${item.borderColor} transition-all duration-300 backdrop-blur-sm flex flex-col justify-between`}
+								className={`relative group rounded-2xl p-7 border border-white/[0.07] bg-gradient-to-b ${item.accent} ${item.borderColor} transition-all duration-300 backdrop-blur-sm flex flex-col justify-between`}
 							>
 								{/* Top Header */}
 								<div>
 									<div className="flex items-center justify-between gap-2 mb-4">
 										<div
-											className={`p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] ${item.textColor}`}
+											className={`p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] ${item.textColor}`}
 										>
 											<Icon size={20} />
 										</div>
 										<span
-											className={`text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/[0.08] bg-black/40 ${item.textColor}`}
+											className={`text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/[0.1] bg-black/50 ${item.textColor}`}
 										>
 											{item.badge}
 										</span>
 									</div>
 
-									<span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500 block mb-1">
-										{item.category} · {item.issuer}
+									<span className="text-[11px] font-medium uppercase tracking-wider text-slate-300 block mb-1.5">
+										{item.category} <span className="text-slate-500">·</span> {item.issuer}
 									</span>
 
 									<h4
-										className="text-lg font-bold text-white tracking-tight mb-3"
+										className="text-lg sm:text-xl font-bold text-white tracking-tight mb-3"
 										style={{ fontFamily: "'P22Mackinac', sans-serif" }}
 									>
 										{item.title}
 									</h4>
 
-									<p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+									<p className="text-slate-300/90 text-xs sm:text-sm leading-relaxed">
 										{item.description}
 									</p>
 								</div>
 
 								{/* Bottom Tag */}
-								<div className="mt-6 pt-4 border-t border-white/[0.04] flex items-center justify-between">
+								<div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
 									<span className="text-[11px] font-mono text-slate-300">
 										{item.metrics}
 									</span>
-									<span className="text-[10px] uppercase tracking-wider text-slate-500 font-medium">
+									<span className="text-[10px] uppercase tracking-wider text-slate-400 font-medium">
 										{item.date}
 									</span>
 								</div>

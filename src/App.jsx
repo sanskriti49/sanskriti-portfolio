@@ -998,15 +998,7 @@ const PortfolioMain = () => {
 					>
 						{/* Hero Left Content */}
 						<div className="md:col-span-7 space-y-6">
-							<motion.div
-								variants={fadeUp}
-								className="flex items-center gap-2 flex-wrap"
-							>
-								<span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
-									<span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-									Open to Work
-								</span>
-							</motion.div>
+
 
 							<motion.h1
 								variants={fadeUp}

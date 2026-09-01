@@ -12,9 +12,9 @@ import {
 const achievements = [
 	{
 		title: "AWS Certified Cloud Practitioner",
-		issuer: "Amazon Web Services (AWS)",
-		category: "Cloud Certification",
-		date: "Verified Credential",
+		//issuer: "Amazon Web Services (AWS)",
+		//category: "Cloud Certification",
+		date: "2026",
 		description:
 			"Demonstrated foundational understanding of AWS cloud services, security architectures, compute/storage primitives (EC2, S3), and cost optimization principles.",
 		icon: ShieldCheck,
@@ -26,9 +26,9 @@ const achievements = [
 	},
 	{
 		title: "TCS CodeVita — Global Top 3%",
-		issuer: "Tata Consultancy Services",
-		category: "Competitive Programming",
-		date: "Worldwide Contest",
+		//issuer: "Tata Consultancy Services",
+		//category: "Competitive Programming",
+		date: "2025",
 		description:
 			"Ranked in the Top 3% globally (Rank 10,298 / 350,000+ registered participants worldwide) in one of the world's largest competitive coding contests.",
 		icon: Trophy,
@@ -40,8 +40,8 @@ const achievements = [
 	},
 	{
 		title: "VIT Bhopal University CSE",
-		issuer: "B.Tech Computer Science & Engineering",
-		category: "Academic Excellence",
+		//issuer: "B.Tech Computer Science & Engineering",
+		//category: "Academic Excellence",
 		date: "2023 – 2027",
 		description:
 			"Maintaining an 8.54 / 10 CGPA with rigorous coursework in Data Structures & Algorithms, Object-Oriented Programming, DBMS, and Operating Systems.",
@@ -110,9 +110,10 @@ const AchievementsSection = () => {
 										</span>
 									</div>
 
-									<span className="text-[11px] font-medium uppercase tracking-wider text-slate-300 block mb-1.5">
-										{item.category} <span className="text-slate-500">·</span> {item.issuer}
-									</span>
+									{/* <span className="text-[11px] font-medium uppercase tracking-wider text-slate-300 block mb-1.5">
+										{item.category} <span className="text-slate-500">·</span>{" "}
+										{item.issuer}
+									</span> */}
 
 									<h4
 										className="text-lg sm:text-xl font-bold text-white tracking-tight mb-3"

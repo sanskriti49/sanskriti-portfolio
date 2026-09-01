@@ -45,7 +45,9 @@ const SocialLink = ({ href, icon: Icon, label }) => (
 const Contact = () => {
 	const [emailCopied, setEmailCopied] = useState(false);
 	const [phoneCopied, setPhoneCopied] = useState(false);
-	const [selectedTopic, setSelectedTopic] = useState("Full-Stack Project / Role");
+	const [selectedTopic, setSelectedTopic] = useState(
+		"Full-Stack Project / Role",
+	);
 
 	const topicSuggestions = {
 		"Full-Stack Project / Role":
@@ -78,7 +80,11 @@ const Contact = () => {
 	};
 
 	return (
-		<section id="contact" className="py-28 relative" style={{ backgroundColor: "#08080C" }}>
+		<section
+			id="contact"
+			className="py-28 relative"
+			style={{ backgroundColor: "#08080C" }}
+		>
 			<div className="container mx-auto px-6 max-w-5xl">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -226,14 +232,14 @@ const Contact = () => {
 									</div>
 
 									{/* Topic Pills */}
-									<div className="flex flex-wrap gap-2">
+									<div className=" flex flex-wrap gap-2">
 										{Object.keys(topicSuggestions).map((topic) => (
 											<motion.button
 												key={topic}
 												whileHover={{ scale: 1.02 }}
 												whileTap={{ scale: 0.98 }}
 												onClick={() => selectTopicSetting(topic)}
-												className={`px-3.5 py-1.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-pointer ${
+												className={`scoutie px-3.5 py-1.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-pointer ${
 													selectedTopic === topic
 														? "bg-white text-black font-bold shadow-lg"
 														: "bg-white/[0.03] border border-white/[0.05] text-slate-400 hover:text-white hover:bg-white/[0.07]"

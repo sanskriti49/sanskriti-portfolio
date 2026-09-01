@@ -51,44 +51,212 @@ const skillCategories = [
 
 const allSkills = [
 	// Languages
-	{ name: "Java", category: "languages", level: "Advanced", color: "text-amber-400", border: "border-amber-500/20" },
-	{ name: "JavaScript (ES6+)", category: "languages", level: "Proficient", color: "text-yellow-400", border: "border-yellow-500/20" },
-	{ name: "SQL", category: "languages", level: "Advanced", color: "text-cyan-400", border: "border-cyan-500/20" },
-	{ name: "HTML5 & CSS3", category: "languages", level: "Expert", color: "text-orange-400", border: "border-orange-500/20" },
-	
+	{
+		name: "Java",
+		category: "languages",
+		level: "Advanced",
+		color: "text-amber-400",
+		border: "border-amber-500/20",
+	},
+	{
+		name: "JavaScript (ES6+)",
+		category: "languages",
+		level: "Proficient",
+		color: "text-yellow-400",
+		border: "border-yellow-500/20",
+	},
+	{
+		name: "SQL",
+		category: "languages",
+		level: "Advanced",
+		color: "text-cyan-400",
+		border: "border-cyan-500/20",
+	},
+	{
+		name: "HTML5 & CSS3",
+		category: "languages",
+		level: "Expert",
+		color: "text-orange-400",
+		border: "border-orange-500/20",
+	},
+
 	// Frontend
-	{ name: "React.js (v19)", category: "frontend", level: "Advanced", color: "text-cyan-400", border: "border-cyan-500/20" },
-	{ name: "Next.js", category: "frontend", level: "Proficient", color: "text-slate-200", border: "border-slate-500/20" },
-	{ name: "Redux Toolkit", category: "frontend", level: "Proficient", color: "text-purple-400", border: "border-purple-500/20" },
-	{ name: "Zustand", category: "frontend", level: "Proficient", color: "text-amber-300", border: "border-amber-500/20" },
-	{ name: "Tailwind CSS", category: "frontend", level: "Expert", color: "text-sky-400", border: "border-sky-500/20" },
-	{ name: "Framer Motion", category: "frontend", level: "Advanced", color: "text-pink-400", border: "border-pink-500/20" },
+	{
+		name: "React.js (v19)",
+		category: "frontend",
+		level: "Advanced",
+		color: "text-cyan-400",
+		border: "border-cyan-500/20",
+	},
+	{
+		name: "Next.js",
+		category: "frontend",
+		level: "Proficient",
+		color: "text-slate-200",
+		border: "border-slate-500/20",
+	},
+	{
+		name: "Redux Toolkit",
+		category: "frontend",
+		level: "Proficient",
+		color: "text-purple-400",
+		border: "border-purple-500/20",
+	},
+	{
+		name: "Zustand",
+		category: "frontend",
+		level: "Proficient",
+		color: "text-amber-300",
+		border: "border-amber-500/20",
+	},
+	{
+		name: "Tailwind CSS",
+		category: "frontend",
+		level: "Expert",
+		color: "text-sky-400",
+		border: "border-sky-500/20",
+	},
+	{
+		name: "Framer Motion",
+		category: "frontend",
+		level: "Advanced",
+		color: "text-pink-400",
+		border: "border-pink-500/20",
+	},
 
 	// Backend
-	{ name: "Node.js", category: "backend", level: "Advanced", color: "text-emerald-400", border: "border-emerald-500/20" },
-	{ name: "Express.js", category: "backend", level: "Advanced", color: "text-slate-300", border: "border-slate-500/20" },
-	{ name: "REST APIs", category: "backend", level: "Expert", color: "text-rose-400", border: "border-rose-500/20" },
-	{ name: "WebSockets (Socket.IO)", category: "backend", level: "Advanced", color: "text-indigo-400", border: "border-indigo-500/20" },
-	{ name: "JWT Authentication", category: "backend", level: "Advanced", color: "text-teal-400", border: "border-teal-500/20" },
+	{
+		name: "Node.js",
+		category: "backend",
+		level: "Advanced",
+		color: "text-emerald-400",
+		border: "border-emerald-500/20",
+	},
+	{
+		name: "Express.js",
+		category: "backend",
+		level: "Advanced",
+		color: "text-slate-300",
+		border: "border-slate-500/20",
+	},
+	{
+		name: "REST APIs",
+		category: "backend",
+		level: "Expert",
+		color: "text-rose-400",
+		border: "border-rose-500/20",
+	},
+	{
+		name: "WebSockets (Socket.IO)",
+		category: "backend",
+		level: "Advanced",
+		color: "text-indigo-400",
+		border: "border-indigo-500/20",
+	},
+	{
+		name: "JWT Authentication",
+		category: "backend",
+		level: "Advanced",
+		color: "text-teal-400",
+		border: "border-teal-500/20",
+	},
 
 	// Databases
-	{ name: "PostgreSQL", category: "databases", level: "Advanced", color: "text-blue-400", border: "border-blue-500/20" },
-	{ name: "MongoDB", category: "databases", level: "Proficient", color: "text-green-400", border: "border-green-500/20" },
-	{ name: "Redis & Pub/Sub", category: "databases", level: "Advanced", color: "text-rose-400", border: "border-rose-500/20" },
+	{
+		name: "PostgreSQL",
+		category: "databases",
+		level: "Advanced",
+		color: "text-blue-400",
+		border: "border-blue-500/20",
+	},
+	{
+		name: "MongoDB",
+		category: "databases",
+		level: "Proficient",
+		color: "text-green-400",
+		border: "border-green-500/20",
+	},
+	{
+		name: "Redis & Pub/Sub",
+		category: "databases",
+		level: "Advanced",
+		color: "text-rose-400",
+		border: "border-rose-500/20",
+	},
 
 	// Cloud & Tools
-	{ name: "AWS (EC2, S3)", category: "cloud", level: "AWS Certified", color: "text-amber-400", border: "border-amber-500/20" },
-	{ name: "Docker", category: "cloud", level: "Proficient", color: "text-blue-400", border: "border-blue-500/20" },
-	{ name: "Terraform", category: "cloud", level: "Working Knowledge", color: "text-purple-400", border: "border-purple-500/20" },
-	{ name: "Git & GitHub", category: "cloud", level: "Advanced", color: "text-slate-200", border: "border-slate-500/20" },
-	{ name: "GitHub Actions (CI/CD)", category: "cloud", level: "Proficient", color: "text-emerald-400", border: "border-emerald-500/20" },
-	{ name: "Postman", category: "cloud", level: "Advanced", color: "text-orange-400", border: "border-orange-500/20" },
+	{
+		name: "AWS (EC2, S3)",
+		category: "cloud",
+		level: "AWS Certified",
+		color: "text-amber-400",
+		border: "border-amber-500/20",
+	},
+	{
+		name: "Docker",
+		category: "cloud",
+		level: "Proficient",
+		color: "text-blue-400",
+		border: "border-blue-500/20",
+	},
+	{
+		name: "Terraform",
+		category: "cloud",
+		level: "Working Knowledge",
+		color: "text-purple-400",
+		border: "border-purple-500/20",
+	},
+	{
+		name: "Git & GitHub",
+		category: "cloud",
+		level: "Advanced",
+		color: "text-slate-200",
+		border: "border-slate-500/20",
+	},
+	{
+		name: "GitHub Actions (CI/CD)",
+		category: "cloud",
+		level: "Proficient",
+		color: "text-emerald-400",
+		border: "border-emerald-500/20",
+	},
+	{
+		name: "Postman",
+		category: "cloud",
+		level: "Advanced",
+		color: "text-orange-400",
+		border: "border-orange-500/20",
+	},
 
 	// Core CS
-	{ name: "Data Structures & Algorithms", category: "coursework", level: "Top 3% CodeVita", color: "text-rose-400", border: "border-rose-500/20" },
-	{ name: "Object-Oriented Programming (OOP)", category: "coursework", level: "Core Strong", color: "text-teal-400", border: "border-teal-500/20" },
-	{ name: "Database Management Systems (DBMS)", category: "coursework", level: "Core Strong", color: "text-cyan-400", border: "border-cyan-500/20" },
-	{ name: "Operating Systems", category: "coursework", level: "Core Strong", color: "text-indigo-400", border: "border-indigo-500/20" },
+	{
+		name: "Data Structures & Algorithms",
+		category: "coursework",
+		level: "Top 3% CodeVita",
+		color: "text-rose-400",
+		border: "border-rose-500/20",
+	},
+	{
+		name: "Object-Oriented Programming (OOP)",
+		category: "coursework",
+		level: "Core Strong",
+		color: "text-teal-400",
+		border: "border-teal-500/20",
+	},
+	{
+		name: "Database Management Systems (DBMS)",
+		category: "coursework",
+		level: "Core Strong",
+		color: "text-cyan-400",
+		border: "border-cyan-500/20",
+	},
+	{
+		name: "Operating Systems",
+		category: "coursework",
+		level: "Core Strong",
+		color: "text-indigo-400",
+		border: "border-indigo-500/20",
+	},
 ];
 
 const SkillsSection = () => {
@@ -123,10 +291,6 @@ const SkillsSection = () => {
 							Core Competencies & Stack
 						</h3>
 					</motion.div>
-					<p className="text-slate-400 text-sm max-w-md">
-						Engineered across high-throughput backend pipelines, real-time
-						WebSockets, reactive frontend frameworks, and cloud infrastructure.
-					</p>
 				</div>
 
 				{/* Filter Tabs */}
@@ -144,7 +308,10 @@ const SkillsSection = () => {
 										: "bg-white/[0.02] text-slate-400 border-white/[0.05] hover:text-white hover:bg-white/[0.05]"
 								}`}
 							>
-								<Icon size={13} className={isActive ? "text-black" : "text-slate-400"} />
+								<Icon
+									size={13}
+									className={isActive ? "text-black" : "text-slate-400"}
+								/>
 								{cat.label}
 							</button>
 						);
@@ -169,11 +336,15 @@ const SkillsSection = () => {
 								className={`p-4 rounded-xl border ${skill.border} bg-white/[0.015] hover:bg-white/[0.03] backdrop-blur-sm transition-all duration-200 flex flex-col justify-between group`}
 							>
 								<div className="flex items-center justify-between gap-1 mb-2">
-									<span className={`text-sm font-semibold text-slate-200 group-hover:text-white transition-colors`}>
+									<span
+										className={`text-sm font-semibold text-slate-200 group-hover:text-white transition-colors`}
+									>
 										{skill.name}
 									</span>
 								</div>
-								<span className={`text-[10px] uppercase tracking-wider font-mono font-medium ${skill.color}`}>
+								<span
+									className={`text-[10px] uppercase tracking-wider font-mono font-medium ${skill.color}`}
+								>
 									{skill.level}
 								</span>
 							</motion.div>

@@ -124,7 +124,13 @@ const projects = [
 			"Real-time watchlist sync with localStorage persistence",
 			"Tailwind CSS responsive design with fluid modal viewports",
 		],
-		tags: ["React.js", "TMDB API", "Tailwind CSS", "REST API", "State Management"],
+		tags: [
+			"React.js",
+			"TMDB API",
+			"Tailwind CSS",
+			"REST API",
+			"State Management",
+		],
 		link: "http://cinebuzzzz.netlify.app/",
 		github: "https://github.com/sanskriti49",
 		img: "/images/cinebuzz.png",
@@ -157,7 +163,13 @@ const projects = [
 	},
 ];
 
-const StatBadge = ({ value, label, subtext, icon: Icon, color = "text-white" }) => (
+const StatBadge = ({
+	value,
+	label,
+	subtext,
+	icon: Icon,
+	color = "text-white",
+}) => (
 	<motion.div
 		whileHover={{ y: -2, scale: 1.02 }}
 		className="flex flex-col px-5 py-3 rounded-2xl border border-white/[0.06] bg-white/[0.015] hover:border-white/[0.12] hover:bg-white/[0.03] transition-all duration-300 backdrop-blur-sm shadow-md"
@@ -230,9 +242,7 @@ const ProjectsSection = () => {
 	const [activeIdx, setActiveIdx] = useState(0);
 
 	const filteredProjects =
-		filter === "all"
-			? projects
-			: projects.filter((p) => p.category === filter);
+		filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
 	// Ensure active index is within bounds of filtered list
 	const safeIdx = activeIdx < filteredProjects.length ? activeIdx : 0;
@@ -253,7 +263,7 @@ const ProjectsSection = () => {
 						viewport={{ once: true }}
 					>
 						<span className="text-rose-400 font-semibold uppercase tracking-[0.2em] text-[10px] flex items-center gap-1.5">
-							<Sparkles size={12} /> 03 / Engineering Portfolio
+							<Sparkles size={12} /> 03 / Projects
 						</span>
 						<h3
 							className="text-3xl sm:text-4xl font-normal mt-2 text-white tracking-tight"
@@ -550,9 +560,7 @@ const ProjectsSection = () => {
 											width: i === safeIdx ? "20px" : "6px",
 											height: "6px",
 											backgroundColor:
-												i === safeIdx
-													? p.lineColor
-													: "rgba(255,255,255,0.15)",
+												i === safeIdx ? p.lineColor : "rgba(255,255,255,0.15)",
 										}}
 										aria-label={`View ${p.title}`}
 									/>
@@ -642,7 +650,15 @@ const PortfolioMain = () => {
 
 	const [activeSection, setActiveSection] = useState(() => {
 		const hash = window.location.hash.replace("#", "");
-		const valid = ["home", "about", "experience", "projects", "achievements", "skills", "contact"];
+		const valid = [
+			"home",
+			"about",
+			"experience",
+			"projects",
+			"achievements",
+			"skills",
+			"contact",
+		];
 		return valid.includes(hash) ? hash : "home";
 	});
 
@@ -650,7 +666,15 @@ const PortfolioMain = () => {
 	useEffect(() => {
 		const handleHashChange = () => {
 			const hash = window.location.hash.replace("#", "");
-			const valid = ["home", "about", "experience", "projects", "achievements", "skills", "contact"];
+			const valid = [
+				"home",
+				"about",
+				"experience",
+				"projects",
+				"achievements",
+				"skills",
+				"contact",
+			];
 			if (valid.includes(hash)) setActiveSection(hash);
 		};
 		window.addEventListener("hashchange", handleHashChange);
@@ -659,7 +683,15 @@ const PortfolioMain = () => {
 
 	// Scroll spy
 	useEffect(() => {
-		const sectionIds = ["home", "about", "experience", "projects", "achievements", "skills", "contact"];
+		const sectionIds = [
+			"home",
+			"about",
+			"experience",
+			"projects",
+			"achievements",
+			"skills",
+			"contact",
+		];
 
 		const onScroll = () => {
 			const trigger = window.innerHeight * 0.35;
@@ -713,9 +745,24 @@ const PortfolioMain = () => {
 	const navLinks = [
 		{ name: "Home", href: "#home", sectionId: "home", type: "anchor" },
 		{ name: "About", href: "#about", sectionId: "about", type: "anchor" },
-		{ name: "Experience", href: "#experience", sectionId: "experience", type: "anchor" },
-		{ name: "Projects", href: "#projects", sectionId: "projects", type: "anchor" },
-		{ name: "Honors", href: "#achievements", sectionId: "achievements", type: "anchor" },
+		{
+			name: "Experience",
+			href: "#experience",
+			sectionId: "experience",
+			type: "anchor",
+		},
+		{
+			name: "Projects",
+			href: "#projects",
+			sectionId: "projects",
+			type: "anchor",
+		},
+		{
+			name: "Honors",
+			href: "#achievements",
+			sectionId: "achievements",
+			type: "anchor",
+		},
 		{ name: "Skills", href: "#skills", sectionId: "skills", type: "anchor" },
 		{ name: "Resume", href: "/resume", type: "route" },
 		{ name: "Contact", href: "#contact", sectionId: "contact", type: "anchor" },
@@ -743,7 +790,10 @@ const PortfolioMain = () => {
 			<CursorGlow />
 			<ScrollProgress />
 			<BackToTop />
-			<DevTerminal isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
+			<DevTerminal
+				isOpen={isTerminalOpen}
+				onClose={() => setIsTerminalOpen(false)}
+			/>
 
 			{/* Background ambient lighting */}
 			<div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
@@ -956,13 +1006,13 @@ const PortfolioMain = () => {
 					>
 						{/* Hero Left Content */}
 						<div className="md:col-span-7 space-y-6">
-							<motion.div variants={fadeUp} className="flex items-center gap-2 flex-wrap">
+							<motion.div
+								variants={fadeUp}
+								className="flex items-center gap-2 flex-wrap"
+							>
 								<span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
 									<span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-									Open for Engineering Roles
-								</span>
-								<span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/25 bg-amber-500/10 text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
-									<ShieldCheck size={11} /> AWS Certified
+									Open to Work
 								</span>
 							</motion.div>
 
@@ -994,16 +1044,18 @@ const PortfolioMain = () => {
 
 							<motion.p
 								variants={fadeUp}
-								className="text-slate-400 max-w-xl text-base sm:text-lg leading-relaxed"
+								className=" text-slate-400 max-w-xl text-base sm:text-lg leading-relaxed"
 							>
 								Hi, I'm{" "}
-								<span className="text-white font-semibold">Sanskriti Gupta</span>. Software engineer
-								specializing in{" "}
+								<span className="text-white font-semibold">
+									Sanskriti Gupta
+								</span>
+								. Software engineer specializing in{" "}
 								<span className="text-rose-400 font-semibold border-b border-rose-500/25 pb-0.5">
 									<Typewriter
 										words={[
 											"Distributed Systems",
-											"React 19 & Next.js",
+											"React",
 											"Node.js & Express APIs",
 											"AWS Cloud Architecture",
 											"PostgreSQL & Redis Pub/Sub",
@@ -1017,7 +1069,10 @@ const PortfolioMain = () => {
 							</motion.p>
 
 							{/* Call to actions */}
-							<motion.div variants={fadeUp} className="flex flex-wrap gap-3.5 pt-2">
+							<motion.div
+								variants={fadeUp}
+								className="flex flex-wrap gap-3.5 pt-2"
+							>
 								<motion.a
 									whileHover={{ scale: 1.02, y: -2 }}
 									whileTap={{ scale: 0.97 }}
@@ -1043,31 +1098,6 @@ const PortfolioMain = () => {
 									<Terminal size={13} /> Interactive CLI
 								</motion.button>
 							</motion.div>
-
-							{/* Key Metrics / Highlights */}
-							<motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-								<StatBadge
-									value="Top 3%"
-									label="TCS CodeVita"
-									subtext="Worldwide Rank 10,298"
-									icon={Trophy}
-									color="text-rose-400"
-								/>
-								<StatBadge
-									value="AWS"
-									label="Certified"
-									subtext="Cloud Practitioner"
-									icon={ShieldCheck}
-									color="text-amber-400"
-								/>
-								<StatBadge
-									value="8.54 / 10"
-									label="VIT Bhopal"
-									subtext="B.Tech Computer Science"
-									icon={Code}
-									color="text-cyan-400"
-								/>
-							</motion.div>
 						</div>
 
 						{/* Hero Right Avatar Card */}
@@ -1081,7 +1111,7 @@ const PortfolioMain = () => {
 								<img
 									src="/images/P3.jpeg"
 									alt="Sanskriti Gupta"
-									className="w-full h-full object-cover grayscale-[20%] opacity-95 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+									className="w-full h-full object-cover grayscale-[10%] opacity-95 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
 									onError={(e) => {
 										e.target.style.display = "none";
 										e.target.nextSibling.style.display = "flex";
@@ -1099,7 +1129,7 @@ const PortfolioMain = () => {
 										Software Developer
 									</span>
 								</div>
-								<div className="absolute bottom-4 left-4 right-4 py-2.5 px-3.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/[0.08] flex items-center justify-between">
+								{/* <div className="absolute bottom-4 left-4 right-4 py-2.5 px-3.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/[0.08] flex items-center justify-between">
 									<div className="flex items-center gap-2">
 										<div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
 										<span className="text-xs text-slate-200 font-medium">
@@ -1109,7 +1139,7 @@ const PortfolioMain = () => {
 									<span className="text-[10px] font-mono text-slate-400">
 										Bhopal / Remote
 									</span>
-								</div>
+								</div> */}
 							</div>
 						</motion.div>
 					</motion.div>
@@ -1126,9 +1156,6 @@ const PortfolioMain = () => {
 							?.scrollIntoView({ behavior: "smooth" })
 					}
 				>
-					<span className="text-[9px] uppercase tracking-[0.35em] text-slate-500">
-						Scroll
-					</span>
 					<motion.div
 						animate={{ y: [0, 5, 0] }}
 						transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
@@ -1183,11 +1210,16 @@ const PortfolioMain = () => {
 							>
 								Hey there, I’m Sanskriti!
 							</h4>
-							<p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-								I’m a Computer Science student who enjoys turning ideas into things people can actually use. I love building full-stack apps, solving tricky problems, and exploring AI & cloud technologies along the way.
+							<p className="scoutie text-slate-300 sm:text-lg leading-relaxed">
+								I’m a Computer Science student who enjoys turning ideas into
+								things people can actually use. I love building full-stack apps,
+								solving tricky problems, and exploring AI & cloud technologies
+								along the way.
 							</p>
 							<p className="text-slate-400 text-base sm:text-lg leading-relaxed">
-								Most of the time, you’ll find me coding, debugging something that “should’ve worked,” or building a new project just because I had an idea.
+								Most of the time, you’ll find me coding, debugging something
+								that “should’ve worked,” or building a new project just because
+								I had an idea.
 							</p>
 						</div>
 

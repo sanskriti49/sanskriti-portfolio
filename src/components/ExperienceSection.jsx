@@ -16,12 +16,12 @@ const experiences = [
 		company: "GeekyAnts",
 		period: "Jun. 2026 – Aug. 2026",
 		location: "Remote",
-		type: "Engineering Internship",
+		type: "Internship",
 		badgeColor: "text-emerald-400 border-emerald-500/20 bg-emerald-500/10",
 		lineAccent: "#10b981",
 		icon: Building2,
-		summary:
-			"Engineered scalable core services for a high-volume B2B wholesale marketplace, delivering real-time buyer-supplier communication and automated GST invoicing.",
+		// summary:
+		// 	"Engineered scalable core services for a high-volume B2B wholesale marketplace, delivering real-time buyer-supplier communication and automated GST invoicing.",
 		bullets: [
 			"Engineered a B2B wholesale marketplace with product discovery, bulk pricing tiers, inventory tracking, order lifecycles, UPI payments, and GST invoicing.",
 			"Built real-time buyer–supplier messaging using Socket.IO and architected secure role-based REST APIs with Node.js, Express.js, JWT, and PostgreSQL.",
@@ -91,10 +91,6 @@ const ExperienceSection = () => {
 							Where I've Built & Led
 						</h3>
 					</motion.div>
-					<p className="text-slate-400 text-sm max-w-md">
-						Hands-on industry engineering internship experience paired with
-						developer community mentorship and production system architectures.
-					</p>
 				</div>
 
 				{/* Timeline Container */}
@@ -116,7 +112,9 @@ const ExperienceSection = () => {
 								<div
 									className="absolute -left-[31px] md:-left-[47px] top-6 w-7 h-7 rounded-full flex items-center justify-center border border-white/10 bg-[#0C0C14] transition-all duration-300 group-hover:scale-110 shadow-lg"
 									style={{
-										borderColor: isExpanded ? exp.lineAccent : "rgba(255,255,255,0.1)",
+										borderColor: isExpanded
+											? exp.lineAccent
+											: "rgba(255,255,255,0.1)",
 									}}
 								>
 									<IconComponent
@@ -191,7 +189,7 @@ const ExperienceSection = () => {
 													{exp.bullets.map((bullet, bIdx) => (
 														<li
 															key={bIdx}
-															className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-400 leading-relaxed"
+															className="scoutie flex items-start gap-2.5 text-xs sm:text-sm text-slate-400 leading-relaxed"
 														>
 															<CheckCircle2
 																size={14}
@@ -207,11 +205,11 @@ const ExperienceSection = () => {
 									</AnimatePresence>
 
 									{/* Tech Pills */}
-									<div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/[0.03]">
+									<div className="inter flex flex-wrap gap-1.5 pt-2 border-t border-white/[0.03]">
 										{exp.technologies.map((tech) => (
 											<span
 												key={tech}
-												className="text-[10px] px-2.5 py-1 rounded-md border border-white/[0.04] bg-white/[0.02] text-slate-400 font-medium hover:text-slate-200 hover:border-white/[0.08] transition-colors"
+												className="text-[11px] px-2.5 py-1 rounded-md border border-white/[0.04] bg-white/[0.02] text-slate-400 font-medium hover:text-slate-200 hover:border-white/[0.08] transition-colors"
 											>
 												{tech}
 											</span>

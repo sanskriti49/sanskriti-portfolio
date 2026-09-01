@@ -971,11 +971,11 @@ const PortfolioMain = () => {
 								className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.06] tracking-tight"
 								style={{ fontFamily: "'P22Mackinac', sans-serif" }}
 							>
-								Architecting high-scale
+								Building scalable,
 								<br />
 								<span className="relative">
 									<span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-										full-stack & cloud
+										resilient
 									</span>
 									<motion.span
 										className="absolute -bottom-1 left-0 h-px bg-gradient-to-r from-rose-500/70 to-transparent"
@@ -989,7 +989,7 @@ const PortfolioMain = () => {
 									/>
 								</span>
 								<br />
-								<span className="text-slate-500 font-normal">engines.</span>
+								<span className="text-slate-500 font-normal">systems.</span>
 							</motion.h1>
 
 							<motion.p
@@ -1096,7 +1096,7 @@ const PortfolioMain = () => {
 										Sanskriti Gupta
 									</span>
 									<span className="text-xs text-slate-500 uppercase mt-1 tracking-wider">
-										Full-Stack & Cloud Engineer
+										Software Developer
 									</span>
 								</div>
 								<div className="absolute bottom-4 left-4 right-4 py-2.5 px-3.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/[0.08] flex items-center justify-between">
@@ -1151,126 +1151,65 @@ const PortfolioMain = () => {
 							"linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent)",
 					}}
 				/>
-				<div className="container mx-auto px-6 max-w-6xl">
+				<div className="container mx-auto px-6 max-w-4xl">
 					<motion.div
 						initial={{ opacity: 0, y: 12 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						className="mb-12"
+						className="mb-8"
 					>
 						<span className="text-rose-400 font-semibold uppercase tracking-[0.2em] text-[10px] flex items-center gap-1.5">
-							<Sparkles size={12} /> 01 / Background & Focus
+							<Sparkles size={12} /> 01 / Bio
 						</span>
 						<h3
 							className="text-3xl sm:text-4xl font-normal mt-2 text-white tracking-tight"
 							style={{ fontFamily: "'P22Mackinac', sans-serif" }}
 						>
-							Engineering Mindset & Craft
+							About Me
 						</h3>
 					</motion.div>
 
-					<div className="grid md:grid-cols-12 gap-6">
-						<motion.div
-							initial={{ opacity: 0, x: -20 }}
-							whileInView={{ opacity: 1, x: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5 }}
-							className="md:col-span-7 p-8 sm:p-10 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm flex flex-col justify-between space-y-6 hover:border-white/[0.1] transition-colors duration-300"
-						>
-							<div className="space-y-4">
-								<h4
-									className="text-2xl font-bold text-white tracking-tight"
-									style={{ fontFamily: "'P22Mackinac', sans-serif" }}
+					<motion.div
+						initial={{ opacity: 0, y: 16 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5 }}
+						className="p-8 sm:p-10 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm space-y-6 hover:border-white/[0.1] transition-colors duration-300"
+					>
+						<div className="space-y-4">
+							<h4
+								className="text-2xl font-bold text-white tracking-tight"
+								style={{ fontFamily: "'P22Mackinac', sans-serif" }}
+							>
+								Hey there, I’m Sanskriti!
+							</h4>
+							<p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+								I’m a Computer Science student who enjoys turning ideas into things people can actually use. I love building full-stack apps, solving tricky problems, and exploring AI & cloud technologies along the way.
+							</p>
+							<p className="text-slate-400 text-base sm:text-lg leading-relaxed">
+								Most of the time, you’ll find me coding, debugging something that “should’ve worked,” or building a new project just because I had an idea.
+							</p>
+						</div>
+
+						<div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/[0.04]">
+							{[
+								"Full-Stack Development",
+								"Problem Solving",
+								"Cloud & AI",
+								"Continuous Learning",
+							].map((tag) => (
+								<span
+									key={tag}
+									className="text-[10px] bg-white/[0.02] px-3 py-1 rounded-full text-slate-300 border border-white/[0.05] uppercase tracking-wider font-medium hover:border-white/[0.1] hover:text-white transition-all cursor-default"
 								>
-									Building Scalable, Resilient Systems
-								</h4>
-								<p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-									I specialize in engineering full-stack web platforms, high-throughput cloud
-									pipelines, and real-time event-driven architectures. Whether it's architecting
-									polyglot persistence layers with PostgreSQL and MongoDB or offloading heavy I/O
-									through AWS S3 presigned URLs, I love building software that scales reliably.
-								</p>
-								<p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-									Currently pursuing my B.Tech in Computer Science & Engineering at{" "}
-									<span className="text-slate-200 font-medium">VIT Bhopal (CGPA: 8.54/10)</span>.
-									During my Software Engineer Internship at{" "}
-									<span className="text-emerald-400 font-medium">GeekyAnts</span>, I built real-time
-									B2B marketplace communication and automated GST invoicing pipelines.
-								</p>
+									{tag}
+								</span>
+							))}
+							<div className="ml-auto text-[11px] text-slate-500 uppercase tracking-wider font-mono">
+								VIT Bhopal · 2023–2027
 							</div>
-
-							<div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.04]">
-								{[
-									"Distributed Systems",
-									"Polyglot DB",
-									"AWS S3 & EC2",
-									"Real-Time WebSockets",
-									"DORA Flow Metrics",
-									"Clean Code",
-								].map((tag) => (
-									<span
-										key={tag}
-										className="text-[10px] bg-white/[0.02] px-3 py-1 rounded-full text-slate-300 border border-white/[0.05] uppercase tracking-wider font-medium hover:border-white/[0.1] hover:text-white transition-all cursor-default"
-									>
-										{tag}
-									</span>
-								))}
-								<div className="ml-auto text-[10px] text-slate-500 uppercase tracking-wider font-mono self-center">
-									VIT Bhopal · 2023–2027
-								</div>
-							</div>
-						</motion.div>
-
-						<motion.div
-							initial={{ opacity: 0, x: 20 }}
-							whileInView={{ opacity: 1, x: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: 0.1 }}
-							className="md:col-span-5 p-8 sm:p-10 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm hover:border-white/[0.1] transition-colors duration-300 flex flex-col justify-between"
-						>
-							<div>
-								<h4 className="text-[10px] font-semibold tracking-[0.2em] uppercase text-slate-400 mb-6 flex items-center gap-1.5">
-									<Zap size={12} className="text-amber-400" /> Core Engineering Strengths
-								</h4>
-								<div className="space-y-4">
-									{[
-										{
-											title: "High-Throughput Cloud Pipelines",
-											desc: "Direct AWS S3 presigned URLs, streaming optimizations, containerized with Docker & Terraform.",
-											color: "text-amber-400",
-										},
-										{
-											title: "Polyglot Persistence & Graph Engines",
-											desc: "PostgreSQL relational task graphs + MongoDB event sourcing + recursive DFS graph cycle detection.",
-											color: "text-rose-400",
-										},
-										{
-											title: "Real-Time Event Clustering",
-											desc: "Socket.IO & Redis Pub/Sub distributed clustering for real-time multiplayer updates and chat.",
-											color: "text-cyan-400",
-										},
-										{
-											title: "Algorithmic Precision",
-											desc: "Top 3% worldwide in TCS CodeVita across 350,000+ competitors.",
-											color: "text-emerald-400",
-										},
-									].map((item) => (
-										<div
-											key={item.title}
-											className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]"
-										>
-											<span className={`text-xs font-bold ${item.color} block`}>
-												{item.title}
-											</span>
-											<span className="text-[11px] text-slate-400 leading-relaxed block mt-0.5">
-												{item.desc}
-											</span>
-										</div>
-									))}
-								</div>
-							</div>
-						</motion.div>
-					</div>
+						</div>
+					</motion.div>
 				</div>
 			</section>
 
@@ -1304,12 +1243,12 @@ const PortfolioMain = () => {
 						</span>
 						<span className="text-rose-500">·</span>
 						<span className="text-slate-600 text-xs font-mono">
-							Full-Stack & Cloud Engineer
+							Software Developer
 						</span>
 					</div>
 
 					<p className="text-slate-600 text-[11px] tracking-wider uppercase font-medium">
-						&copy; {new Date().getFullYear()} Sanskriti Gupta · Crafted with React 19 & Tailwind CSS
+						&copy; {new Date().getFullYear()} Sanskriti Gupta · Crafted with ❤️
 					</p>
 
 					<div className="flex items-center gap-3">

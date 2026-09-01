@@ -27,77 +27,159 @@ import {
 	Briefcase,
 	ChevronDown,
 	ArrowUp,
+	Terminal,
+	ShieldCheck,
+	Trophy,
+	Sparkles,
+	Layers,
+	Cpu,
+	Zap,
 } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import Contact from "./Contact";
 import PixelBlast from "./PixelBlast";
 import ResumeView from "./ResumeView";
+import ExperienceSection from "./components/ExperienceSection";
+import AchievementsSection from "./components/AchievementsSection";
+import SkillsSection from "./components/SkillsSection";
+import DevTerminal from "./components/DevTerminal";
+import CursorGlow from "./ui/CursorGlow";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const skills = [
-	{ name: "React.js / Next.js", icon: Code, color: "text-rose-400" },
-	{ name: "Node.js / Express", icon: Server, color: "text-emerald-400" },
-	{ name: "PostgreSQL", icon: Database, color: "text-cyan-400" },
-	{ name: "Flutter & Dart", icon: Smartphone, color: "text-sky-400" },
-	{ name: "Python", icon: Brain, color: "text-amber-400" },
-	{ name: "Machine Learning", icon: Rocket, color: "text-purple-400" },
-];
-
 const projects = [
 	{
-		title: "TaskGenie",
-		type: "Full-Stack Project",
-		status: "In Progress",
-		desc: "A hyper-local service marketplace designed to connect users with trusted local experts, built with a PostgreSQL backend and secure payment integrations.",
-		tags: ["PERN Stack", "PostgreSQL", "REST APIs"],
+		title: "Flux: Enterprise Agile Workspace & Cloud Engine",
+		shortTitle: "Flux Agile Engine",
+		type: "Distributed Cloud Platform",
+		category: "cloud",
+		featured: true,
+		status: "Production Architecture",
+		desc: "High-throughput agile project management system engineered with React 19, Node.js, and a polyglot persistence layer. Offloads asset streaming via AWS S3 Presigned URLs, mathematically eliminates dependency deadlocks with DFS cycle traversal, and forecasts sprint slippage via predictive DORA analytics.",
+		highlights: [
+			"AWS S3 Presigned URLs offloading binary file streaming directly to cloud storage",
+			"Polyglot persistence: PostgreSQL ACID task graphs + MongoDB event sourcing",
+			"Recursive DFS graph traversal to detect and prevent circular dependency deadlocks",
+			"Predictive sprint rollover risk analyzer & real-time DORA flow metrics",
+			"Socket.IO + Redis Pub/Sub for distributed clustering & Docker/Terraform deploy",
+		],
+		tags: [
+			"React 19",
+			"Node.js",
+			"PostgreSQL",
+			"MongoDB",
+			"AWS S3",
+			"Redis Pub/Sub",
+			"Docker",
+			"Terraform",
+		],
+		link: "https://github.com/sanskriti49/agile_task_manager",
+		github: "https://github.com/sanskriti49/agile_task_manager",
+		img: "/images/flux.png",
+		accent: "from-rose-500/30 to-purple-500/20",
+		highlightColor: "rgba(244,63,94,0.12)",
+		lineColor: "#f43f5e",
+		tagColor: "text-rose-300/80",
+	},
+	{
+		title: "TaskGenie: Service Marketplace",
+		shortTitle: "TaskGenie Marketplace",
+		type: "Full-Stack Marketplace",
+		category: "fullstack",
+		featured: true,
+		status: "Live Platform",
+		desc: "End-to-end service discovery and booking platform with provider scheduling, ratings, and customer reviews. Features PostgreSQL spatial indexing for geospatial provider lookup (cutting query latency by 80%), Razorpay webhooks with signature verification, and stateless OAuth 2.0 sessions.",
+		highlights: [
+			"Optimized geospatial provider lookup via PostgreSQL spatial indexing (-80% latency)",
+			"Secure payment pipeline with Razorpay Webhooks & automated refund reconciliation",
+			"Role-based provider & consumer dashboards with OAuth 2.0 authentication",
+			"Live appointment scheduling, rating aggregations, and verified reviews",
+		],
+		tags: [
+			"PERN Stack",
+			"Node.js",
+			"Express.js",
+			"PostgreSQL",
+			"Razorpay",
+			"OAuth 2.0",
+		],
 		link: "https://taskgenieee.vercel.app/",
+		github: "https://github.com/sanskriti49/service-provider",
 		img: "/images/service-app.png",
 		accent: "from-emerald-500/30 to-cyan-500/20",
 		highlightColor: "rgba(16,185,129,0.10)",
 		lineColor: "#10b981",
-		tagColor: "text-emerald-300/70",
+		tagColor: "text-emerald-300/80",
 	},
 	{
-		title: "CineBuzz",
+		title: "CineBuzz: Movie & Media Discovery",
+		shortTitle: "CineBuzz Platform",
 		type: "Web Application",
-		desc: "A dynamic movie discovery platform built with React, featuring seamless search, multi-criteria filtering, and live watchlist management using the TMDB API.",
-		tags: ["React", "TMDB API", "Tailwind CSS"],
+		category: "frontend",
+		featured: false,
+		desc: "Dynamic movie discovery and watchlist platform built with React and Tailwind CSS. Features seamless search, multi-criteria filtering, responsive grid layouts, and live TMDB API integrations with cached client-side state.",
+		highlights: [
+			"Multi-parameter search and dynamic genre filtering engine",
+			"Real-time watchlist sync with localStorage persistence",
+			"Tailwind CSS responsive design with fluid modal viewports",
+		],
+		tags: ["React.js", "TMDB API", "Tailwind CSS", "REST API", "State Management"],
 		link: "http://cinebuzzzz.netlify.app/",
+		github: "https://github.com/sanskriti49",
 		img: "/images/cinebuzz.png",
-		accent: "from-rose-500/30 to-amber-500/20",
-		highlightColor: "rgba(244,63,94,0.12)",
-		lineColor: "#f43f5e",
-		tagColor: "text-rose-300/70",
+		accent: "from-amber-500/30 to-orange-500/20",
+		highlightColor: "rgba(245,158,11,0.12)",
+		lineColor: "#f59e0b",
+		tagColor: "text-amber-300/80",
 	},
-
 	{
-		title: "Companion",
-		type: "Mobile Application",
-		status: "In Progress",
-		desc: "An AI-powered mobile assistant built for senior care, featuring voice-enabled memory aids, emergency alerts, and smart offline intent classification.",
-		tags: ["Flutter", "Llama 3.1", "BERT Engine"],
+		title: "Companion: AI Senior Care Assistant",
+		shortTitle: "Companion AI Care",
+		type: "Mobile Application & AI",
+		category: "ai",
+		featured: false,
+		status: "AI Research",
+		desc: "AI-powered mobile assistant built for senior care, featuring voice-enabled memory aids, emergency notification triggers, and smart offline intent classification powered by BERT and lightweight LLMs.",
+		highlights: [
+			"Voice-enabled conversational memory aids and reminder engine",
+			"Emergency alert routing with automated location triggers",
+			"Offline intent classification using BERT neural networks",
+		],
+		tags: ["Flutter", "Dart", "Llama 3.1", "BERT Engine", "Mobile AI"],
 		link: "https://github.com/sanskriti49/dementia-app",
+		github: "https://github.com/sanskriti49/dementia-app",
 		img: "/images/dementia.gif",
 		accent: "from-purple-500/30 to-sky-500/20",
 		highlightColor: "rgba(168,85,247,0.10)",
 		lineColor: "#a855f7",
-		tagColor: "text-purple-300/70",
+		tagColor: "text-purple-300/80",
 	},
 ];
 
-const StatBadge = ({ value, label }) => (
-	<div className="flex flex-col items-center px-6 py-3 rounded-2xl border border-white/[0.05] bg-white/[0.01] hover:border-white/[0.08] hover:bg-white/[0.02] transition-all duration-300">
-		<span
-			className="text-2xl font-bold text-white"
-			style={{ fontFamily: "'P22Mackinac', sans-serif" }}
-		>
-			{value}
-		</span>
-		<span className="text-[10px] uppercase tracking-widest text-slate-500 mt-0.5">
+const StatBadge = ({ value, label, subtext, icon: Icon, color = "text-white" }) => (
+	<motion.div
+		whileHover={{ y: -2, scale: 1.02 }}
+		className="flex flex-col px-5 py-3 rounded-2xl border border-white/[0.06] bg-white/[0.015] hover:border-white/[0.12] hover:bg-white/[0.03] transition-all duration-300 backdrop-blur-sm shadow-md"
+	>
+		<div className="flex items-center gap-2">
+			{Icon && <Icon size={14} className={color} />}
+			<span
+				className={`text-xl sm:text-2xl font-bold ${color}`}
+				style={{ fontFamily: "'P22Mackinac', sans-serif" }}
+			>
+				{value}
+			</span>
+		</div>
+		<span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mt-0.5">
 			{label}
 		</span>
-	</div>
+		{subtext && (
+			<span className="text-[9px] text-slate-500 tracking-normal mt-0.5">
+				{subtext}
+			</span>
+		)}
+	</motion.div>
 );
 
 const ScrollProgress = () => {
@@ -108,7 +190,7 @@ const ScrollProgress = () => {
 			className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left"
 			style={{
 				scaleX,
-				background: "linear-gradient(90deg, #f43f5e, #fb923c, #f43f5e)",
+				background: "linear-gradient(90deg, #f43f5e, #fb923c, #10b981)",
 			}}
 		/>
 	);
@@ -130,10 +212,10 @@ const BackToTop = () => {
 					exit={{ opacity: 0, y: 16, scale: 0.9 }}
 					transition={{ duration: 0.25 }}
 					onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-					className="fixed bottom-8 right-8 z-50 w-10 h-10 rounded-xl flex items-center justify-center border border-white/[0.08] bg-[#0C0C14]/90 backdrop-blur-md text-slate-400 hover:text-white hover:border-white/[0.15] transition-all shadow-lg shadow-black/40"
+					className="fixed bottom-8 right-8 z-50 w-11 h-11 rounded-xl flex items-center justify-center border border-white/[0.08] bg-[#0C0C14]/90 backdrop-blur-md text-slate-400 hover:text-white hover:border-white/[0.2] transition-all shadow-xl shadow-black/60 cursor-pointer"
 					aria-label="Back to top"
 				>
-					<ArrowUp size={15} />
+					<ArrowUp size={16} />
 				</motion.button>
 			)}
 		</AnimatePresence>
@@ -141,11 +223,20 @@ const BackToTop = () => {
 };
 
 /* ─────────────────────────────────────────────────────────
-   INNOVATIVE PROJECTS SECTION — editorial index layout
+   PROJECTS SECTION WITH CATEGORY FILTER & DETAILED PREVIEW
 ───────────────────────────────────────────────────────── */
 const ProjectsSection = () => {
+	const [filter, setFilter] = useState("all");
 	const [activeIdx, setActiveIdx] = useState(0);
-	const active = projects[activeIdx];
+
+	const filteredProjects =
+		filter === "all"
+			? projects
+			: projects.filter((p) => p.category === filter);
+
+	// Ensure active index is within bounds of filtered list
+	const safeIdx = activeIdx < filteredProjects.length ? activeIdx : 0;
+	const active = filteredProjects[safeIdx] || filteredProjects[0];
 
 	return (
 		<section
@@ -155,44 +246,56 @@ const ProjectsSection = () => {
 		>
 			<div className="container mx-auto px-6 max-w-6xl">
 				{/* Header */}
-				<div className="flex justify-between items-end mb-16">
+				<div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
 					<motion.div
 						initial={{ opacity: 0, y: 12 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 					>
-						<span className="text-teal-400 font-semibold uppercase tracking-[0.2em] text-[10px]">
-							02 / Portfolio
+						<span className="text-rose-400 font-semibold uppercase tracking-[0.2em] text-[10px] flex items-center gap-1.5">
+							<Sparkles size={12} /> 03 / Engineering Portfolio
 						</span>
 						<h3
-							className="text-3xl font-normal mt-2 text-white tracking-tight"
+							className="text-3xl sm:text-4xl font-normal mt-2 text-white tracking-tight"
 							style={{ fontFamily: "'P22Mackinac', sans-serif" }}
 						>
-							Featured Projects
+							Featured Systems & Projects
 						</h3>
 					</motion.div>
-					<motion.a
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						viewport={{ once: true }}
-						whileHover={{ x: 3 }}
-						href="https://github.com/sanskriti49"
-						target="_blank"
-						rel="noreferrer"
-						className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-rose-300/80 hover:text-rose-300 transition-colors"
-					>
-						GitHub Profile <ChevronRight size={14} />
-					</motion.a>
+
+					<div className="flex items-center gap-2 flex-wrap">
+						{[
+							{ id: "all", label: "All Work" },
+							{ id: "cloud", label: "Cloud & Distributed" },
+							{ id: "fullstack", label: "Full Stack" },
+							{ id: "ai", label: "AI & Mobile" },
+						].map((tab) => (
+							<button
+								key={tab.id}
+								onClick={() => {
+									setFilter(tab.id);
+									setActiveIdx(0);
+								}}
+								className={`text-xs px-3.5 py-1.5 rounded-xl border transition-all cursor-pointer font-medium ${
+									filter === tab.id
+										? "bg-white text-black border-white shadow-md font-semibold"
+										: "bg-white/[0.02] text-slate-400 border-white/[0.05] hover:text-white hover:bg-white/[0.05]"
+								}`}
+							>
+								{tab.label}
+							</button>
+						))}
+					</div>
 				</div>
 
 				<div className="grid md:grid-cols-12 gap-8 items-start">
-					{/* ── Left: project index list ── */}
+					{/* ── Left: Project index list ── */}
 					<div className="md:col-span-6 lg:col-span-7">
-						{projects.map((project, idx) => {
-							const isActive = idx === activeIdx;
+						{filteredProjects.map((project, idx) => {
+							const isActive = idx === safeIdx;
 							return (
 								<motion.div
-									key={idx}
+									key={project.title}
 									initial={{ opacity: 0, x: -16 }}
 									whileInView={{ opacity: 1, x: 0 }}
 									viewport={{ once: true }}
@@ -201,6 +304,7 @@ const ProjectsSection = () => {
 									onMouseEnter={() => setActiveIdx(idx)}
 									onClick={() => setActiveIdx(idx)}
 								>
+									{/* Active edge highlight line */}
 									<motion.div
 										className="absolute left-0 top-0 bottom-0 w-[2px] rounded-full"
 										style={{ backgroundColor: project.lineColor }}
@@ -213,14 +317,14 @@ const ProjectsSection = () => {
 									/>
 
 									<div
-										className="pl-6 pr-4 py-7 rounded-r-xl transition-all duration-300"
+										className="pl-6 pr-4 py-6 rounded-r-2xl transition-all duration-300"
 										style={{
 											backgroundColor: isActive
 												? project.highlightColor
 												: "transparent",
 										}}
 									>
-										<div className="flex items-start gap-5">
+										<div className="flex items-start gap-4">
 											<span
 												className="font-mono text-[11px] mt-1 shrink-0 transition-colors duration-300"
 												style={{
@@ -230,41 +334,46 @@ const ProjectsSection = () => {
 												0{idx + 1}
 											</span>
 
-											<div className="flex-1 min-w-0 space-y-2.5">
-												<div className="flex items-center gap-3 flex-wrap">
+											<div className="flex-1 min-w-0 space-y-2">
+												<div className="flex items-center gap-2.5 flex-wrap">
 													<h4
-														className="text-xl font-bold tracking-tight transition-colors duration-300"
+														className="text-lg sm:text-xl font-bold tracking-tight transition-colors duration-300"
 														style={{
 															fontFamily: "'P22Mackinac', sans-serif",
-															color: isActive ? "#ffffff" : "#94a3b8",
+															color: isActive ? "#ffffff" : "#cbd5e1",
 														}}
 													>
-														{project.title}
+														{project.shortTitle || project.title}
 													</h4>
 													{project.status && (
-														<span className="text-[8px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 uppercase tracking-widest">
+														<span className="text-[8px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 uppercase tracking-widest">
 															{project.status}
 														</span>
 													)}
 												</div>
 
-												<p className="text-[10px] uppercase tracking-[0.18em] text-slate-600 font-medium">
+												<p className="text-[10px] uppercase tracking-[0.18em] text-slate-500 font-medium">
 													{project.type}
 												</p>
 
-												<div className="flex flex-wrap gap-1.5">
-													{project.tags.map((tag) => (
+												<div className="flex flex-wrap gap-1.5 pt-1">
+													{project.tags.slice(0, 5).map((tag) => (
 														<span
 															key={tag}
-															className={`text-[10px] px-2.5 py-1 rounded-md border font-medium tracking-wide transition-all duration-300 ${
+															className={`text-[9px] sm:text-[10px] px-2 py-0.5 rounded-md border font-medium tracking-wide transition-all duration-300 ${
 																isActive
-																	? `${project.tagColor} border-white/[0.07] bg-white/[0.03]`
-																	: "text-slate-600 border-white/[0.03] bg-transparent"
+																	? `${project.tagColor} border-white/[0.08] bg-white/[0.04]`
+																	: "text-slate-500 border-white/[0.03] bg-transparent"
 															}`}
 														>
 															{tag}
 														</span>
 													))}
+													{project.tags.length > 5 && (
+														<span className="text-[9px] px-2 py-0.5 text-slate-500">
+															+{project.tags.length - 5}
+														</span>
+													)}
 												</div>
 
 												<AnimatePresence initial={false}>
@@ -278,22 +387,58 @@ const ProjectsSection = () => {
 																duration: 0.3,
 																ease: [0.22, 1, 0.36, 1],
 															}}
-															style={{ overflow: "hidden" }}
+															className="overflow-hidden"
 														>
-															<div className="pt-2 space-y-3">
-																<p className="text-slate-400 text-sm leading-relaxed">
+															<div className="pt-3 space-y-3">
+																<p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
 																	{project.desc}
 																</p>
-																<a
-																	href={project.link}
-																	target="_blank"
-																	rel="noreferrer"
-																	className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider transition-colors"
-																	style={{ color: project.lineColor }}
-																	onClick={(e) => e.stopPropagation()}
-																>
-																	View Project <ExternalLink size={11} />
-																</a>
+
+																{/* Bullet achievements */}
+																{project.highlights && (
+																	<ul className="space-y-1.5 pt-1">
+																		{project.highlights.map((h, hIdx) => (
+																			<li
+																				key={hIdx}
+																				className="text-xs text-slate-400 flex items-start gap-2"
+																			>
+																				<span
+																					className="text-xs mt-0.5"
+																					style={{ color: project.lineColor }}
+																				>
+																					•
+																				</span>
+																				<span>{h}</span>
+																			</li>
+																		))}
+																	</ul>
+																)}
+
+																<div className="flex items-center gap-3 pt-2">
+																	{project.link && (
+																		<a
+																			href={project.link}
+																			target="_blank"
+																			rel="noreferrer"
+																			className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider transition-colors hover:underline"
+																			style={{ color: project.lineColor }}
+																			onClick={(e) => e.stopPropagation()}
+																		>
+																			Open Demo <ExternalLink size={11} />
+																		</a>
+																	)}
+																	{project.github && (
+																		<a
+																			href={project.github}
+																			target="_blank"
+																			rel="noreferrer"
+																			className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-white uppercase tracking-wider transition-colors"
+																			onClick={(e) => e.stopPropagation()}
+																		>
+																			<FaGithub size={12} /> Source Code
+																		</a>
+																	)}
+																</div>
 															</div>
 														</motion.div>
 													)}
@@ -301,7 +446,7 @@ const ProjectsSection = () => {
 											</div>
 
 											<motion.div
-												className="shrink-0 mt-0.5"
+												className="shrink-0 mt-1"
 												animate={{
 													x: isActive ? 2 : 0,
 													color: isActive ? project.lineColor : "#475569",
@@ -313,41 +458,40 @@ const ProjectsSection = () => {
 										</div>
 									</div>
 
-									{/* Row divider */}
-									{idx < projects.length - 1 && (
+									{idx < filteredProjects.length - 1 && (
 										<div className="ml-6 h-px bg-white/[0.04]" />
 									)}
 								</motion.div>
 							);
 						})}
 
-						{/* Mobile: image shown below the list on small screens */}
+						{/* Mobile Image Preview */}
 						<div className="mt-8 md:hidden">
 							<MobileImagePreview active={active} />
 						</div>
 					</div>
 
-					{/* ── Right: sticky preview (desktop only) ── */}
+					{/* ── Right: Sticky desktop preview ── */}
 					<div className="hidden md:block md:col-span-6 lg:col-span-5">
 						<div className="sticky top-28 space-y-4">
 							<div className="flex items-center justify-between mb-1">
 								<motion.span
-									key={activeIdx + "-label"}
+									key={safeIdx + "-label"}
 									initial={{ opacity: 0, y: 6 }}
 									animate={{ opacity: 1, y: 0 }}
-									className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-semibold"
+									className="text-[10px] uppercase tracking-[0.25em] text-slate-400 font-semibold"
 								>
 									{active.type}
 								</motion.span>
-								<span className="font-mono text-[11px] text-slate-700">
-									0{activeIdx + 1}&nbsp;/&nbsp;0{projects.length}
+								<span className="font-mono text-[11px] text-slate-500">
+									0{safeIdx + 1}&nbsp;/&nbsp;0{filteredProjects.length}
 								</span>
 							</div>
 
-							<div className="relative rounded-2xl overflow-hidden border border-white/[0.05] bg-[#0C0C14] aspect-[4/3] shadow-2xl shadow-black/40">
+							<div className="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0C0C14] aspect-[4/3] shadow-2xl shadow-black/50">
 								<AnimatePresence mode="wait">
 									<motion.div
-										key={activeIdx}
+										key={active.title}
 										className="absolute inset-0"
 										initial={{ opacity: 0, scale: 1.03 }}
 										animate={{ opacity: 1, scale: 1 }}
@@ -363,9 +507,9 @@ const ProjectsSection = () => {
 												e.target.nextSibling.style.display = "flex";
 											}}
 										/>
-										<div className="hidden absolute inset-0 bg-[#10101A] flex-col justify-center items-center">
-											<Briefcase size={20} className="text-slate-700 mb-2" />
-											<span className="text-sm font-bold text-slate-500">
+										<div className="hidden absolute inset-0 bg-[#10101A] flex-col justify-center items-center p-6 text-center">
+											<Briefcase size={24} className="text-slate-600 mb-2" />
+											<span className="text-sm font-bold text-slate-400">
 												{active.title}
 											</span>
 										</div>
@@ -373,8 +517,7 @@ const ProjectsSection = () => {
 										<div
 											className={`absolute inset-0 bg-gradient-to-br ${active.accent} opacity-60`}
 										/>
-										{/* Bottom fade for readability */}
-										<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+										<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
 										<div className="absolute bottom-5 left-5 right-5">
 											<p
@@ -389,51 +532,56 @@ const ProjectsSection = () => {
 
 								{active.status && (
 									<div className="absolute top-4 right-4 z-10">
-										<span className="text-[9px] font-semibold px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/25 uppercase tracking-widest backdrop-blur-sm">
+										<span className="text-[9px] font-bold px-2.5 py-1 rounded-full bg-black/60 text-emerald-300 border border-emerald-500/30 uppercase tracking-widest backdrop-blur-md">
 											{active.status}
 										</span>
 									</div>
 								)}
 							</div>
 
+							{/* Dot navigation */}
 							<div className="flex items-center justify-center gap-2 pt-1">
-								{projects.map((p, i) => (
+								{filteredProjects.map((p, i) => (
 									<button
 										key={i}
 										onClick={() => setActiveIdx(i)}
-										className="rounded-full transition-all duration-300"
+										className="rounded-full transition-all duration-300 cursor-pointer"
 										style={{
-											width: i === activeIdx ? "20px" : "6px",
+											width: i === safeIdx ? "20px" : "6px",
 											height: "6px",
 											backgroundColor:
-												i === activeIdx
+												i === safeIdx
 													? p.lineColor
-													: "rgba(255,255,255,0.12)",
+													: "rgba(255,255,255,0.15)",
 										}}
 										aria-label={`View ${p.title}`}
 									/>
 								))}
 							</div>
 
-							<AnimatePresence mode="wait">
-								<motion.a
-									key={activeIdx + "-btn"}
+							{/* Action Links */}
+							<div className="grid grid-cols-2 gap-2 pt-1">
+								<a
 									href={active.link}
 									target="_blank"
 									rel="noreferrer"
-									initial={{ opacity: 0, y: 8 }}
-									animate={{ opacity: 1, y: 0 }}
-									exit={{ opacity: 0, y: -8 }}
-									transition={{ duration: 0.25 }}
-									className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white/[0.04]"
+									className="flex items-center justify-center gap-2 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:bg-white/[0.06] shadow-sm"
 									style={{
-										borderColor: "rgba(255,255,255,0.07)",
+										borderColor: "rgba(255,255,255,0.08)",
 										color: active.lineColor,
 									}}
 								>
-									Open {active.title} <ExternalLink size={12} />
-								</motion.a>
-							</AnimatePresence>
+									Launch Live <ExternalLink size={12} />
+								</a>
+								<a
+									href={active.github}
+									target="_blank"
+									rel="noreferrer"
+									className="flex items-center justify-center gap-2 py-3 rounded-xl border border-white/[0.08] text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-white/[0.04] transition-all"
+								>
+									GitHub <FaGithub size={12} />
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -448,7 +596,7 @@ const MobileImagePreview = ({ active }) => (
 		initial={{ opacity: 0, y: 12 }}
 		animate={{ opacity: 1, y: 0 }}
 		transition={{ duration: 0.3 }}
-		className="rounded-2xl overflow-hidden border border-white/[0.05] bg-[#0C0C14] aspect-video relative"
+		className="rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0C0C14] aspect-video relative shadow-xl"
 	>
 		<img
 			src={active.img}
@@ -461,10 +609,10 @@ const MobileImagePreview = ({ active }) => (
 		<div
 			className={`absolute inset-0 bg-gradient-to-br ${active.accent} opacity-60`}
 		/>
-		<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-		<div className="absolute bottom-4 left-4">
+		<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+		<div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
 			<p
-				className="text-white text-lg font-bold"
+				className="text-white text-base sm:text-lg font-bold"
 				style={{ fontFamily: "'P22Mackinac', sans-serif" }}
 			>
 				{active.title}
@@ -474,9 +622,9 @@ const MobileImagePreview = ({ active }) => (
 			href={active.link}
 			target="_blank"
 			rel="noreferrer"
-			className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 rounded-lg bg-black/50 backdrop-blur-sm border border-white/[0.08] text-[10px] font-semibold text-white uppercase tracking-wider"
+			className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md border border-white/[0.1] text-[10px] font-bold text-white uppercase tracking-wider"
 		>
-			Visit <ExternalLink size={10} />
+			View <ExternalLink size={10} />
 		</a>
 	</motion.div>
 );
@@ -489,32 +637,32 @@ const PortfolioMain = () => {
 	const heroContentRef = useRef(null);
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 
 	const [activeSection, setActiveSection] = useState(() => {
 		const hash = window.location.hash.replace("#", "");
-		const valid = ["home", "about", "projects", "contact"];
+		const valid = ["home", "about", "experience", "projects", "achievements", "skills", "contact"];
 		return valid.includes(hash) ? hash : "home";
 	});
 
-	// sync on hash change (nav clicks)
+	// Hash change sync
 	useEffect(() => {
 		const handleHashChange = () => {
 			const hash = window.location.hash.replace("#", "");
-			const valid = ["home", "about", "projects", "contact"];
+			const valid = ["home", "about", "experience", "projects", "achievements", "skills", "contact"];
 			if (valid.includes(hash)) setActiveSection(hash);
 		};
 		window.addEventListener("hashchange", handleHashChange);
 		return () => window.removeEventListener("hashchange", handleHashChange);
 	}, []);
 
-	// scroll-based tracking — finds whichever section's top is closest
+	// Scroll spy
 	useEffect(() => {
-		const sectionIds = ["home", "about", "projects", "contact"];
+		const sectionIds = ["home", "about", "experience", "projects", "achievements", "skills", "contact"];
 
 		const onScroll = () => {
-			const trigger = window.innerHeight * 0.3;
-
+			const trigger = window.innerHeight * 0.35;
 			let closest = sectionIds[0];
 			let closestDist = Infinity;
 
@@ -565,26 +713,24 @@ const PortfolioMain = () => {
 	const navLinks = [
 		{ name: "Home", href: "#home", sectionId: "home", type: "anchor" },
 		{ name: "About", href: "#about", sectionId: "about", type: "anchor" },
-		{
-			name: "Projects",
-			href: "#projects",
-			sectionId: "projects",
-			type: "anchor",
-		},
+		{ name: "Experience", href: "#experience", sectionId: "experience", type: "anchor" },
+		{ name: "Projects", href: "#projects", sectionId: "projects", type: "anchor" },
+		{ name: "Honors", href: "#achievements", sectionId: "achievements", type: "anchor" },
+		{ name: "Skills", href: "#skills", sectionId: "skills", type: "anchor" },
 		{ name: "Resume", href: "/resume", type: "route" },
 		{ name: "Contact", href: "#contact", sectionId: "contact", type: "anchor" },
 	];
 
 	const stagger = {
 		hidden: {},
-		show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+		show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 	};
 	const fadeUp = {
-		hidden: { opacity: 0, y: 24 },
+		hidden: { opacity: 0, y: 20 },
 		show: {
 			opacity: 1,
 			y: 0,
-			transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+			transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
 		},
 	};
 
@@ -594,14 +740,16 @@ const PortfolioMain = () => {
 			className="min-h-screen text-[#f1f5f9] antialiased selection:bg-rose-500/20 selection:text-rose-200 scroll-smooth leading-relaxed"
 			style={{ backgroundColor: "#08080C", fontFamily: "'Inter', sans-serif" }}
 		>
+			<CursorGlow />
 			<ScrollProgress />
 			<BackToTop />
+			<DevTerminal isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
 
-			{/* Background */}
+			{/* Background ambient lighting */}
 			<div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-				<div className="absolute top-[-10%] left-[-5%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-rose-950/30 to-amber-950/10 blur-[160px]" />
-				<div className="absolute top-[30%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-gradient-to-tl from-indigo-950/20 to-transparent blur-[140px]" />
-				<div className="absolute bottom-0 left-[20%] w-[40vw] h-[40vw] rounded-full bg-gradient-to-tr from-emerald-950/10 to-transparent blur-[120px]" />
+				<div className="absolute top-[-10%] left-[-5%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-rose-950/25 to-amber-950/10 blur-[160px]" />
+				<div className="absolute top-[35%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-gradient-to-tl from-indigo-950/20 to-transparent blur-[140px]" />
+				<div className="absolute bottom-0 left-[20%] w-[40vw] h-[40vw] rounded-full bg-gradient-to-tr from-emerald-950/15 to-transparent blur-[120px]" />
 				<div className="absolute inset-0 bg-[radial-gradient(circle,#ffffff04_1px,transparent_1px)] bg-[size:32px_32px]" />
 			</div>
 
@@ -609,22 +757,24 @@ const PortfolioMain = () => {
 			<nav
 				className="fixed top-0 w-full z-50 transition-all duration-500"
 				style={{
-					padding: scrolled ? "10px 0" : "20px 0",
+					padding: scrolled ? "10px 0" : "18px 0",
 					backgroundColor: scrolled ? "rgba(8,8,12,0.92)" : "transparent",
 					backdropFilter: scrolled ? "blur(28px) saturate(180%)" : "none",
 					WebkitBackdropFilter: scrolled ? "blur(28px) saturate(180%)" : "none",
 					boxShadow: scrolled
-						? "0 1px 0 0 rgba(241,245,249,0.04), 0 4px 24px 0 rgba(0,0,0,0.3)"
+						? "0 1px 0 0 rgba(241,245,249,0.04), 0 4px 24px 0 rgba(0,0,0,0.4)"
 						: "none",
 				}}
 			>
 				<div className="container mx-auto px-6 max-w-6xl flex items-center justify-between">
 					<a
 						href="#"
-						className="group flex items-center gap-1"
+						className="group flex items-center gap-1.5"
 						style={{ fontFamily: "'P22Mackinac', sans-serif" }}
 					>
-						<span className="text-xl text-white tracking-wide">Sanskriti</span>
+						<span className="text-xl text-white tracking-wide font-semibold">
+							Sanskriti
+						</span>
 						<motion.span
 							className="text-rose-400 text-2xl leading-none"
 							animate={{ rotate: [0, 15, 0] }}
@@ -633,21 +783,21 @@ const PortfolioMain = () => {
 							·
 						</motion.span>
 					</a>
+
 					<div
-						className="hidden md:flex items-center gap-0.5 px-2 py-1.5 rounded-2xl border border-white/[0.05] bg-white/[0.015]"
+						className="hidden lg:flex items-center gap-0.5 px-2 py-1.5 rounded-2xl border border-white/[0.05] bg-white/[0.015]"
 						style={{ backdropFilter: "blur(12px)" }}
 					>
 						{navLinks.map((link) => {
-							// tells if this item is currently selected
 							const isActive =
 								link.type === "route"
 									? location.pathname === link.href
 									: activeSection === link.sectionId &&
 										location.pathname === "/";
 
-							const baseStyles = `text-[11px] uppercase tracking-[0.15em] font-semibold px-4 py-2 rounded-xl transition-all ${
+							const baseStyles = `text-[11px] uppercase tracking-[0.14em] font-semibold px-3.5 py-2 rounded-xl transition-all ${
 								isActive
-									? "text-white bg-white/[0.06]"
+									? "text-white bg-white/[0.08]"
 									: "text-slate-400 hover:text-white hover:bg-white/[0.04]"
 							}`;
 
@@ -662,19 +812,32 @@ const PortfolioMain = () => {
 							);
 						})}
 					</div>
-					<motion.a
-						whileHover={{ scale: 1.03 }}
-						whileTap={{ scale: 0.97 }}
-						href="#contact"
-						className="hidden md:flex relative overflow-hidden group items-center gap-1.5 bg-white text-black px-5 py-2.5 rounded-xl text-[11px] uppercase font-bold tracking-widest"
-					>
-						<span className="relative z-10 flex items-center gap-1.5">
-							Let's Talk <ArrowUpRight size={13} />
-						</span>
-						<span className="absolute inset-0 bg-gradient-to-r from-rose-400 to-amber-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-					</motion.a>
+
+					<div className="hidden md:flex items-center gap-2.5">
+						<button
+							onClick={() => setIsTerminalOpen(true)}
+							className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 text-xs font-mono transition-all cursor-pointer"
+							title="Open Developer Shell"
+						>
+							<Terminal size={13} />
+							<span>Shell</span>
+						</button>
+
+						<motion.a
+							whileHover={{ scale: 1.03 }}
+							whileTap={{ scale: 0.97 }}
+							href="#contact"
+							className="relative overflow-hidden group flex items-center gap-1.5 bg-white text-black px-4 py-2 rounded-xl text-[11px] uppercase font-bold tracking-widest"
+						>
+							<span className="relative z-10 flex items-center gap-1.5">
+								Let's Talk <ArrowUpRight size={13} />
+							</span>
+							<span className="absolute inset-0 bg-gradient-to-r from-rose-400 to-amber-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+						</motion.a>
+					</div>
+
 					<button
-						className="md:hidden text-white p-1.5 rounded-lg hover:bg-white/[0.06] transition-colors"
+						className="lg:hidden text-white p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
 						aria-label="Toggle menu"
 					>
@@ -691,9 +854,9 @@ const PortfolioMain = () => {
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 md:hidden"
+						className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-6 lg:hidden"
 						style={{
-							backgroundColor: "rgba(8,8,12,0.97)",
+							backgroundColor: "rgba(8,8,12,0.98)",
 							backdropFilter: "blur(40px)",
 						}}
 					>
@@ -707,10 +870,10 @@ const PortfolioMain = () => {
 							link.type === "route" ? (
 								<motion.div
 									key={link.name}
-									initial={{ opacity: 0, y: 20 }}
+									initial={{ opacity: 0, y: 15 }}
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0, y: -10 }}
-									transition={{ delay: i * 0.06 }}
+									transition={{ delay: i * 0.05 }}
 								>
 									<Link
 										to={link.href}
@@ -724,10 +887,10 @@ const PortfolioMain = () => {
 							) : (
 								<motion.a
 									key={link.name}
-									initial={{ opacity: 0, y: 20 }}
+									initial={{ opacity: 0, y: 15 }}
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0, y: -10 }}
-									transition={{ delay: i * 0.06 }}
+									transition={{ delay: i * 0.05 }}
 									href={link.href}
 									onClick={() => setIsMenuOpen(false)}
 									className="text-2xl font-light text-slate-300 hover:text-white transition-colors"
@@ -737,24 +900,32 @@ const PortfolioMain = () => {
 								</motion.a>
 							),
 						)}
-						<motion.a
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ delay: navLinks.length * 0.06 + 0.05 }}
-							href="#contact"
-							onClick={() => setIsMenuOpen(false)}
-							className="mt-4 flex items-center gap-2 bg-white text-black px-8 py-3 rounded-xl text-[11px] uppercase font-bold tracking-widest"
-						>
-							Let's Talk <ArrowUpRight size={13} />
-						</motion.a>
+						<div className="flex flex-col gap-3 pt-2 items-center">
+							<button
+								onClick={() => {
+									setIsMenuOpen(false);
+									setIsTerminalOpen(true);
+								}}
+								className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-mono"
+							>
+								<Terminal size={14} /> Open Developer Shell
+							</button>
+							<motion.a
+								href="#contact"
+								onClick={() => setIsMenuOpen(false)}
+								className="flex items-center gap-2 bg-white text-black px-8 py-3 rounded-xl text-[11px] uppercase font-bold tracking-widest"
+							>
+								Let's Talk <ArrowUpRight size={13} />
+							</motion.a>
+						</div>
 					</motion.div>
 				)}
 			</AnimatePresence>
 
-			{/* Hero */}
+			{/* Hero Section */}
 			<section
 				id="home"
-				className="min-h-screen flex items-center pt-24 pb-16 relative"
+				className="min-h-screen flex items-center pt-28 pb-16 relative"
 				style={{ backgroundColor: "#08080C" }}
 			>
 				<div
@@ -781,6 +952,7 @@ const PortfolioMain = () => {
 						transparent
 					/>
 				</div>
+
 				<div
 					className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-[1]"
 					style={{
@@ -788,11 +960,6 @@ const PortfolioMain = () => {
 							"linear-gradient(to bottom, transparent 0%, #08080C 100%)",
 					}}
 				/>
-				<div className="absolute top-32 right-8 hidden lg:flex flex-col items-center gap-3 text-slate-700 z-10">
-					<span className="text-[9px] uppercase tracking-[0.4em] rotate-90 origin-center whitespace-nowrap">
-						Software Developer
-					</span>
-				</div>
 
 				<div
 					className="container mx-auto px-6 max-w-6xl relative z-10"
@@ -804,101 +971,135 @@ const PortfolioMain = () => {
 						initial="hidden"
 						animate="show"
 					>
-						<div className="md:col-span-7 space-y-7">
-							<motion.div variants={fadeUp}>
-								<span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
+						{/* Hero Left Content */}
+						<div className="md:col-span-7 space-y-6">
+							<motion.div variants={fadeUp} className="flex items-center gap-2 flex-wrap">
+								<span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
 									<span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-									Open for roles
+									Open for Engineering Roles
+								</span>
+								<span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/25 bg-amber-500/10 text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
+									<ShieldCheck size={11} /> AWS Certified
 								</span>
 							</motion.div>
+
 							<motion.h1
 								variants={fadeUp}
-								className="text-5xl sm:text-6xl md:text-7xl text-white leading-[1.05] tracking-tight"
+								className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.06] tracking-tight"
 								style={{ fontFamily: "'P22Mackinac', sans-serif" }}
 							>
-								Building web
+								Architecting high-scale
 								<br />
 								<span className="relative">
-									<span className="bg-gradient-to-r from-white via-slate-300 to-slate-500 bg-clip-text text-transparent">
-										and mobile
+									<span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+										full-stack & cloud
 									</span>
 									<motion.span
-										className="absolute -bottom-1 left-0 h-px bg-gradient-to-r from-rose-500/60 to-transparent"
+										className="absolute -bottom-1 left-0 h-px bg-gradient-to-r from-rose-500/70 to-transparent"
 										initial={{ width: 0 }}
 										animate={{ width: "100%" }}
 										transition={{
-											delay: 0.9,
+											delay: 0.8,
 											duration: 0.9,
 											ease: [0.22, 1, 0.36, 1],
 										}}
 									/>
 								</span>
 								<br />
-								<span className="text-slate-500 font-normal">experiences.</span>
+								<span className="text-slate-500 font-normal">engines.</span>
 							</motion.h1>
+
 							<motion.p
 								variants={fadeUp}
 								className="text-slate-400 max-w-xl text-base sm:text-lg leading-relaxed"
 							>
 								Hi, I'm{" "}
-								<span className="text-white font-medium">Sanskriti</span>. A
-								software developer focused on creating clean software across{" "}
-								<span className="text-rose-400 font-medium border-b border-rose-500/20 pb-px">
+								<span className="text-white font-semibold">Sanskriti Gupta</span>. Software engineer
+								specializing in{" "}
+								<span className="text-rose-400 font-semibold border-b border-rose-500/25 pb-0.5">
 									<Typewriter
 										words={[
-											"Web Frameworks",
-											"Mobile Apps",
-											"Database Design",
-											"Smart Solutions",
+											"Distributed Systems",
+											"React 19 & Next.js",
+											"Node.js & Express APIs",
+											"AWS Cloud Architecture",
+											"PostgreSQL & Redis Pub/Sub",
 										]}
 										loop={0}
 										cursor
 										cursorStyle="|"
 									/>
 								</span>
+								. Previously SWE Intern at{" "}
+								<span className="text-emerald-300 font-medium">GeekyAnts</span>.
 							</motion.p>
-							<motion.div
-								variants={fadeUp}
-								className="flex flex-wrap gap-4 pt-2"
-							>
+
+							{/* Call to actions */}
+							<motion.div variants={fadeUp} className="flex flex-wrap gap-3.5 pt-2">
 								<motion.a
 									whileHover={{ scale: 1.02, y: -2 }}
 									whileTap={{ scale: 0.97 }}
 									href="#projects"
-									className="bg-white text-black px-7 py-3.5 rounded-xl text-[11px] uppercase font-bold tracking-wider hover:bg-rose-400 hover:text-white transition-all shadow-lg shadow-black/20"
+									className="bg-white text-black px-7 py-3.5 rounded-xl text-[11px] uppercase font-bold tracking-wider hover:bg-rose-400 hover:text-white transition-all shadow-lg shadow-black/30 flex items-center gap-2"
 								>
-									View My Work
+									Explore Projects <ArrowUpRight size={14} />
 								</motion.a>
 								<motion.button
 									whileHover={{ scale: 1.02, y: -2 }}
 									whileTap={{ scale: 0.97 }}
 									onClick={() => navigate("/resume")}
-									className="cursor-pointer border border-white/[0.08] bg-white/[0.02] px-7 py-3.5 rounded-xl text-[11px] uppercase font-bold tracking-wider text-slate-300 hover:bg-white/[0.05] hover:text-white transition-all flex items-center gap-2"
+									className="cursor-pointer border border-white/[0.08] bg-white/[0.02] px-6 py-3.5 rounded-xl text-[11px] uppercase font-bold tracking-wider text-slate-300 hover:bg-white/[0.06] hover:text-white transition-all flex items-center gap-2"
 								>
 									<FileText size={13} className="text-slate-400" /> View Resume
 								</motion.button>
+								<motion.button
+									whileHover={{ scale: 1.02, y: -2 }}
+									whileTap={{ scale: 0.97 }}
+									onClick={() => setIsTerminalOpen(true)}
+									className="cursor-pointer border border-emerald-500/25 bg-emerald-500/5 px-5 py-3.5 rounded-xl text-[11px] font-mono text-emerald-300 hover:bg-emerald-500/15 transition-all flex items-center gap-2"
+								>
+									<Terminal size={13} /> Interactive CLI
+								</motion.button>
 							</motion.div>
-							<motion.div
-								variants={fadeUp}
-								className="flex flex-wrap gap-3 pt-2"
-							>
-								<StatBadge value="5+" label="Projects Shipped" />
-								<StatBadge value="8+" label="Technologies" />
-								<StatBadge value="∞" label="Curiosity" />
+
+							{/* Key Metrics / Highlights */}
+							<motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+								<StatBadge
+									value="Top 3%"
+									label="TCS CodeVita"
+									subtext="Worldwide Rank 10,298"
+									icon={Trophy}
+									color="text-rose-400"
+								/>
+								<StatBadge
+									value="AWS"
+									label="Certified"
+									subtext="Cloud Practitioner"
+									icon={ShieldCheck}
+									color="text-amber-400"
+								/>
+								<StatBadge
+									value="8.54 / 10"
+									label="VIT Bhopal"
+									subtext="B.Tech Computer Science"
+									icon={Code}
+									color="text-cyan-400"
+								/>
 							</motion.div>
 						</div>
 
+						{/* Hero Right Avatar Card */}
 						<motion.div
 							variants={fadeUp}
 							className="md:col-span-5 flex justify-center relative"
 						>
-							<div className="absolute inset-0 bg-gradient-to-tr from-rose-500/15 to-amber-500/10 rounded-[2rem] blur-2xl opacity-60" />
-							<div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-[1.75rem] overflow-hidden border border-white/[0.07] bg-[#10101A] group shadow-2xl">
-								<div className="absolute inset-0 bg-gradient-to-tr from-rose-500/0 to-rose-500/0 group-hover:from-rose-500/5 group-hover:to-transparent transition-all duration-700 z-10 pointer-events-none" />
+							<div className="absolute inset-0 bg-gradient-to-tr from-rose-500/20 via-purple-500/10 to-amber-500/15 rounded-[2.5rem] blur-2xl opacity-60" />
+							<div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-[2rem] overflow-hidden border border-white/[0.08] bg-[#10101A] group shadow-2xl">
+								<div className="absolute inset-0 bg-gradient-to-tr from-rose-500/0 to-rose-500/0 group-hover:from-rose-500/10 group-hover:to-transparent transition-all duration-700 z-10 pointer-events-none" />
 								<img
 									src="/images/P3.jpeg"
 									alt="Sanskriti Gupta"
-									className="w-full h-full object-cover grayscale-[30%] opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+									className="w-full h-full object-cover grayscale-[20%] opacity-95 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
 									onError={(e) => {
 										e.target.style.display = "none";
 										e.target.nextSibling.style.display = "flex";
@@ -906,20 +1107,25 @@ const PortfolioMain = () => {
 								/>
 								<div className="hidden absolute inset-0 bg-[#10101A] flex-col items-center justify-center p-6 text-center">
 									<Briefcase
-										size={24}
+										size={26}
 										className="text-rose-400 mb-2 animate-pulse"
 									/>
-									<span className="text-sm font-bold text-slate-300 block">
+									<span className="text-base font-bold text-slate-200 block">
 										Sanskriti Gupta
 									</span>
 									<span className="text-xs text-slate-500 uppercase mt-1 tracking-wider">
-										Software Developer
+										Full-Stack & Cloud Engineer
 									</span>
 								</div>
-								<div className="absolute bottom-4 left-4 right-4 py-2.5 px-3.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/[0.06] flex items-center gap-2.5">
-									<div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-									<span className="text-xs text-slate-300 font-medium">
-										Let's build together :)
+								<div className="absolute bottom-4 left-4 right-4 py-2.5 px-3.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/[0.08] flex items-center justify-between">
+									<div className="flex items-center gap-2">
+										<div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+										<span className="text-xs text-slate-200 font-medium">
+											GeekyAnts Alum
+										</span>
+									</div>
+									<span className="text-[10px] font-mono text-slate-400">
+										Bhopal / Remote
 									</span>
 								</div>
 							</div>
@@ -928,39 +1134,39 @@ const PortfolioMain = () => {
 				</div>
 
 				<motion.div
-					className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10 cursor-pointer"
+					className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-10 cursor-pointer"
 					initial={{ opacity: 0, y: 8 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 1.5, duration: 0.5 }}
+					transition={{ delay: 1.2, duration: 0.5 }}
 					onClick={() =>
 						document
 							.getElementById("about")
 							?.scrollIntoView({ behavior: "smooth" })
 					}
 				>
-					<span className="text-[9px] uppercase tracking-[0.35em] text-slate-600">
+					<span className="text-[9px] uppercase tracking-[0.35em] text-slate-500">
 						Scroll
 					</span>
 					<motion.div
 						animate={{ y: [0, 5, 0] }}
 						transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
 					>
-						<ChevronDown size={14} className="text-slate-600" />
+						<ChevronDown size={14} className="text-slate-500" />
 					</motion.div>
 				</motion.div>
 			</section>
 
-			{/* About */}
+			{/* About Section */}
 			<section
 				id="about"
-				className="py-28 relative"
+				className="py-24 relative"
 				style={{ backgroundColor: "#08080C" }}
 			>
 				<div
 					className="absolute top-0 left-0 right-0 h-px pointer-events-none"
 					style={{
 						background:
-							"linear-gradient(90deg, transparent, rgba(255,255,255,0.04) 30%, rgba(255,255,255,0.04) 70%, transparent)",
+							"linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent)",
 					}}
 				/>
 				<div className="container mx-auto px-6 max-w-6xl">
@@ -970,111 +1176,180 @@ const PortfolioMain = () => {
 						viewport={{ once: true }}
 						className="mb-12"
 					>
-						<span className="text-rose-400 font-semibold uppercase tracking-[0.2em] text-[10px]">
-							01 / My Background
+						<span className="text-rose-400 font-semibold uppercase tracking-[0.2em] text-[10px] flex items-center gap-1.5">
+							<Sparkles size={12} /> 01 / Background & Focus
 						</span>
+						<h3
+							className="text-3xl sm:text-4xl font-normal mt-2 text-white tracking-tight"
+							style={{ fontFamily: "'P22Mackinac', sans-serif" }}
+						>
+							Engineering Mindset & Craft
+						</h3>
 					</motion.div>
+
 					<div className="grid md:grid-cols-12 gap-6">
 						<motion.div
 							initial={{ opacity: 0, x: -20 }}
 							whileInView={{ opacity: 1, x: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.5 }}
-							className="md:col-span-7 p-10 rounded-2xl border border-white/[0.04] bg-white/[0.01] backdrop-blur-sm flex flex-col justify-between space-y-8 hover:border-white/[0.07] transition-colors duration-300"
+							className="md:col-span-7 p-8 sm:p-10 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm flex flex-col justify-between space-y-6 hover:border-white/[0.1] transition-colors duration-300"
 						>
 							<div className="space-y-4">
-								<h3
-									className="text-3xl font-normal text-white tracking-tight"
+								<h4
+									className="text-2xl font-bold text-white tracking-tight"
 									style={{ fontFamily: "'P22Mackinac', sans-serif" }}
 								>
-									What I Do
-								</h3>
-								<p className="text-slate-400 text-base leading-relaxed">
-									I specialize in developing responsive web interfaces, robust
-									backend APIs, and fluid cross-platform mobile apps. I enjoy
-									breaking down complex problems into clean, practical, and
-									highly functional digital products.
+									Building Scalable, Resilient Systems
+								</h4>
+								<p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+									I specialize in engineering full-stack web platforms, high-throughput cloud
+									pipelines, and real-time event-driven architectures. Whether it's architecting
+									polyglot persistence layers with PostgreSQL and MongoDB or offloading heavy I/O
+									through AWS S3 presigned URLs, I love building software that scales reliably.
 								</p>
-								<p className="text-slate-500 text-sm leading-relaxed">
-									Currently pursuing B.Tech in Computer Science at VIT Bhopal,
-									I'm constantly learning and experimenting with new
-									technologies to build meaningful things.
+								<p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+									Currently pursuing my B.Tech in Computer Science & Engineering at{" "}
+									<span className="text-slate-200 font-medium">VIT Bhopal (CGPA: 8.54/10)</span>.
+									During my Software Engineer Internship at{" "}
+									<span className="text-emerald-400 font-medium">GeekyAnts</span>, I built real-time
+									B2B marketplace communication and automated GST invoicing pipelines.
 								</p>
 							</div>
-							<div className="flex flex-wrap gap-2 pt-2 border-t border-white/[0.04]">
+
+							<div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.04]">
 								{[
-									"Open Source",
-									"Product Thinking",
+									"Distributed Systems",
+									"Polyglot DB",
+									"AWS S3 & EC2",
+									"Real-Time WebSockets",
+									"DORA Flow Metrics",
 									"Clean Code",
-									"User-first",
 								].map((tag) => (
 									<span
 										key={tag}
-										className="text-[10px] bg-white/[0.02] px-3 py-1 rounded-full text-slate-400 border border-white/[0.04] uppercase tracking-wider font-medium hover:border-white/[0.08] hover:text-slate-300 transition-all cursor-default"
+										className="text-[10px] bg-white/[0.02] px-3 py-1 rounded-full text-slate-300 border border-white/[0.05] uppercase tracking-wider font-medium hover:border-white/[0.1] hover:text-white transition-all cursor-default"
 									>
 										{tag}
 									</span>
 								))}
-								<div className="ml-auto text-[10px] text-slate-500 uppercase tracking-wider font-medium self-center">
-									VIT Bhopal · Kanpur, India
+								<div className="ml-auto text-[10px] text-slate-500 uppercase tracking-wider font-mono self-center">
+									VIT Bhopal · 2023–2027
 								</div>
 							</div>
 						</motion.div>
+
 						<motion.div
 							initial={{ opacity: 0, x: 20 }}
 							whileInView={{ opacity: 1, x: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.5, delay: 0.1 }}
-							className="md:col-span-5 p-10 rounded-2xl border border-white/[0.04] bg-white/[0.01] backdrop-blur-sm hover:border-white/[0.07] transition-colors duration-300"
+							className="md:col-span-5 p-8 sm:p-10 rounded-2xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-sm hover:border-white/[0.1] transition-colors duration-300 flex flex-col justify-between"
 						>
-							<h4 className="text-[10px] font-semibold tracking-[0.2em] uppercase text-slate-400 mb-6">
-								Technical Stack
-							</h4>
-							<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-								{skills.map((skill, i) => (
-									<motion.div
-										key={skill.name}
-										initial={{ opacity: 0, scale: 0.95 }}
-										whileInView={{ opacity: 1, scale: 1 }}
-										viewport={{ once: true }}
-										transition={{ delay: i * 0.05 }}
-										whileHover={{ x: 4 }}
-										className="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.01] border border-white/[0.04] text-sm font-medium hover:border-white/[0.08] hover:bg-white/[0.02] transition-all group cursor-default"
-									>
+							<div>
+								<h4 className="text-[10px] font-semibold tracking-[0.2em] uppercase text-slate-400 mb-6 flex items-center gap-1.5">
+									<Zap size={12} className="text-amber-400" /> Core Engineering Strengths
+								</h4>
+								<div className="space-y-4">
+									{[
+										{
+											title: "High-Throughput Cloud Pipelines",
+											desc: "Direct AWS S3 presigned URLs, streaming optimizations, containerized with Docker & Terraform.",
+											color: "text-amber-400",
+										},
+										{
+											title: "Polyglot Persistence & Graph Engines",
+											desc: "PostgreSQL relational task graphs + MongoDB event sourcing + recursive DFS graph cycle detection.",
+											color: "text-rose-400",
+										},
+										{
+											title: "Real-Time Event Clustering",
+											desc: "Socket.IO & Redis Pub/Sub distributed clustering for real-time multiplayer updates and chat.",
+											color: "text-cyan-400",
+										},
+										{
+											title: "Algorithmic Precision",
+											desc: "Top 3% worldwide in TCS CodeVita across 350,000+ competitors.",
+											color: "text-emerald-400",
+										},
+									].map((item) => (
 										<div
-											className={`p-1.5 rounded-lg bg-white/[0.03] ${skill.color}`}
+											key={item.title}
+											className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]"
 										>
-											<skill.icon size={12} />
+											<span className={`text-xs font-bold ${item.color} block`}>
+												{item.title}
+											</span>
+											<span className="text-[11px] text-slate-400 leading-relaxed block mt-0.5">
+												{item.desc}
+											</span>
 										</div>
-										<span className="text-slate-300 font-normal text-sm">
-											{skill.name}
-										</span>
-									</motion.div>
-								))}
+									))}
+								</div>
 							</div>
 						</motion.div>
 					</div>
 				</div>
 			</section>
 
+			{/* Experience Section */}
+			<ExperienceSection />
+
+			{/* Featured Projects Section */}
 			<ProjectsSection />
 
+			{/* Certifications & Achievements */}
+			<AchievementsSection />
+
+			{/* Technical Stack Matrix */}
+			<SkillsSection />
+
+			{/* Contact Section */}
 			<Contact />
 
+			{/* Footer */}
 			<footer
-				className="py-12 text-center border-t border-white/[0.02]"
+				className="py-14 text-center border-t border-white/[0.04]"
 				style={{ backgroundColor: "#08080C" }}
 			>
-				<div className="flex flex-col items-center gap-3">
-					<span
-						className="text-slate-600 text-lg"
-						style={{ fontFamily: "'P22Mackinac', sans-serif" }}
-					>
-						Sanskriti<span className="text-rose-500/50">·</span>
-					</span>
-					<p className="text-slate-700 text-[10px] tracking-widest uppercase">
-						&copy; {new Date().getFullYear()} Sanskriti Gupta · Built with ❤️.
+				<div className="container mx-auto px-6 max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-4">
+					<div className="flex items-center gap-2">
+						<span
+							className="text-slate-400 text-lg font-semibold"
+							style={{ fontFamily: "'P22Mackinac', sans-serif" }}
+						>
+							Sanskriti Gupta
+						</span>
+						<span className="text-rose-500">·</span>
+						<span className="text-slate-600 text-xs font-mono">
+							Full-Stack & Cloud Engineer
+						</span>
+					</div>
+
+					<p className="text-slate-600 text-[11px] tracking-wider uppercase font-medium">
+						&copy; {new Date().getFullYear()} Sanskriti Gupta · Crafted with React 19 & Tailwind CSS
 					</p>
+
+					<div className="flex items-center gap-3">
+						<a
+							href="https://github.com/sanskriti49"
+							target="_blank"
+							rel="noreferrer"
+							className="text-slate-500 hover:text-white transition-colors"
+							aria-label="GitHub"
+						>
+							<FaGithub size={16} />
+						</a>
+						<a
+							href="https://linkedin.com/in/sanskriti49"
+							target="_blank"
+							rel="noreferrer"
+							className="text-slate-500 hover:text-white transition-colors"
+							aria-label="LinkedIn"
+						>
+							<FaLinkedin size={16} />
+						</a>
+					</div>
 				</div>
 			</footer>
 		</div>

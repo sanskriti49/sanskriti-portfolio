@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Terminal, X, Maximize2, Minimize2, Sparkles, CornerDownLeft, Play } from "lucide-react";
+import { Terminal, X, Sparkles, CornerDownLeft } from "lucide-react";
 
 const commandOutputs = {
 	whoami: `Name: Sanskriti Gupta
@@ -71,9 +71,22 @@ const DevTerminal = ({ isOpen, onClose }) => {
 	]);
 	const bottomRef = useRef(null);
 
+	// Close on ESC keypress
 	useEffect(() => {
-		bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-	}, [history]);
+		const handleKeyDown = (e) => {
+			if (e.key === "Escape" && isOpen) {
+				onClose();
+			}
+		};
+		window.addEventListener("keydown", handleKeyDown);
+		return () => window.removeEventListener("keydown", handleKeyDown);
+	}, [isOpen, onClose]);
+
+	useEffect(() => {
+		if (isOpen) {
+			bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+		}
+	}, [history, isOpen]);
 
 	const executeCommand = (cmdStr) => {
 		const clean = cmdStr.trim().toLowerCase();
@@ -113,28 +126,42 @@ const DevTerminal = ({ isOpen, onClose }) => {
 	return (
 		<AnimatePresence>
 			{isOpen && (
-				<div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md">
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 0.2 }}
+					onClick={onClose}
+					className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md cursor-pointer"
+				>
 					<motion.div
-						initial={{ opacity: 0, scale: 0.95, y: 20 }}
+						initial={{ opacity: 0, scale: 0.95, y: 16 }}
 						animate={{ opacity: 1, scale: 1, y: 0 }}
-						exit={{ opacity: 0, scale: 0.95, y: 20 }}
-						transition={{ duration: 0.25 }}
-						className="w-full max-w-3xl rounded-2xl border border-white/[0.08] bg-[#0A0A10] shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
+						exit={{ opacity: 0, scale: 0.95, y: 16 }}
+						transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+						onClick={(e) => e.stopPropagation()}
+						className="w-full max-w-3xl rounded-2xl border border-white/[0.1] bg-[#0A0A10] shadow-2xl overflow-hidden flex flex-col max-h-[85vh] cursor-default relative"
 					>
 						{/* Terminal Title Bar */}
-						<div className="flex items-center justify-between px-4 py-3 bg-[#101018] border-b border-white/[0.06]">
+						<div className="flex items-center justify-between px-4 py-3 bg-[#101018] border-b border-white/[0.06] shrink-0 select-none">
 							<div className="flex items-center gap-2">
-								<div className="w-3 h-3 rounded-full bg-rose-500/80 cursor-pointer" onClick={onClose} />
-								<div className="w-3 h-3 rounded-full bg-amber-500/80" />
-								<div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+								<button
+									onClick={onClose}
+									className="w-3.5 h-3.5 rounded-full bg-rose-500/90 hover:bg-rose-500 transition-colors flex items-center justify-center cursor-pointer"
+									title="Close Shell (Esc)"
+									aria-label="Close Shell"
+								/>
+								<div className="w-3.5 h-3.5 rounded-full bg-amber-500/80" />
+								<div className="w-3.5 h-3.5 rounded-full bg-emerald-500/80" />
 								<span className="text-xs font-mono text-slate-400 ml-3 flex items-center gap-1.5">
 									<Terminal size={13} className="text-emerald-400" />
-									sanskriti@devbox:~ (Interactive Terminal)
+									sanskriti@devbox:~ (Press ESC to close)
 								</span>
 							</div>
+
 							<button
 								onClick={onClose}
-								className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/[0.06] transition-colors"
+								className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-white/[0.08] transition-colors cursor-pointer flex items-center justify-center"
 								aria-label="Close Terminal"
 							>
 								<X size={16} />
@@ -142,7 +169,7 @@ const DevTerminal = ({ isOpen, onClose }) => {
 						</div>
 
 						{/* Quick Command Suggestions */}
-						<div className="p-3 border-b border-white/[0.04] bg-[#0C0C14] flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+						<div className="p-3 border-b border-white/[0.04] bg-[#0C0C14] flex items-center gap-1.5 overflow-x-auto scrollbar-none shrink-0">
 							<span className="text-[10px] uppercase font-mono text-slate-500 mr-1 flex items-center gap-1">
 								<Sparkles size={11} className="text-rose-400" /> Run:
 							</span>
@@ -157,7 +184,7 @@ const DevTerminal = ({ isOpen, onClose }) => {
 							))}
 							<button
 								onClick={() => executeCommand("clear")}
-								className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.05] text-rose-300/80 hover:text-rose-200 hover:bg-rose-500/10 transition-all whitespace-nowrap ml-auto"
+								className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.05] text-rose-300/80 hover:text-rose-200 hover:bg-rose-500/10 transition-all whitespace-nowrap ml-auto cursor-pointer"
 							>
 								clear
 							</button>
@@ -166,7 +193,7 @@ const DevTerminal = ({ isOpen, onClose }) => {
 						{/* Terminal Output Area */}
 						<div className="p-4 sm:p-6 overflow-y-auto font-mono text-xs sm:text-sm space-y-4 flex-grow text-slate-300 leading-relaxed">
 							<div className="text-slate-500 pb-2 border-b border-white/[0.04]">
-								Welcome to Sanskriti's Developer Shell. Type a command or click any shortcut above.
+								Welcome to Sanskriti's Developer Shell. Type a command or click any shortcut above. Press ESC to close.
 							</div>
 
 							{history.map((item, idx) => (
@@ -187,7 +214,7 @@ const DevTerminal = ({ isOpen, onClose }) => {
 						{/* Command Input Form */}
 						<form
 							onSubmit={handleSubmit}
-							className="p-3 bg-[#0D0D15] border-t border-white/[0.06] flex items-center gap-2"
+							className="p-3 bg-[#0D0D15] border-t border-white/[0.06] flex items-center gap-2 shrink-0"
 						>
 							<span className="text-emerald-400 font-mono text-sm pl-2">➜</span>
 							<span className="text-cyan-400 font-mono text-sm">~</span>
@@ -201,13 +228,13 @@ const DevTerminal = ({ isOpen, onClose }) => {
 							/>
 							<button
 								type="submit"
-								className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 hover:bg-emerald-500/20 text-xs font-mono flex items-center gap-1 transition-colors"
+								className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 hover:bg-emerald-500/20 text-xs font-mono flex items-center gap-1 transition-colors cursor-pointer"
 							>
 								Run <CornerDownLeft size={11} />
 							</button>
 						</form>
 					</motion.div>
-				</div>
+				</motion.div>
 			)}
 		</AnimatePresence>
 	);

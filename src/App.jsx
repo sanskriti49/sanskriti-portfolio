@@ -929,29 +929,12 @@ const PortfolioMain = () => {
 				style={{ backgroundColor: "#08080C" }}
 			>
 				<div
-					className="absolute inset-0 z-0 pointer-events-none opacity-20"
-					style={{ overflow: "hidden" }}
-				>
-					<PixelBlast
-						variant="square"
-						pixelSize={4}
-						color="#B497CF"
-						patternScale={2}
-						patternDensity={1}
-						pixelSizeJitter={0}
-						enableRipples
-						rippleSpeed={0.4}
-						rippleThickness={0.12}
-						rippleIntensityScale={1.5}
-						liquid={false}
-						liquidStrength={0.12}
-						liquidRadius={1.2}
-						liquidWobbleSpeed={5}
-						speed={0.5}
-						edgeFade={0.25}
-						transparent
-					/>
-				</div>
+					className="absolute inset-0 z-0 pointer-events-none opacity-25"
+					style={{
+						backgroundImage:
+							"radial-gradient(circle at 50% 30%, rgba(244,63,94,0.12) 0%, transparent 60%), radial-gradient(circle at 80% 70%, rgba(16,185,129,0.08) 0%, transparent 50%)",
+					}}
+				/>
 
 				<div
 					className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-[1]"
@@ -1030,8 +1013,7 @@ const PortfolioMain = () => {
 										cursorStyle="|"
 									/>
 								</span>
-								. Previously SWE Intern at{" "}
-								<span className="text-emerald-300 font-medium">GeekyAnts</span>.
+								.
 							</motion.p>
 
 							{/* Call to actions */}
@@ -1121,7 +1103,7 @@ const PortfolioMain = () => {
 									<div className="flex items-center gap-2">
 										<div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
 										<span className="text-xs text-slate-200 font-medium">
-											GeekyAnts Alum
+											Full-Stack & Cloud
 										</span>
 									</div>
 									<span className="text-[10px] font-mono text-slate-400">

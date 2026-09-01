@@ -74,7 +74,7 @@ const projects = [
 			"Docker",
 			"Terraform",
 		],
-		link: "https://github.com/sanskriti49/agile_task_manager",
+		link: "https://agile-task-manager-alpha.vercel.app",
 		github: "https://github.com/sanskriti49/agile_task_manager",
 		img: "/images/flux.png",
 		accent: "from-rose-500/30 to-purple-500/20",

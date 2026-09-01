@@ -743,7 +743,6 @@ const PortfolioMain = () => {
 	);
 
 	const navLinks = [
-		{ name: "Home", href: "#home", sectionId: "home", type: "anchor" },
 		{ name: "About", href: "#about", sectionId: "about", type: "anchor" },
 		{
 			name: "Experience",
@@ -757,15 +756,8 @@ const PortfolioMain = () => {
 			sectionId: "projects",
 			type: "anchor",
 		},
-		{
-			name: "Honors",
-			href: "#achievements",
-			sectionId: "achievements",
-			type: "anchor",
-		},
 		{ name: "Skills", href: "#skills", sectionId: "skills", type: "anchor" },
 		{ name: "Resume", href: "/resume", type: "route" },
-		{ name: "Contact", href: "#contact", sectionId: "contact", type: "anchor" },
 	];
 
 	const stagger = {

@@ -356,7 +356,8 @@ const ProjectsSection = () => {
 														{project.shortTitle || project.title}
 													</h4>
 													{project.status && (
-														<span className="text-[8px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 uppercase tracking-widest">
+														<span className="text-[10px] font-medium px-2.5 py-0.5 rounded-full bg-emerald-500/[0.08] text-emerald-300 border border-emerald-500/20 flex items-center gap-1.5 backdrop-blur-sm">
+															<span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
 															{project.status}
 														</span>
 													)}
@@ -370,10 +371,10 @@ const ProjectsSection = () => {
 													{project.tags.slice(0, 5).map((tag) => (
 														<span
 															key={tag}
-															className={`text-[9px] sm:text-[10px] px-2 py-0.5 rounded-md border font-medium tracking-wide transition-all duration-300 ${
+															className={`text-[10px] px-2.5 py-1 rounded-lg border font-mono tracking-wide transition-all duration-300 ${
 																isActive
-																	? `${project.tagColor} border-white/[0.08] bg-white/[0.04]`
-																	: "text-slate-500 border-white/[0.03] bg-transparent"
+																	? "text-slate-200 border-white/[0.1] bg-white/[0.05]"
+																	: "text-slate-400 border-white/[0.04] bg-white/[0.015]"
 															}`}
 														>
 															{tag}
@@ -1000,12 +1001,19 @@ const PortfolioMain = () => {
 						<div className="md:col-span-7 space-y-6">
 							<motion.div
 								variants={fadeUp}
-								className="flex items-center gap-2 flex-wrap"
+								className="flex items-center gap-2.5 flex-wrap"
 							>
-								<span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
-									<span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-									Open to Work
-								</span>
+								<div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/[0.06] text-emerald-300 text-xs font-medium backdrop-blur-md shadow-sm">
+									<span className="relative flex h-2 w-2">
+										<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+										<span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+									</span>
+									<span>Open to Work</span>
+								</div>
+								<div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/[0.06] text-amber-300 text-xs font-medium backdrop-blur-md shadow-sm">
+									<ShieldCheck size={13} className="text-amber-400" />
+									<span>AWS Certified Practitioner</span>
+								</div>
 							</motion.div>
 
 							<motion.h1

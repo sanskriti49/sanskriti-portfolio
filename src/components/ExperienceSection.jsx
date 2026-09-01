@@ -140,7 +140,7 @@ const ExperienceSection = () => {
 													{exp.role}
 												</h4>
 												<span
-													className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full border uppercase tracking-wider ${exp.badgeColor}`}
+													className="text-[11px] font-medium px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.03] text-slate-200 tracking-wide"
 												>
 													{exp.company}
 												</span>
@@ -154,7 +154,7 @@ const ExperienceSection = () => {
 													<MapPin size={12} className="text-slate-500" />
 													{exp.location}
 												</span>
-												<span className="text-[10px] uppercase tracking-widest text-slate-500">
+												<span className="text-[10px] uppercase tracking-widest text-slate-500 font-medium">
 													{exp.type}
 												</span>
 											</p>
@@ -209,7 +209,7 @@ const ExperienceSection = () => {
 										{exp.technologies.map((tech) => (
 											<span
 												key={tech}
-												className="text-[11px] px-2.5 py-1 rounded-md border border-white/[0.04] bg-white/[0.02] text-slate-400 font-medium hover:text-slate-200 hover:border-white/[0.08] transition-colors"
+												className="text-xs px-3 py-1 rounded-lg border border-white/[0.06] bg-white/[0.02] text-slate-300 font-mono transition-colors hover:bg-white/[0.05] hover:text-white"
 											>
 												{tech}
 											</span>

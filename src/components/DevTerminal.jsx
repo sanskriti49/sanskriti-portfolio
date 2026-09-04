@@ -17,16 +17,16 @@ Status: Open for Full-Stack & Backend Engineering Roles`,
   "cloud_devops": ["AWS (EC2, S3)", "Docker", "Terraform", "Git", "GitHub Actions"]
 }`,
 
-	"projects --featured": `1. Flux: Enterprise Agile Workspace & Cloud Engine
-   - Stack: React 19, Node.js, PostgreSQL, MongoDB, AWS S3, Redis, Docker
-   - High-throughput AWS S3 Presigned URLs pipeline
-   - Polyglot persistence + Recursive DFS graph cycle detection
-   - DORA flow metrics & predictive sprint rollover analyzer
+	"projects --featured": `1. Flux: Agile Workspace (Jul 2026)
+   - Stack: Node.js, PostgreSQL, MongoDB, AWS S3, Redis, Docker
+   - AWS S3 Presigned URLs + Polyglot persistence + DFS graph cycle detection
+   - Predictive sprint rollover risk analyzer & DORA flow metrics
    - Repo: https://github.com/sanskriti49/agile_task_manager
 
-2. TaskGenie: Service Marketplace
-   - Stack: Node.js, Express.js, PostgreSQL, Razorpay
-   - Spatial indexing (80% query latency cut)
+2. TaskGenie: Service Marketplace (Nov 2025)
+   - Stack: Node.js, Express.js, PostgreSQL, Razorpay, OAuth 2.0
+   - Service discovery & PostgreSQL spatial indexing (80% query latency cut)
+   - Razorpay Webhooks & automated failure-refund reconciliation
    - Live: https://taskgenieee.vercel.app/
    - Repo: https://github.com/sanskriti49/service-provider`,
 

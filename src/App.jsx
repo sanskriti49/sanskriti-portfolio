@@ -50,17 +50,10 @@ const projects = [
 			"Built a Redis caching layer with query hashing, reducing database read latency by over 75% during high-concurrency searches.",
 			"Developed an autonomous web scraping pipeline using Playwright and Cheerio with SHA-256 payload diffing to track scheme updates across government portals in real time.",
 		],
-		tags: [
-			"Node.js",
-			"MongoDB",
-			"Redis",
-			"BullMQ",
-			"Playwright",
-			"Cheerio",
-		],
+		tags: ["Node.js", "MongoDB", "Redis", "BullMQ", "Playwright", "Cheerio"],
 		link: "https://udaan-scholarships.vercel.app/",
 		github: "https://github.com/sanskriti49/udaan-scholarship-finder",
-		img: "/images/udaan.png",
+		img: "/images/udaan1.png",
 		accent: "from-sky-500/30 to-blue-600/20",
 		highlightColor: "rgba(14,165,233,0.12)",
 		lineColor: "#0ea5e9",
@@ -80,13 +73,7 @@ const projects = [
 			"Secure payment pipeline with Razorpay Webhooks, signature verification, and automated failure-refund reconciliation",
 			"Role-based dashboards for providers and consumers using OAuth 2.0 and stateless session tokens",
 		],
-		tags: [
-			"Node.js",
-			"Express.js",
-			"PostgreSQL",
-			"Razorpay",
-			"OAuth 2.0",
-		],
+		tags: ["Node.js", "Express.js", "PostgreSQL", "Razorpay", "OAuth 2.0"],
 		link: "https://taskgenieee.vercel.app/",
 		github: "https://github.com/sanskriti49/service-provider",
 		img: "/images/service-app.png",
@@ -109,14 +96,7 @@ const projects = [
 			"Predictive sprint rollover risk analyzer and DORA flow metrics suite to dynamically forecast backlog completion slippage",
 			"Distributed Socket.IO & Redis Pub/Sub WebSocket clustering with Git webhook automation and Docker/Terraform containerization",
 		],
-		tags: [
-			"Node.js",
-			"PostgreSQL",
-			"MongoDB",
-			"AWS S3",
-			"Redis",
-			"Docker",
-		],
+		tags: ["Node.js", "PostgreSQL", "MongoDB", "AWS S3", "Redis", "Docker"],
 		link: "https://agile-task-manager-alpha.vercel.app",
 		github: "https://github.com/sanskriti49/agile_task_manager",
 		img: "/images/flux.png",
@@ -953,8 +933,6 @@ const PortfolioMain = () => {
 					>
 						{/* Hero Left Content */}
 						<div className="md:col-span-7 space-y-6">
-
-
 							<motion.h1
 								variants={fadeUp}
 								className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.06] tracking-tight"
@@ -1140,10 +1118,17 @@ const PortfolioMain = () => {
 								Hey there, I’m Sanskriti!
 							</h4>
 							<p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-								I’m a Computer Science engineer at VIT Bhopal who loves architecting distributed backends, building robust full-stack applications, and crafting intuitive software systems that solve real problems.
+								I’m a Computer Science engineer at VIT Bhopal who loves
+								architecting distributed backends, building robust full-stack
+								applications, and crafting intuitive software systems that solve
+								real problems.
 							</p>
 							<p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-								Whether I’m building asynchronous job pipelines with BullMQ &amp; Redis, optimizing geospatial queries in PostgreSQL, or containerizing platforms with Docker, I’m obsessed with clean architecture, high availability, and delightful user experiences.
+								Whether I’m building asynchronous job pipelines with BullMQ
+								&amp; Redis, optimizing geospatial queries in PostgreSQL, or
+								containerizing platforms with Docker, I’m obsessed with clean
+								architecture, high availability, and delightful user
+								experiences.
 							</p>
 						</div>
 

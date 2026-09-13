@@ -8,7 +8,6 @@ import {
 	Cloud,
 	BookOpen,
 	Sparkles,
-	Check,
 } from "lucide-react";
 
 const skillCategories = [
@@ -29,7 +28,7 @@ const skillCategories = [
 	},
 	{
 		id: "backend",
-		label: "Backend & Realtime",
+		label: "Backend & Queues",
 		icon: Server,
 	},
 	{
@@ -66,6 +65,13 @@ const allSkills = [
 		border: "border-yellow-500/20",
 	},
 	{
+		name: "TypeScript",
+		category: "languages",
+		level: "Working Knowledge",
+		color: "text-blue-400",
+		border: "border-blue-500/20",
+	},
+	{
 		name: "SQL",
 		category: "languages",
 		level: "Advanced",
@@ -96,6 +102,13 @@ const allSkills = [
 		border: "border-slate-500/20",
 	},
 	{
+		name: "Tailwind CSS",
+		category: "frontend",
+		level: "Expert",
+		color: "text-sky-400",
+		border: "border-sky-500/20",
+	},
+	{
 		name: "Redux Toolkit",
 		category: "frontend",
 		level: "Proficient",
@@ -110,13 +123,6 @@ const allSkills = [
 		border: "border-amber-500/20",
 	},
 	{
-		name: "Tailwind CSS",
-		category: "frontend",
-		level: "Expert",
-		color: "text-sky-400",
-		border: "border-sky-500/20",
-	},
-	{
 		name: "Framer Motion",
 		category: "frontend",
 		level: "Advanced",
@@ -124,7 +130,7 @@ const allSkills = [
 		border: "border-pink-500/20",
 	},
 
-	// Backend
+	// Backend & Queues
 	{
 		name: "Node.js",
 		category: "backend",
@@ -147,6 +153,13 @@ const allSkills = [
 		border: "border-rose-500/20",
 	},
 	{
+		name: "BullMQ (Job Queues)",
+		category: "backend",
+		level: "Advanced",
+		color: "text-rose-400",
+		border: "border-rose-500/20",
+	},
+	{
 		name: "WebSockets (Socket.IO)",
 		category: "backend",
 		level: "Advanced",
@@ -154,14 +167,14 @@ const allSkills = [
 		border: "border-indigo-500/20",
 	},
 	{
-		name: "JWT Authentication",
+		name: "JWT & OAuth 2.0",
 		category: "backend",
 		level: "Advanced",
 		color: "text-teal-400",
 		border: "border-teal-500/20",
 	},
 
-	// Databases
+	// Databases & Cache
 	{
 		name: "PostgreSQL",
 		category: "databases",
@@ -177,14 +190,14 @@ const allSkills = [
 		border: "border-green-500/20",
 	},
 	{
-		name: "Redis & Pub/Sub",
+		name: "Redis & Caching",
 		category: "databases",
 		level: "Advanced",
 		color: "text-rose-400",
 		border: "border-rose-500/20",
 	},
 
-	// Cloud & Tools
+	// Cloud & DevOps
 	{
 		name: "AWS (EC2, S3)",
 		category: "cloud",
@@ -207,6 +220,13 @@ const allSkills = [
 		border: "border-purple-500/20",
 	},
 	{
+		name: "Playwright & Cheerio",
+		category: "cloud",
+		level: "Advanced",
+		color: "text-emerald-400",
+		border: "border-emerald-500/20",
+	},
+	{
 		name: "Git & GitHub",
 		category: "cloud",
 		level: "Advanced",
@@ -217,8 +237,8 @@ const allSkills = [
 		name: "GitHub Actions (CI/CD)",
 		category: "cloud",
 		level: "Proficient",
-		color: "text-emerald-400",
-		border: "border-emerald-500/20",
+		color: "text-teal-400",
+		border: "border-teal-500/20",
 	},
 	{
 		name: "Postman",

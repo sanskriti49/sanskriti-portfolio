@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
 import {
-	Award,
 	Trophy,
 	GraduationCap,
-	ExternalLink,
 	ShieldCheck,
 	Sparkles,
-	Code2,
 } from "lucide-react";
 
 const achievements = [

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Copy, Check, Send, Sparkles, Phone, Mail, MapPin } from "lucide-react";
+import { Copy, Check, Send, Sparkles, Phone, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import GridMotion from "./GridMotion";
 
@@ -239,7 +239,7 @@ const Contact = () => {
 												whileHover={{ scale: 1.02 }}
 												whileTap={{ scale: 0.98 }}
 												onClick={() => selectTopicSetting(topic)}
-												className={`scoutie px-3.5 py-1.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-pointer ${
+												className={`px-3.5 py-1.5 rounded-xl text-xs font-medium tracking-wide transition-all cursor-pointer ${
 													selectedTopic === topic
 														? "bg-white text-black font-bold shadow-lg"
 														: "bg-white/[0.03] border border-white/[0.05] text-slate-400 hover:text-white hover:bg-white/[0.07]"

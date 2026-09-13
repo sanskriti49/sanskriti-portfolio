@@ -10,25 +10,35 @@ Location: Bhopal / Kanpur, India
 Status: Open for Full-Stack & Backend Engineering Roles`,
 
 	"cat skills.json": `{
-  "languages": ["Java", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3"],
-  "frontend": ["React 19", "Next.js", "Redux Toolkit", "Zustand", "Tailwind CSS"],
-  "backend": ["Node.js", "Express.js", "REST APIs", "WebSockets (Socket.IO)", "JWT"],
-  "databases": ["PostgreSQL", "MongoDB", "Redis Pub/Sub"],
-  "cloud_devops": ["AWS (EC2, S3)", "Docker", "Terraform", "Git", "GitHub Actions"]
+  "languages": ["Java", "JavaScript (ES6+)", "TypeScript", "SQL", "HTML5", "CSS3"],
+  "frontend": ["React 19", "Next.js", "Tailwind CSS", "Redux Toolkit", "Zustand", "Framer Motion"],
+  "backend": ["Node.js", "Express.js", "BullMQ (Job Queues)", "REST APIs", "WebSockets (Socket.IO)", "JWT & OAuth 2.0"],
+  "databases": ["PostgreSQL", "MongoDB", "Redis (Cache & Pub/Sub)"],
+  "cloud_devops": ["AWS (EC2, S3)", "Docker", "Terraform", "Playwright & Cheerio", "Git & GitHub", "GitHub Actions"]
 }`,
 
-	"projects --featured": `1. Flux: Agile Workspace (Jul 2026)
-   - Stack: Node.js, PostgreSQL, MongoDB, AWS S3, Redis, Docker
-   - AWS S3 Presigned URLs + Polyglot persistence + DFS graph cycle detection
-   - Predictive sprint rollover risk analyzer & DORA flow metrics
-   - Repo: https://github.com/sanskriti49/agile_task_manager
+	"projects --featured": `1. Udaan: Scholarship Intelligence Platform (Jun 2026)
+   - Stack: Node.js, MongoDB, Redis, BullMQ, Playwright, Cheerio
+   - Rule-based eligibility matching engine with verified portal citations
+   - Asynchronous BullMQ + Redis job queue with deduplication & retry policies
+   - Redis caching with query hashing (cut database read latency by >75%)
+   - Autonomous Playwright + Cheerio scraping with SHA-256 payload diffing
+   - Live: https://udaan-scholarships.vercel.app/
+   - Repo: https://github.com/sanskriti49/udaan-scholarship-finder
 
 2. TaskGenie: Service Marketplace (Nov 2025)
    - Stack: Node.js, Express.js, PostgreSQL, Razorpay, OAuth 2.0
    - Service discovery & PostgreSQL spatial indexing (80% query latency cut)
    - Razorpay Webhooks & automated failure-refund reconciliation
    - Live: https://taskgenieee.vercel.app/
-   - Repo: https://github.com/sanskriti49/service-provider`,
+   - Repo: https://github.com/sanskriti49/service-provider
+
+3. Flux: Agile Workspace & Cloud Engine (Jul 2026)
+   - Stack: React 19, Node.js, PostgreSQL, MongoDB, AWS S3, Redis, Docker
+   - AWS S3 Presigned URLs + Polyglot persistence + DFS graph cycle detection
+   - Predictive sprint rollover risk analyzer & DORA flow metrics
+   - Live: https://agile-task-manager-alpha.vercel.app
+   - Repo: https://github.com/sanskriti49/agile_task_manager`,
 
 	experience: `[1] GeekyAnts — Software Engineer Intern (Jun 2026 - Aug 2026)
     - Engineered B2B wholesale marketplace with Socket.IO & PostgreSQL REST APIs

@@ -27,12 +27,12 @@ const createTouchTexture = () => {
 	};
 	const drawPoint = (p) => {
 		const pos = { x: p.x * size, y: (1 - p.y) * size };
-		let intensity = 1;
 		const easeOutSine = (t) => Math.sin((t * Math.PI) / 2);
 		const easeOutQuad = (t) => -t * (t - 2);
-		if (p.age < maxAge * 0.3) intensity = easeOutSine(p.age / (maxAge * 0.3));
-		else
-			intensity = easeOutQuad(1 - (p.age - maxAge * 0.3) / (maxAge * 0.7)) || 0;
+		let intensity =
+			p.age < maxAge * 0.3
+				? easeOutSine(p.age / (maxAge * 0.3))
+				: easeOutQuad(1 - (p.age - maxAge * 0.3) / (maxAge * 0.7)) || 0;
 		intensity *= p.force;
 		const color = `${((p.vx + 1) / 2) * 255}, ${((p.vy + 1) / 2) * 255}, ${intensity * 255}`;
 		const offset = size * 5;
@@ -509,10 +509,11 @@ const PixelBlast = ({
 			renderer.domElement.addEventListener("pointermove", onPointerMove, {
 				passive: true,
 			});
-			let raf = 0;
 			const animate = () => {
 				if (autoPauseOffscreen && !visibilityRef.current.visible) {
-					raf = requestAnimationFrame(animate);
+					if (threeRef.current) {
+						threeRef.current.raf = requestAnimationFrame(animate);
+					}
 					return;
 				}
 				uniforms.uTime.value =
@@ -531,9 +532,11 @@ const PixelBlast = ({
 					});
 					composer.render();
 				} else renderer.render(scene, camera);
-				raf = requestAnimationFrame(animate);
+				if (threeRef.current) {
+					threeRef.current.raf = requestAnimationFrame(animate);
+				}
 			};
-			raf = requestAnimationFrame(animate);
+			const initialRaf = requestAnimationFrame(animate);
 			threeRef.current = {
 				renderer,
 				scene,
@@ -543,7 +546,7 @@ const PixelBlast = ({
 				clickIx: 0,
 				uniforms,
 				resizeObserver: ro,
-				raf,
+				raf: initialRaf,
 				quad,
 				timeOffset,
 				composer,

@@ -140,9 +140,10 @@ export default function PixelCard({
 	const canvasRef = useRef(null);
 	const pixelsRef = useRef([]);
 	const animationRef = useRef(null);
-	const timePreviousRef = useRef(performance.now());
+	const timePreviousRef = useRef(0);
 	const reducedMotion = useRef(
-		window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+		typeof window !== "undefined" &&
+			window.matchMedia("(prefers-reduced-motion: reduce)").matches,
 	).current;
 
 	const variantCfg = VARIANTS[variant] || VARIANTS.default;
@@ -193,30 +194,35 @@ export default function PixelCard({
 	};
 
 	const doAnimate = (fnName) => {
-		animationRef.current = requestAnimationFrame(() => doAnimate(fnName));
-		const timeNow = performance.now();
-		const timePassed = timeNow - timePreviousRef.current;
-		const timeInterval = 1000 / 60;
+		animationRef.current = requestAnimationFrame((timestamp) => {
+			const timeNow = timestamp || Date.now();
+			const timePassed = timeNow - timePreviousRef.current;
+			const timeInterval = 1000 / 60;
 
-		if (timePassed < timeInterval) return;
-		timePreviousRef.current = timeNow - (timePassed % timeInterval);
-
-		const ctx = canvasRef.current?.getContext("2d");
-		if (!ctx || !canvasRef.current) return;
-
-		ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-
-		let allIdle = true;
-		for (let i = 0; i < pixelsRef.current.length; i++) {
-			const pixel = pixelsRef.current[i];
-			pixel[fnName]();
-			if (!pixel.isIdle) {
-				allIdle = false;
+			if (timePassed < timeInterval) {
+				doAnimate(fnName);
+				return;
 			}
-		}
-		if (allIdle) {
-			cancelAnimationFrame(animationRef.current);
-		}
+			timePreviousRef.current = timeNow - (timePassed % timeInterval);
+
+			const ctx = canvasRef.current?.getContext("2d");
+			if (!ctx || !canvasRef.current) return;
+
+			ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+
+			let allIdle = true;
+			for (let i = 0; i < pixelsRef.current.length; i++) {
+				const pixel = pixelsRef.current[i];
+				pixel[fnName]();
+				if (!pixel.isIdle) {
+					allIdle = false;
+				}
+			}
+
+			if (!allIdle) {
+				doAnimate(fnName);
+			}
+		});
 	};
 
 	const handleAnimation = (name) => {

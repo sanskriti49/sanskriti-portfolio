@@ -189,7 +189,7 @@ const ExperienceSection = () => {
 													{exp.bullets.map((bullet, bIdx) => (
 														<li
 															key={bIdx}
-															className="scoutie flex items-start gap-2.5 text-xs sm:text-sm text-slate-400 leading-relaxed"
+															className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed"
 														>
 															<CheckCircle2
 																size={14}

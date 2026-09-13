@@ -13,13 +13,6 @@ import { useGSAP } from "@gsap/react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import {
 	ExternalLink,
-	Rocket,
-	Server,
-	Smartphone,
-	Code,
-	Brain,
-	Database,
-	ChevronRight,
 	Menu,
 	X,
 	ArrowUpRight,
@@ -28,17 +21,11 @@ import {
 	ChevronDown,
 	ArrowUp,
 	Terminal,
-	ShieldCheck,
-	Trophy,
 	Sparkles,
-	Layers,
-	Cpu,
-	Zap,
 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import Contact from "./Contact";
-import PixelBlast from "./PixelBlast";
 import ResumeView from "./ResumeView";
 import ExperienceSection from "./components/ExperienceSection";
 import AchievementsSection from "./components/AchievementsSection";
@@ -50,34 +37,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
 	{
-		title: "Flux: Agile Workspace",
-		shortTitle: "Flux: Agile Workspace",
-		type: "Agile Workspace & Cloud Engine",
-		category: "cloud",
+		title: "Udaan: Scholarship Intelligence Platform",
+		shortTitle: "Udaan Intelligence Platform",
+		type: "Scholarship Intelligence Platform",
+		category: "fullstack",
 		featured: true,
-		status: "Jul. 2026",
-		desc: "An agile workspace and cloud engine built with Node.js, PostgreSQL, MongoDB, AWS S3, Redis, and Docker to streamline high-throughput workflows and eliminate dependency deadlocks.",
+		status: "Jun. 2026",
+		desc: "An intelligent scholarship discovery and matching platform built with Node.js, MongoDB, Redis, and BullMQ to provide instant rule-matched eligibility and automated deadline tracking.",
 		highlights: [
-			"High-throughput asset upload pipeline using AWS S3 Presigned URLs, eliminating Node.js event-loop I/O bottlenecks",
-			"Polyglot persistence layer (PostgreSQL for task graphs, MongoDB for event sourcing) with recursive DFS graph cycle detection",
-			"Predictive sprint rollover risk analyzer and DORA flow metrics suite to dynamically forecast backlog completion slippage",
-			"Distributed Socket.IO & Redis Pub/Sub WebSocket clustering with Git webhook automation and Docker/Terraform containerization",
+			"Implemented a rule-based engine to match student profiles with scholarship eligibility criteria and provide instant eligibility results with supporting sources.",
+			"Architected an asynchronous job queue using BullMQ and Redis with deduplication and exponential retries to dispatch reliable deadline reminders without blocking API traffic.",
+			"Built a Redis caching layer with query hashing, reducing database read latency by over 75% during high-concurrency searches.",
+			"Developed an autonomous web scraping pipeline using Playwright and Cheerio with SHA-256 payload diffing to track scheme updates across government portals in real time.",
 		],
 		tags: [
 			"Node.js",
-			"PostgreSQL",
 			"MongoDB",
-			"AWS S3",
 			"Redis",
-			"Docker",
+			"BullMQ",
+			"Playwright",
+			"Cheerio",
 		],
-		link: "https://agile-task-manager-alpha.vercel.app",
-		github: "https://github.com/sanskriti49/agile_task_manager",
-		img: "/images/flux.png",
-		accent: "from-rose-500/30 to-purple-500/20",
-		highlightColor: "rgba(244,63,94,0.12)",
-		lineColor: "#f43f5e",
-		tagColor: "text-rose-300/80",
+		link: "https://udaan-scholarships.vercel.app/",
+		github: "https://github.com/sanskriti49/udaan-scholarship-finder",
+		img: "/images/udaan.png",
+		accent: "from-sky-500/30 to-blue-600/20",
+		highlightColor: "rgba(14,165,233,0.12)",
+		lineColor: "#0ea5e9",
+		tagColor: "text-sky-300/80",
 	},
 	{
 		title: "TaskGenie: Service Marketplace",
@@ -109,30 +96,34 @@ const projects = [
 		tagColor: "text-emerald-300/80",
 	},
 	{
-		title: "CineBuzz: Movie & Media Discovery",
-		shortTitle: "CineBuzz Platform",
-		type: "Web Application",
-		category: "frontend",
-		featured: false,
-		desc: "Dynamic movie discovery and watchlist platform built with React and Tailwind CSS featuring multi-criteria filtering and TMDB API integration.",
+		title: "Flux: Agile Workspace",
+		shortTitle: "Flux: Agile Workspace",
+		type: "Agile Workspace & Cloud Engine",
+		category: "cloud",
+		featured: true,
+		status: "Jul. 2026",
+		desc: "An agile workspace and cloud engine built with Node.js, PostgreSQL, MongoDB, AWS S3, Redis, and Docker to streamline high-throughput workflows and eliminate dependency deadlocks.",
 		highlights: [
-			"Multi-criteria movie discovery and dynamic genre filtering engine",
-			"Real-time watchlist sync with localStorage persistence",
-			"Responsive interface built with React.js, Tailwind CSS, and TMDB API",
+			"High-throughput asset upload pipeline using AWS S3 Presigned URLs, eliminating Node.js event-loop I/O bottlenecks",
+			"Polyglot persistence layer (PostgreSQL for task graphs, MongoDB for event sourcing) with recursive DFS graph cycle detection",
+			"Predictive sprint rollover risk analyzer and DORA flow metrics suite to dynamically forecast backlog completion slippage",
+			"Distributed Socket.IO & Redis Pub/Sub WebSocket clustering with Git webhook automation and Docker/Terraform containerization",
 		],
 		tags: [
-			"React.js",
-			"TMDB API",
-			"Tailwind CSS",
-			"REST API",
+			"Node.js",
+			"PostgreSQL",
+			"MongoDB",
+			"AWS S3",
+			"Redis",
+			"Docker",
 		],
-		link: "http://cinebuzzzz.netlify.app/",
-		github: "https://github.com/sanskriti49",
-		img: "/images/cinebuzz.png",
-		accent: "from-amber-500/30 to-orange-500/20",
-		highlightColor: "rgba(245,158,11,0.12)",
-		lineColor: "#f59e0b",
-		tagColor: "text-amber-300/80",
+		link: "https://agile-task-manager-alpha.vercel.app",
+		github: "https://github.com/sanskriti49/agile_task_manager",
+		img: "/images/flux.png",
+		accent: "from-rose-500/30 to-purple-500/20",
+		highlightColor: "rgba(244,63,94,0.12)",
+		lineColor: "#f43f5e",
+		tagColor: "text-rose-300/80",
 	},
 	{
 		title: "Companion: AI Senior Care Assistant",
@@ -157,37 +148,6 @@ const projects = [
 		tagColor: "text-purple-300/80",
 	},
 ];
-
-const StatBadge = ({
-	value,
-	label,
-	subtext,
-	icon: Icon,
-	color = "text-white",
-}) => (
-	<motion.div
-		whileHover={{ y: -2, scale: 1.02 }}
-		className="flex flex-col px-5 py-3 rounded-2xl border border-white/[0.06] bg-white/[0.015] hover:border-white/[0.12] hover:bg-white/[0.03] transition-all duration-300 backdrop-blur-sm shadow-md"
-	>
-		<div className="flex items-center gap-2">
-			{Icon && <Icon size={14} className={color} />}
-			<span
-				className={`text-xl sm:text-2xl font-bold ${color}`}
-				style={{ fontFamily: "'P22Mackinac', sans-serif" }}
-			>
-				{value}
-			</span>
-		</div>
-		<span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mt-0.5">
-			{label}
-		</span>
-		{subtext && (
-			<span className="text-[9px] text-slate-500 tracking-normal mt-0.5">
-				{subtext}
-			</span>
-		)}
-	</motion.div>
-);
 
 const ScrollProgress = () => {
 	const { scrollYProgress } = useScroll();
@@ -271,8 +231,8 @@ const ProjectsSection = () => {
 					<div className="flex items-center gap-2 flex-wrap">
 						{[
 							{ id: "all", label: "All Work" },
+							{ id: "fullstack", label: "Full Stack & Platforms" },
 							{ id: "cloud", label: "Cloud & Distributed" },
-							{ id: "fullstack", label: "Full Stack" },
 							{ id: "ai", label: "AI & Mobile" },
 						].map((tab) => (
 							<button
@@ -1034,10 +994,11 @@ const PortfolioMain = () => {
 									<Typewriter
 										words={[
 											"Distributed Systems",
-											"React",
-											"Node.js & Express APIs",
+											"Full-Stack Web Applications",
+											"Node.js & Express REST APIs",
+											"BullMQ & Redis Queues",
 											"AWS Cloud Architecture",
-											"PostgreSQL & Redis Pub/Sub",
+											"PostgreSQL & Data Modeling",
 										]}
 										loop={0}
 										cursor
@@ -1108,17 +1069,6 @@ const PortfolioMain = () => {
 										Software Developer
 									</span>
 								</div>
-								{/* <div className="absolute bottom-4 left-4 right-4 py-2.5 px-3.5 rounded-xl bg-black/70 backdrop-blur-md border border-white/[0.08] flex items-center justify-between">
-									<div className="flex items-center gap-2">
-										<div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-										<span className="text-xs text-slate-200 font-medium">
-											Full-Stack & Cloud
-										</span>
-									</div>
-									<span className="text-[10px] font-mono text-slate-400">
-										Bhopal / Remote
-									</span>
-								</div> */}
 							</div>
 						</motion.div>
 					</motion.div>
@@ -1189,16 +1139,11 @@ const PortfolioMain = () => {
 							>
 								Hey there, I’m Sanskriti!
 							</h4>
-							<p className="scoutie text-slate-300 sm:text-lg leading-relaxed">
-								I’m a Computer Science student who enjoys turning ideas into
-								things people can actually use. I love building full-stack apps,
-								solving tricky problems, and exploring AI & cloud technologies
-								along the way.
+							<p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+								I’m a Computer Science engineer at VIT Bhopal who loves architecting distributed backends, building robust full-stack applications, and crafting intuitive software systems that solve real problems.
 							</p>
-							<p className="text-slate-400 text-base sm:text-lg leading-relaxed">
-								Most of the time, you’ll find me coding, debugging something
-								that “should’ve worked,” or building a new project just because
-								I had an idea.
+							<p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+								Whether I’m building asynchronous job pipelines with BullMQ &amp; Redis, optimizing geospatial queries in PostgreSQL, or containerizing platforms with Docker, I’m obsessed with clean architecture, high availability, and delightful user experiences.
 							</p>
 						</div>
 

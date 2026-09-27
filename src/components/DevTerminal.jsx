@@ -1,69 +1,66 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Terminal, X, Sparkles, CornerDownLeft } from "lucide-react";
 
 const commandOutputs = {
 	whoami: `Name: Sanskriti Gupta
-Role: Full-Stack Engineer & Cloud Enthusiast
-Education: B.Tech CSE @ VIT Bhopal (2023 - 2027) | CGPA: 8.54 / 10
+Role: Full-Stack Engineer & Problem Solver
+College: VIT Bhopal (CSE, 2023 - 2027) | CGPA: 8.54 / 10
+LeetCode: 390+ problems solved
 Location: Bhopal / Kanpur, India
-Status: Open for Full-Stack & Backend Engineering Roles`,
+Status: Open for software engineering and full-stack roles!`,
 
-	"cat skills.json": `{
-  "languages": ["Java", "JavaScript (ES6+)", "TypeScript", "SQL", "HTML5", "CSS3"],
-  "frontend": ["React 19", "Next.js", "Tailwind CSS", "Redux Toolkit", "Zustand", "Framer Motion"],
-  "backend": ["Node.js", "Express.js", "BullMQ (Job Queues)", "REST APIs", "WebSockets (Socket.IO)", "JWT & OAuth 2.0"],
-  "databases": ["PostgreSQL", "MongoDB", "Redis (Cache & Pub/Sub)"],
-  "cloud_devops": ["AWS (EC2, S3)", "Docker", "Terraform", "Playwright & Cheerio", "Git & GitHub", "GitHub Actions"]
-}`,
+	leetcode: `LeetCode Profile:
+* 390+ problems solved across arrays, strings, trees, graphs, dynamic programming, and binary search
+* Strong foundation in time & space complexity analysis and competitive algorithmic patterns
+* Link: https://leetcode.com/u/sanskriti49`,
 
-	"projects --featured": `1. Udaan: Scholarship Intelligence Platform (Jun 2026)
-   - Stack: Node.js, MongoDB, Redis, BullMQ, Playwright, Cheerio
-   - Rule-based eligibility matching engine with verified portal citations
-   - Asynchronous BullMQ + Redis job queue with deduplication & retry policies
-   - Redis caching with query hashing (cut database read latency by >75%)
-   - Autonomous Playwright + Cheerio scraping with SHA-256 payload diffing
-   - Live: https://udaan-scholarships.vercel.app/
-   - Repo: https://github.com/sanskriti49/udaan-scholarship-finder
+	skills: `Things I like reaching for:
+- Build: Node.js, Express, React 19, Next.js, TypeScript, Tailwind
+- Data: PostgreSQL, PostGIS, MongoDB, Redis
+- Realtime: Socket.IO, WebSockets, Redis Pub/Sub
+- Background: BullMQ, Playwright, Task queues
+- Cloud: AWS (S3, EC2), Docker, GitHub Actions
+- Core CS: Data Structures & Algorithms (390+ LeetCode solved, CodeVita Top 3%), OS, DBMS`,
 
-2. TaskGenie: Service Marketplace (Nov 2025)
-   - Stack: Node.js, Express.js, PostgreSQL, Razorpay, OAuth 2.0
-   - Service discovery & PostgreSQL spatial indexing (80% query latency cut)
-   - Razorpay Webhooks & automated failure-refund reconciliation
-   - Live: https://taskgenieee.vercel.app/
-   - Repo: https://github.com/sanskriti49/service-provider
+	projects: `1. Udaan: Scholarship finder that scans state portals so students don't miss deadlines
+   Stack: Node.js, MongoDB, Redis, BullMQ, Playwright
+   Live: https://udaan-scholarships.vercel.app/
 
-3. Flux: Agile Workspace & Cloud Engine (Jul 2026)
-   - Stack: React 19, Node.js, PostgreSQL, MongoDB, AWS S3, Redis, Docker
-   - AWS S3 Presigned URLs + Polyglot persistence + DFS graph cycle detection
-   - Predictive sprint rollover risk analyzer & DORA flow metrics
-   - Live: https://agile-task-manager-alpha.vercel.app
-   - Repo: https://github.com/sanskriti49/agile_task_manager`,
+2. TaskGenie: On-demand marketplace matching homeowners with verified local pros
+   Stack: Node.js, Express, PostgreSQL, PostGIS, Razorpay
+   Live: https://taskgenieee.vercel.app/
 
-	experience: `[1] GeekyAnts — Software Engineer Intern (Jun 2026 - Aug 2026)
-    - Engineered B2B wholesale marketplace with Socket.IO & PostgreSQL REST APIs
-    - Automated GST invoicing & live driver tracking workflows
+3. Flux: Agile workspace that prevents circular task dependencies
+   Stack: Node.js, PostgreSQL, MongoDB, AWS S3, Redis, Docker
+   Live: https://agile-task-manager-alpha.vercel.app`,
 
-[2] Google Developers Group (GDG) — Core Technical Member (Nov 2024 - Jul 2025)
-    - Mentored 50+ undergraduate engineers across 3+ web architecture bootcamps
-    - Engineered REST APIs for women's health platform & Agentic AI workflows`,
+	experience: `* GeekyAnts: Software Engineer Intern (Jun 2026 - Aug 2026)
+  Built real-time chat between buyers and suppliers, wrote REST APIs in Node & Postgres,
+  and automated GST invoicing.
 
-	certifications: `* AWS Certified Cloud Practitioner — Amazon Web Services
-* TCS CodeVita — Top 3% Globally (Rank 10,298 / 350,000+ Worldwide)
-* VIT Bhopal CSE Merit — CGPA: 8.54 / 10`,
+* Google Developers Group (GDG): Core Technical Member (Nov 2024 - Jul 2025)
+  Mentored 50+ students in web bootcamps, built APIs for women's health platform.`,
+
+	proud: `A few things I'm proud of:
+* LeetCode: 390+ problems solved across DP, graphs, trees, and core algorithms
+* TCS CodeVita World Season: Placed in the Global Top 3% (#10,298 out of 350,000+ worldwide)
+* AWS Certified Cloud Practitioner: Score 827 / 1000
+* Academic Merit: 8.54 / 10 CGPA at VIT Bhopal CSE`,
 
 	contact: `Email: sanskriti0409@gmail.com
 Phone: +91 6306642481
 LinkedIn: https://linkedin.com/in/sanskriti49
-GitHub: https://github.com/sanskriti49`,
+GitHub: https://github.com/sanskriti49
+LeetCode: https://leetcode.com/u/sanskriti49`,
 };
 
 const quickCommands = [
 	"whoami",
-	"projects --featured",
-	"cat skills.json",
+	"leetcode",
+	"projects",
+	"skills",
 	"experience",
-	"certifications",
+	"proud",
 	"contact",
 ];
 
@@ -74,14 +71,10 @@ const DevTerminal = ({ isOpen, onClose }) => {
 			cmd: "whoami",
 			out: commandOutputs["whoami"],
 		},
-		{
-			cmd: "certifications",
-			out: commandOutputs["certifications"],
-		},
 	]);
 	const bottomRef = useRef(null);
 
-	// Close on ESC keypress
+	// ESC keypress to close
 	useEffect(() => {
 		const handleKeyDown = (e) => {
 			if (e.key === "Escape" && isOpen) {
@@ -113,7 +106,9 @@ const DevTerminal = ({ isOpen, onClose }) => {
 				...prev,
 				{
 					cmd: clean,
-					out: `Available commands:\n- ${quickCommands.join("\n- ")}\n- clear\n- help`,
+					out: `Available commands:\n- ${quickCommands.join(
+						"\n- ",
+					)}\n- clear\n- help`,
 				},
 			]);
 			setInputVal("");
@@ -122,7 +117,7 @@ const DevTerminal = ({ isOpen, onClose }) => {
 
 		const output =
 			commandOutputs[clean] ||
-			`Command not found: "${cmdStr}". Type "help" or click one of the quick command buttons above.`;
+			`Command not found: "${cmdStr}". Type "help" or click one of the quick shortcuts above!`;
 
 		setHistory((prev) => [...prev, { cmd: cmdStr, out: output }]);
 		setInputVal("");
@@ -142,78 +137,82 @@ const DevTerminal = ({ isOpen, onClose }) => {
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.2 }}
 					onClick={onClose}
-					className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md cursor-pointer"
+					className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md cursor-pointer"
 				>
 					<motion.div
 						initial={{ opacity: 0, scale: 0.95, y: 16 }}
 						animate={{ opacity: 1, scale: 1, y: 0 }}
 						exit={{ opacity: 0, scale: 0.95, y: 16 }}
-						transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+						transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
 						onClick={(e) => e.stopPropagation()}
-						className="w-full max-w-3xl rounded-2xl border border-white/[0.1] bg-[#0A0A10] shadow-2xl overflow-hidden flex flex-col max-h-[85vh] cursor-default relative"
+						className="w-full max-w-3xl rounded-2xl border border-white/[0.12] bg-[#08080d] shadow-2xl shadow-black/90 overflow-hidden flex flex-col max-h-[85vh] cursor-default relative"
 					>
-						{/* Terminal Title Bar */}
-						<div className="flex items-center justify-between px-4 py-3 bg-[#101018] border-b border-white/[0.06] shrink-0 select-none">
+						{/* Title bar */}
+						<div className="flex items-center justify-between px-4 py-3 bg-[#0e0e15] border-b border-white/[0.08] shrink-0 select-none">
 							<div className="flex items-center gap-2">
 								<button
 									onClick={onClose}
-									className="w-3.5 h-3.5 rounded-full bg-rose-500/90 hover:bg-rose-500 transition-colors flex items-center justify-center cursor-pointer"
+									className="w-3.5 h-3.5 rounded-full bg-[#e06b75] hover:opacity-80 transition-opacity cursor-pointer"
 									title="Close Shell (Esc)"
 									aria-label="Close Shell"
 								/>
-								<div className="w-3.5 h-3.5 rounded-full bg-amber-500/80" />
-								<div className="w-3.5 h-3.5 rounded-full bg-emerald-500/80" />
-								<span className="text-xs font-mono text-slate-400 ml-3 flex items-center gap-1.5">
-									<Terminal size={13} className="text-emerald-400" />
-									sanskriti@devbox:~ (Press ESC to close)
+								<div className="w-3.5 h-3.5 rounded-full bg-[#f59e0b]" />
+								<div className="w-3.5 h-3.5 rounded-full bg-[#10b981]" />
+								<span className="text-sm sm:text-base font-editorial text-slate-300 ml-3 flex items-center gap-2">
+									<span className="font-mono-code font-bold text-[#38bdf8] text-xs">&gt;_</span>
+									sanskriti@dev:~ [little easter egg]
 								</span>
 							</div>
 
-							<button
-								onClick={onClose}
-								className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-white/[0.08] transition-colors cursor-pointer flex items-center justify-center"
-								aria-label="Close Terminal"
-							>
-								<X size={16} />
-							</button>
+							<div className="flex items-center gap-2 text-xs font-editorial text-slate-400">
+								<span>ESC to close</span>
+								<button
+									onClick={onClose}
+									className="text-slate-400 hover:text-white px-2 py-0.5 rounded hover:bg-white/[0.08] transition-colors cursor-pointer text-sm font-semibold"
+									aria-label="Close"
+								>
+									✕
+								</button>
+							</div>
 						</div>
 
-						{/* Quick Command Suggestions */}
-						<div className="p-3 border-b border-white/[0.04] bg-[#0C0C14] flex items-center gap-1.5 overflow-x-auto scrollbar-none shrink-0">
-							<span className="text-[10px] uppercase font-mono text-slate-500 mr-1 flex items-center gap-1">
-								<Sparkles size={11} className="text-rose-400" /> Run:
+						{/* Quick command buttons */}
+						<div className="p-3 border-b border-white/[0.06] bg-[#0a0a10] flex items-center gap-2 overflow-x-auto scrollbar-none shrink-0">
+							<span className="text-xs font-editorial text-slate-400 uppercase tracking-wider mr-1">
+								RUN:
 							</span>
 							{quickCommands.map((qc) => (
 								<button
 									key={qc}
 									onClick={() => executeCommand(qc)}
-									className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.05] text-slate-300 hover:text-emerald-300 hover:border-emerald-500/30 hover:bg-emerald-500/10 transition-all whitespace-nowrap cursor-pointer"
+									className="text-xs font-mono-code px-3 py-1.5 rounded bg-white/[0.03] border border-white/[0.07] text-slate-300 hover:text-[#38bdf8] hover:border-[#38bdf8]/40 hover:bg-[#38bdf8]/10 transition-all whitespace-nowrap cursor-pointer"
 								>
 									{qc}
 								</button>
 							))}
 							<button
 								onClick={() => executeCommand("clear")}
-								className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.05] text-rose-300/80 hover:text-rose-200 hover:bg-rose-500/10 transition-all whitespace-nowrap ml-auto cursor-pointer"
+								className="text-xs font-editorial px-2.5 py-1.5 rounded text-[#e06b75] hover:bg-[#e06b75]/10 border border-transparent hover:border-[#e06b75]/30 transition-all ml-auto cursor-pointer"
 							>
 								clear
 							</button>
 						</div>
 
-						{/* Terminal Output Area */}
-						<div className="p-4 sm:p-6 overflow-y-auto font-mono text-xs sm:text-sm space-y-4 flex-grow text-slate-300 leading-relaxed">
-							<div className="text-slate-500 pb-2 border-b border-white/[0.04]">
-								Welcome to Sanskriti's Developer Shell. Type a command or click any shortcut above. Press ESC to close.
+						{/* Output Area */}
+						<div className="p-5 overflow-y-auto font-mono-code text-xs sm:text-sm text-slate-300 space-y-4 flex-grow leading-relaxed">
+							<div className="text-slate-400 pb-2 border-b border-white/[0.04] text-xs">
+								Okay, you found the terminal! Click any button above or type a
+								command.
 							</div>
 
 							{history.map((item, idx) => (
 								<div key={idx} className="space-y-1.5">
-									<div className="flex items-center gap-2 text-emerald-400">
-										<span className="text-rose-400">➜</span>
-										<span className="text-cyan-400">~</span>
-										<span className="text-slate-200 font-semibold">{item.cmd}</span>
+									<div className="flex items-center gap-2 text-xs sm:text-sm">
+										<span className="text-[#e06b75]">➜</span>
+										<span className="text-[#38bdf8]">~</span>
+										<span className="text-white font-semibold">{item.cmd}</span>
 									</div>
-									<pre className="text-slate-300 whitespace-pre-wrap pl-5 border-l border-white/[0.05] font-mono text-[11px] sm:text-xs">
+									<pre className="text-slate-300 whitespace-pre-wrap pl-4 border-l border-white/[0.08] font-mono-code text-xs sm:text-sm">
 										{item.out}
 									</pre>
 								</div>
@@ -221,26 +220,26 @@ const DevTerminal = ({ isOpen, onClose }) => {
 							<div ref={bottomRef} />
 						</div>
 
-						{/* Command Input Form */}
+						{/* Input field */}
 						<form
 							onSubmit={handleSubmit}
-							className="p-3 bg-[#0D0D15] border-t border-white/[0.06] flex items-center gap-2 shrink-0"
+							className="p-3 bg-[#0a0a10] border-t border-white/[0.08] flex items-center gap-2 shrink-0"
 						>
-							<span className="text-emerald-400 font-mono text-sm pl-2">➜</span>
-							<span className="text-cyan-400 font-mono text-sm">~</span>
+							<span className="text-[#e06b75] font-mono-code text-base pl-2">➜</span>
+							<span className="text-[#38bdf8] font-mono-code text-base">~</span>
 							<input
 								type="text"
 								value={inputVal}
 								onChange={(e) => setInputVal(e.target.value)}
-								placeholder="type 'whoami', 'projects --featured', 'experience'..."
-								className="flex-grow bg-transparent text-white font-mono text-xs sm:text-sm focus:outline-none placeholder-slate-600"
+								placeholder="type 'whoami', 'leetcode', 'projects', 'skills'..."
+								className="flex-grow bg-transparent text-white font-mono-code text-xs sm:text-sm focus:outline-none placeholder-slate-600"
 								autoFocus
 							/>
 							<button
 								type="submit"
-								className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 hover:bg-emerald-500/20 text-xs font-mono flex items-center gap-1 transition-colors cursor-pointer"
+								className="px-3.5 py-1.5 rounded-lg bg-white/[0.05] border border-white/[0.1] text-slate-200 hover:text-white hover:bg-white/[0.1] text-sm font-editorial flex items-center gap-1.5 transition-colors cursor-pointer"
 							>
-								Run <CornerDownLeft size={11} />
+								Run ↵
 							</button>
 						</form>
 					</motion.div>

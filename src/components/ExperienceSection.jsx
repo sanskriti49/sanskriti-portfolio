@@ -14,7 +14,7 @@ const experiences = [
 	{
 		role: "Software Engineer Intern",
 		company: "GeekyAnts",
-		period: "Jun. 2026 – Aug. 2026",
+		period: "Jun. 2026 - Aug. 2026",
 		location: "Remote",
 		type: "Internship",
 		badgeColor: "text-emerald-400 border-emerald-500/20 bg-emerald-500/10",
@@ -24,7 +24,7 @@ const experiences = [
 		// 	"Engineered scalable core services for a high-volume B2B wholesale marketplace, delivering real-time buyer-supplier communication and automated GST invoicing.",
 		bullets: [
 			"Engineered a B2B wholesale marketplace with product discovery, bulk pricing tiers, inventory tracking, order lifecycles, UPI payments, and GST invoicing.",
-			"Built real-time buyer–supplier messaging using Socket.IO and architected secure role-based REST APIs with Node.js, Express.js, JWT, and PostgreSQL.",
+			"Built real-time buyer-to-supplier messaging using Socket.IO and architected secure role-based REST APIs with Node.js, Express.js, JWT, and PostgreSQL.",
 			"Implemented end-to-end order management, real-time inventory synchronization, dynamic PDF invoice generation, and live driver tracking for delivery logistics.",
 		],
 		technologies: [
@@ -41,7 +41,7 @@ const experiences = [
 	{
 		role: "Core Technical Member",
 		company: "Google Developers Group (GDG)",
-		period: "Nov. 2024 – Jul. 2025",
+		period: "Nov. 2024 - Jul. 2025",
 		location: "Bhopal, India",
 		type: "Technical Leadership",
 		badgeColor: "text-rose-400 border-rose-500/20 bg-rose-500/10",

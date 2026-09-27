@@ -58,18 +58,11 @@ const allSkills = [
 		border: "border-amber-500/20",
 	},
 	{
-		name: "JavaScript (ES6+)",
+		name: "JavaScript",
 		category: "languages",
 		level: "Proficient",
 		color: "text-yellow-400",
 		border: "border-yellow-500/20",
-	},
-	{
-		name: "TypeScript",
-		category: "languages",
-		level: "Working Knowledge",
-		color: "text-blue-400",
-		border: "border-blue-500/20",
 	},
 	{
 		name: "SQL",
@@ -88,7 +81,7 @@ const allSkills = [
 
 	// Frontend
 	{
-		name: "React.js (v19)",
+		name: "React.js",
 		category: "frontend",
 		level: "Advanced",
 		color: "text-cyan-400",
@@ -121,13 +114,6 @@ const allSkills = [
 		level: "Proficient",
 		color: "text-amber-300",
 		border: "border-amber-500/20",
-	},
-	{
-		name: "Framer Motion",
-		category: "frontend",
-		level: "Advanced",
-		color: "text-pink-400",
-		border: "border-pink-500/20",
 	},
 
 	// Backend & Queues
@@ -199,7 +185,7 @@ const allSkills = [
 
 	// Cloud & DevOps
 	{
-		name: "AWS (EC2, S3)",
+		name: "AWS",
 		category: "cloud",
 		level: "AWS Certified",
 		color: "text-amber-400",
@@ -363,7 +349,7 @@ const SkillsSection = () => {
 									</span>
 								</div>
 								<span
-									className={`text-[10px] uppercase tracking-wider font-mono font-medium ${skill.color}`}
+									className={`text-[10px] uppercase tracking-wider font-editorial font-medium ${skill.color}`}
 								>
 									{skill.level}
 								</span>

@@ -22,7 +22,7 @@ const achievements = [
 		metrics: "Cloud Architecture & Security",
 	},
 	{
-		title: "TCS CodeVita — Global Top 3%",
+		title: "TCS CodeVita: Global Top 3%",
 		//issuer: "Tata Consultancy Services",
 		//category: "Competitive Programming",
 		date: "2025",
@@ -39,7 +39,7 @@ const achievements = [
 		title: "VIT Bhopal University CSE",
 		//issuer: "B.Tech Computer Science & Engineering",
 		//category: "Academic Excellence",
-		date: "2023 – 2027",
+		date: "2023 - 2027",
 		description:
 			"Maintaining an 8.54 / 10 CGPA with rigorous coursework in Data Structures & Algorithms, Object-Oriented Programming, DBMS, and Operating Systems.",
 		icon: GraduationCap,
@@ -126,7 +126,7 @@ const AchievementsSection = () => {
 
 								{/* Bottom Tag */}
 								<div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-									<span className="text-[11px] font-mono text-slate-300">
+									<span className="text-[11px] font-editorial text-slate-300">
 										{item.metrics}
 									</span>
 									<span className="text-[10px] uppercase tracking-wider text-slate-400 font-medium">

@@ -1,86 +1,155 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+/* ==========================================================================
+   Typography Imports (Google Fonts: Cormorant Garamond, Inter, JetBrains Mono)
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&display=swap");
+
+/* ==========================================================================
+   Tailwind CSS & Plugins
+   ========================================================================== */
 @import "tailwindcss";
-
 @import "tw-animate-css";
-
 @import "shadcn/tailwind.css";
-
 @import "@fontsource-variable/geist";
 
 @custom-variant dark (&:is(.dark *));
 
+/* ==========================================================================
+   Local Custom Typeface: P22 Mackinac Pro
+   ========================================================================== */
 @font-face {
 	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-Medium_26.otf")
-		format("opentype");
-	font-weight: 800;
+	src: url("/fonts/P22-Mackinac/P22MackinacPro-Book_25.otf") format("opentype");
+	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
-
 @font-face {
-	font-family: "P22Mackinac-B";
+	font-family: "P22Mackinac";
+	src: url("/fonts/P22-Mackinac/P22MackinacPro-BookItalic_15.otf")
+		format("opentype");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: "P22Mackinac";
 	src: url("/fonts/P22-Mackinac/P22MackinacPro-Medium_26.otf")
 		format("opentype");
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
-
-html {
-	scroll-behavior: smooth;
+@font-face {
+	font-family: "P22Mackinac";
+	src: url("/fonts/P22-Mackinac/P22MackinacPro-MedItalic_18.otf")
+		format("opentype");
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
 }
+@font-face {
+	font-family: "P22Mackinac";
+	src: url("/fonts/P22-Mackinac/P22MackinacPro-Bold_16.otf") format("opentype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "P22Mackinac";
+	src: url("/fonts/P22-Mackinac/P22MackinacPro-BoldItalic_11.otf")
+		format("opentype");
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: "P22Mackinac";
+	src: url("/fonts/P22-Mackinac/P22MackinacPro-ExtraBold_12.otf")
+		format("opentype");
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "P22Mackinac";
+	src: url("/fonts/P22-Mackinac/P22MackinacPro-ExBoldItalic_17.otf")
+		format("opentype");
+	font-weight: 800;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* ==========================================================================
+   Classy Font Utility Classes
+   - font-mackinac: Prominent warm editorial headings
+   - font-editorial: Refined Cormorant Garamond editorial serif
+   - font-mono: Mapped to Cormorant Garamond for elegant editorial styling
+   - font-mono-code: JetBrains Mono for developer CLI/code blocks
+   ========================================================================== */
+.font-mackinac {
+	font-family: "P22Mackinac", "Cormorant Garamond", Georgia, serif;
+}
+
+.font-editorial {
+	font-family: "Cormorant Garamond", "P22Mackinac", Georgia, serif;
+	font-size-adjust: 0.46;
+	letter-spacing: 0.02em;
+}
+
+.font-mono {
+	font-family: "Cormorant Garamond", "P22Mackinac", Georgia, serif;
+	font-size-adjust: 0.56;
+	letter-spacing: 0.03em;
+}
+
+.font-mono-code {
+	font-family:
+		"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		monospace;
+}
+
+/* ==========================================================================
+   Global Responsive Scrolling & Scrollbar
+   ========================================================================== */
+html {
+	scroll-behavior: auto;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
 * {
 	scrollbar-width: thin;
 	scrollbar-color: #1a1a28 transparent;
 }
+
 ::-webkit-scrollbar {
 	width: 8px;
 	height: 8px;
 	background-color: #08080c;
 }
+
 ::-webkit-scrollbar-thumb {
 	background: #1e1e2e;
 	border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
 	background: #2e2e42;
 }
 
-.mackinac {
-	font-family: "P22Mackinac", ui-serif, Georgia, serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-.inter {
-	font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-	font-display: swap;
-}
-.inter-regular {
-	font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-	font-style: normal;
-	font-display: swap;
-}
-
+/* ==========================================================================
+   Tailwind Theme Tokens
+   ========================================================================== */
 @theme inline {
 	--font-heading: var(--font-sans);
 	--font-sans: "Geist Variable", sans-serif;
-	--color-sidebar-ring: var(--sidebar-ring);
-	--color-sidebar-border: var(--sidebar-border);
-	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-	--color-sidebar-accent: var(--sidebar-accent);
-	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-	--color-sidebar-primary: var(--sidebar-primary);
-	--color-sidebar-foreground: var(--sidebar-foreground);
-	--color-sidebar: var(--sidebar);
-	--color-chart-5: var(--chart-5);
-	--color-chart-4: var(--chart-4);
-	--color-chart-3: var(--chart-3);
-	--color-chart-2: var(--chart-2);
-	--color-chart-1: var(--chart-1);
+	--font-editorial: "Cormorant Garamond", "P22Mackinac", Georgia, serif;
+	--font-mono: "Cormorant Garamond", "P22Mackinac", Georgia, serif;
+
 	--color-ring: var(--ring);
 	--color-input: var(--input);
 	--color-border: var(--border);
@@ -99,6 +168,7 @@ html {
 	--color-card: var(--card);
 	--color-foreground: var(--foreground);
 	--color-background: var(--background);
+
 	--radius-sm: calc(var(--radius) * 0.6);
 	--radius-md: calc(var(--radius) * 0.8);
 	--radius-lg: var(--radius);
@@ -109,38 +179,25 @@ html {
 }
 
 :root {
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.145 0 0);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.145 0 0);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.145 0 0);
-	--primary: oklch(0.205 0 0);
-	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.97 0 0);
-	--secondary-foreground: oklch(0.205 0 0);
-	--muted: oklch(0.97 0 0);
-	--muted-foreground: oklch(0.556 0 0);
-	--accent: oklch(0.97 0 0);
-	--accent-foreground: oklch(0.205 0 0);
-	--destructive: oklch(0.577 0.245 27.325);
-	--border: oklch(0.922 0 0);
-	--input: oklch(0.922 0 0);
-	--ring: oklch(0.708 0 0);
-	--chart-1: oklch(0.87 0 0);
-	--chart-2: oklch(0.556 0 0);
-	--chart-3: oklch(0.439 0 0);
-	--chart-4: oklch(0.371 0 0);
-	--chart-5: oklch(0.269 0 0);
+	--background: oklch(0.145 0 0);
+	--foreground: oklch(0.985 0 0);
+	--card: oklch(0.205 0 0);
+	--card-foreground: oklch(0.985 0 0);
+	--popover: oklch(0.205 0 0);
+	--popover-foreground: oklch(0.985 0 0);
+	--primary: oklch(0.922 0 0);
+	--primary-foreground: oklch(0.205 0 0);
+	--secondary: oklch(0.269 0 0);
+	--secondary-foreground: oklch(0.985 0 0);
+	--muted: oklch(0.269 0 0);
+	--muted-foreground: oklch(0.708 0 0);
+	--accent: oklch(0.269 0 0);
+	--accent-foreground: oklch(0.985 0 0);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.556 0 0);
 	--radius: 0.625rem;
-	--sidebar: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.145 0 0);
-	--sidebar-primary: oklch(0.205 0 0);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.97 0 0);
-	--sidebar-accent-foreground: oklch(0.205 0 0);
-	--sidebar-border: oklch(0.922 0 0);
-	--sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -162,21 +219,11 @@ html {
 	--border: oklch(1 0 0 / 10%);
 	--input: oklch(1 0 0 / 15%);
 	--ring: oklch(0.556 0 0);
-	--chart-1: oklch(0.87 0 0);
-	--chart-2: oklch(0.556 0 0);
-	--chart-3: oklch(0.439 0 0);
-	--chart-4: oklch(0.371 0 0);
-	--chart-5: oklch(0.269 0 0);
-	--sidebar: oklch(0.205 0 0);
-	--sidebar-foreground: oklch(0.985 0 0);
-	--sidebar-primary: oklch(0.488 0.243 264.376);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.269 0 0);
-	--sidebar-accent-foreground: oklch(0.985 0 0);
-	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ==========================================================================
+   Base Layer
+   ========================================================================== */
 @layer base {
 	* {
 		@apply border-border outline-ring/50;

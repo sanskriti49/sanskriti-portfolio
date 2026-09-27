@@ -1,13 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html
+	lang="en"
+	class="dark"
+	style="background-color: #07070a; color-scheme: dark"
+>
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="./public/images/logo.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sanskriti Gupta</title>
+		<meta name="theme-color" content="#07070a" />
+		<title>Sanskriti Gupta · Full-Stack Engineer</title>
+
+		<!-- Preload LCP Hero Image for immediate rendering -->
+		<link
+			rel="preload"
+			as="image"
+			href="/images/P3-opt.webp"
+			type="image/webp"
+			fetchpriority="high"
+		/>
+
+		<!-- Preconnect to external font origins -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	</head>
-	<body>
-		<div id="root"></div>
+	<body
+		style="
+			background-color: #07070a;
+			color: #f6f5f0;
+			margin: 0;
+			min-height: 100vh;
+		"
+	>
+		<div id="root" style="background-color: #07070a; min-height: 100vh"></div>
 		<script type="module" src="/src/main.jsx"></script>
 	</body>
 </html>

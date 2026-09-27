@@ -252,7 +252,7 @@ const Contact = () => {
 
 									{/* Textarea */}
 									<div className="relative">
-										<div className="absolute top-3 left-4 text-[9px] font-bold text-rose-400/60 uppercase tracking-[0.25em] font-mono">
+										<div className="absolute top-3 left-4 text-[9px] font-bold text-rose-400/60 uppercase tracking-[0.25em] font-editorial">
 											Message Preview
 										</div>
 										<textarea

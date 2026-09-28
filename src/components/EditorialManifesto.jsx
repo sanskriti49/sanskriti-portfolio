@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const credentials = [
 	{ tag: "01", label: "LeetCode: 390+ solved" },
-	{ tag: "02", label: "CodeVita: top 3% worldwide" },
+	{ tag: "02", label: "CodeVita: top 2% worldwide" },
 	{ tag: "03", label: "AWS Certified Cloud Practitioner" },
 	{ tag: "04", label: "Intern @ GeekyAnts" },
 ];
@@ -65,8 +65,8 @@ const EditorialManifesto = () => {
 						</span>
 
 						<span className="relative inline-flex items-center gap-2 text-sm font-editorial text-[#e06b75] font-semibold">
-							<span className="w-1.5 h-1.5 rounded-full bg-[#e06b75]" />
-							A few things about me
+							<span className="w-1.5 h-1.5 rounded-full bg-[#e06b75]" />A few
+							things about me
 						</span>
 
 						<div ref={quoteRef} className="relative space-y-4">

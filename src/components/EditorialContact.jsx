@@ -54,15 +54,16 @@ const EditorialContact = () => {
 							</span>
 
 							<h2 className="font-mackinac text-4xl sm:text-5xl lg:text-6xl text-[#f6f5f0] tracking-tight font-medium leading-[1.1]">
-								Got something worth <span className="italic font-normal">building</span>?
+								Got something worth{" "}
+								<span className="italic font-normal">building</span>?
 							</h2>
 
-							<p className="font-editorial text-2xl text-slate-100 leading-relaxed font-light max-w-xl">
-								I like building things, solving weird bugs, and talking to people
-								who care about good software. My inbox is always open.
+							<p className="font-sans text-2xl text-slate-100 leading-relaxed font-light max-w-xl">
+								I like building things, solving weird bugs, and talking to
+								people who care about good software. My inbox is always open.
 							</p>
 
-							<p className="text-base sm:text-lg font-editorial text-slate-300 leading-relaxed max-w-lg font-normal">
+							<p className="text-lg sm:text-xl font-sans text-slate-300 leading-relaxed max-w-lg font-normal">
 								Whether it's a software engineering opportunity, a cool side
 								project, or just a chat about code, feel free to drop a line.
 							</p>
@@ -141,9 +142,13 @@ const EditorialContact = () => {
 								rel="noreferrer"
 								className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.06] text-sm sm:text-base font-editorial text-slate-200 hover:text-white transition-all"
 							>
-								<span className="font-mono-code font-bold text-[#f59e0b] text-xs">LC</span>
+								<span className="font-mono-code font-bold text-[#f59e0b] text-xs">
+									LC
+								</span>
 								<span>LeetCode (390+)</span>
-								<span className="text-xs text-slate-500 group-hover:text-white">↗</span>
+								<span className="text-xs text-slate-500 group-hover:text-white">
+									↗
+								</span>
 							</a>
 
 							<a
@@ -154,7 +159,9 @@ const EditorialContact = () => {
 							>
 								<FaGithub size={15} />
 								<span>GitHub</span>
-								<span className="text-xs text-slate-500 group-hover:text-white">↗</span>
+								<span className="text-xs text-slate-500 group-hover:text-white">
+									↗
+								</span>
 							</a>
 
 							<a
@@ -165,7 +172,9 @@ const EditorialContact = () => {
 							>
 								<FaLinkedin size={15} />
 								<span>LinkedIn</span>
-								<span className="text-xs text-slate-500 group-hover:text-white">↗</span>
+								<span className="text-xs text-slate-500 group-hover:text-white">
+									↗
+								</span>
 							</a>
 						</div>
 					</div>
@@ -215,8 +224,10 @@ const EditorialContact = () => {
 							{/* Launch Client */}
 							<a
 								href={`mailto:sanskriti0409@gmail.com?subject=${encodeURIComponent(
-									`Hello from portfolio: ${selectedTopic}`
+									`Hello from portfolio: ${selectedTopic}`,
 								)}&body=${encodeURIComponent(note)}`}
+								target="_blank"
+								rel="noopener noreferrer"
 								className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#f6f5f0] hover:bg-white text-black text-sm font-editorial font-bold uppercase tracking-wider transition-all shadow-xl hover:scale-[1.01]"
 							>
 								<span>Launch mail app</span>

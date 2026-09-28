@@ -118,8 +118,10 @@ const EditorialHero = ({ onOpenTerminal }) => {
 							<p className="text-base sm:text-lg font-editorial text-slate-200 leading-relaxed max-w-xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
 								CS student at VIT Bhopal, previously interning at{" "}
 								<strong className="text-white font-medium">GeekyAnts</strong>.
-								Solved 390+ problems on LeetCode and ranked top 3% in TCS CodeVita worldwide.
-								Whether it's an automated scholarship crawler or a local marketplace with spatial queries, I build systems end-to-end.
+								Solved 390+ problems on LeetCode and ranked top 2% in TCS
+								CodeVita worldwide. Whether it's an automated scholarship
+								crawler or a local marketplace with spatial queries, I build
+								systems end-to-end.
 							</p>
 						</div>
 
@@ -147,7 +149,9 @@ const EditorialHero = ({ onOpenTerminal }) => {
 								className="flex items-center gap-2 px-4 py-3.5 rounded-xl border border-white/[0.14] bg-[#0c0c14]/80 hover:bg-[#12121c] hover:border-emerald-500/40 text-sm font-editorial text-slate-200 hover:text-emerald-300 transition-all cursor-pointer shadow-md"
 								title="Open developer shell"
 							>
-								<span className="font-mono-code text-xs text-emerald-400 font-bold">&gt;_</span>
+								<span className="font-mono-code text-xs text-emerald-400 font-bold">
+									&gt;_
+								</span>
 								<span className="hidden sm:inline">Shell</span>
 							</button>
 						</div>

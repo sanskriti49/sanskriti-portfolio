@@ -16,7 +16,8 @@ const EditorialRecord = () => {
 							Problem solving & milestones.
 						</h2>
 						<p className="font-editorial text-xl sm:text-2xl text-slate-100 max-w-2xl leading-relaxed font-light">
-							Competitive programming rankings, LeetCode problem solving, cloud certifications, and academic track record.
+							Competitive programming rankings, LeetCode problem solving, cloud
+							certifications, and academic track record.
 						</p>
 					</div>
 
@@ -33,7 +34,7 @@ const EditorialRecord = () => {
 							<div className="flex items-center gap-3">
 								<span className="text-sm font-editorial uppercase font-bold text-[#e06b75] flex items-center gap-1.5">
 									<span className="font-mono-code text-xs px-2 py-0.5 rounded bg-[#e06b75]/15 border border-[#e06b75]/30">
-										TOP 3%
+										TOP 2%
 									</span>
 									Worldwide
 								</span>
@@ -50,13 +51,16 @@ const EditorialRecord = () => {
 							<p className="font-editorial text-lg sm:text-xl text-slate-100 leading-relaxed font-light">
 								Placed in the{" "}
 								<strong className="text-white font-semibold underline decoration-[#e06b75]/60 underline-offset-4">
-									Top 3% globally out of 350,000+ registered competitive programmers
+									Top 2% globally out of 350,000+ registered competitive
+									programmers
 								</strong>{" "}
 								worldwide.
 							</p>
 
-							<p className="text-sm sm:text-base font-editorial text-slate-300 leading-relaxed">
-								Solved algorithmic problems under strict time limits, focusing on graph traversal, dynamic programming, and optimal space/time complexity.
+							<p className="text-sm sm:text-lg font-sans text-slate-300 leading-relaxed">
+								Solved algorithmic problems under strict time limits, focusing
+								on graph traversal, dynamic programming, and optimal space/time
+								complexity.
 							</p>
 						</div>
 
@@ -118,8 +122,9 @@ const EditorialRecord = () => {
 								with a focus on clean implementation and optimal complexity.
 							</p>
 
-							<p className="text-sm sm:text-base font-editorial text-slate-300 leading-relaxed">
-								Core practice across dynamic programming, trees, graphs, sliding window, two pointers, heaps, and binary search patterns.
+							<p className="text-sm sm:text-lg font-sans text-slate-300 leading-relaxed">
+								Core practice across dynamic programming, trees, graphs, sliding
+								window, two pointers, heaps, and binary search patterns.
 							</p>
 						</div>
 
@@ -164,9 +169,10 @@ const EditorialRecord = () => {
 							<h4 className="font-mackinac text-2xl text-white font-bold">
 								Cloud Practitioner
 							</h4>
-							<p className="text-sm sm:text-base font-editorial text-slate-200 leading-relaxed">
-								Official certification in AWS cloud services: EC2 virtual servers,
-								S3 file storage, IAM security permissions, and cloud cost management.
+							<p className="text-sm sm:text-lg font-sans text-slate-200 leading-relaxed">
+								Official certification in AWS cloud services: EC2 virtual
+								servers, S3 file storage, IAM security permissions, and cloud
+								cost management.
 							</p>
 						</div>
 
@@ -194,7 +200,7 @@ const EditorialRecord = () => {
 							<h4 className="font-mackinac text-2xl text-white font-bold">
 								Computer Science & Engineering
 							</h4>
-							<p className="text-sm sm:text-base font-editorial text-slate-200 leading-relaxed">
+							<p className="text-sm sm:text-lg font-sans text-slate-200 leading-relaxed">
 								Coursework in Data Structures & Algorithms, Database Management
 								Systems, Operating Systems, and Object-Oriented Software Design.
 							</p>

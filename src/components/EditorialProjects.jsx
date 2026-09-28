@@ -150,7 +150,14 @@ const projects = [
 // Constrained width with height derived from aspect ratio.
 // ---------------------------------------------------------------------------
 
-function TiltPhoto({ src, alt, accent, className, badge, fit = "object-cover object-top" }) {
+function TiltPhoto({
+	src,
+	alt,
+	accent,
+	className,
+	badge,
+	fit = "object-cover object-top",
+}) {
 	const reduceMotion = useReducedMotion();
 	const px = useMotionValue(0.5);
 	const py = useMotionValue(0.5);
@@ -303,7 +310,7 @@ function CaseStudy({ project, index, defaultOpen }) {
 						<p className="font-editorial text-xl sm:text-2xl text-[#f1f0eb] leading-relaxed font-light">
 							{project.tagline}
 						</p>
-						<p className="font-editorial text-base sm:text-lg text-[#cbc8d6] leading-relaxed">
+						<p className="font-editorial text-base sm:text-xl text-[#dfdee3] leading-relaxed">
 							{project.pitch}
 						</p>
 						<blockquote
@@ -333,11 +340,14 @@ function CaseStudy({ project, index, defaultOpen }) {
 							<span className="text-base font-medium text-white flex items-center gap-2.5 font-editorial">
 								<span
 									className="text-xs uppercase tracking-wider px-2 py-0.5 rounded font-mono-code font-bold"
-									style={{ backgroundColor: `${project.accent}15`, color: project.accent }}
+									style={{
+										backgroundColor: `${project.accent}15`,
+										color: project.accent,
+									}}
 								>
 									&lt;/&gt;
 								</span>
-								<span>Behind the build</span>
+								<span className="font-serif">Behind the build</span>
 							</span>
 							<span className="text-base text-slate-400 font-mono-code select-none w-5 text-center">
 								{open ? "−" : "+"}
@@ -446,9 +456,9 @@ const EditorialProjects = () => {
 							Things I've built.
 						</h2>
 						<p className="font-editorial text-xl sm:text-2xl text-[#d5d3db] leading-relaxed font-light">
-							Four products, end to end, from first commit to production traffic.
-							Open "behind the build" on any of them for the engineering
-							decisions that made them work.
+							Four products, end to end, from first commit to production
+							traffic. Open "behind the build" on any of them for the
+							engineering decisions that made them work.
 						</p>
 					</div>
 					<div className="text-sm font-editorial text-[#8f8d9c] hidden md:block">

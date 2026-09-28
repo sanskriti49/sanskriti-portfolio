@@ -20,7 +20,7 @@ Status: Open for software engineering and full-stack roles!`,
 - Realtime: Socket.IO, WebSockets, Redis Pub/Sub
 - Background: BullMQ, Playwright, Task queues
 - Cloud: AWS (S3, EC2), Docker, GitHub Actions
-- Core CS: Data Structures & Algorithms (390+ LeetCode solved, CodeVita Top 3%), OS, DBMS`,
+- Core CS: Data Structures & Algorithms (390+ LeetCode solved, CodeVita Top 2%), OS, DBMS`,
 
 	projects: `1. Udaan: Scholarship finder that scans state portals so students don't miss deadlines
    Stack: Node.js, MongoDB, Redis, BullMQ, Playwright
@@ -43,7 +43,7 @@ Status: Open for software engineering and full-stack roles!`,
 
 	proud: `A few things I'm proud of:
 * LeetCode: 390+ problems solved across DP, graphs, trees, and core algorithms
-* TCS CodeVita World Season: Placed in the Global Top 3% (#10,298 out of 350,000+ worldwide)
+* TCS CodeVita World Season: Placed in the Global Top 2% (#10,298 out of 350,000+ worldwide)
 * AWS Certified Cloud Practitioner: Score 827 / 1000
 * Academic Merit: 8.54 / 10 CGPA at VIT Bhopal CSE`,
 
@@ -159,7 +159,9 @@ const DevTerminal = ({ isOpen, onClose }) => {
 								<div className="w-3.5 h-3.5 rounded-full bg-[#f59e0b]" />
 								<div className="w-3.5 h-3.5 rounded-full bg-[#10b981]" />
 								<span className="text-sm sm:text-base font-editorial text-slate-300 ml-3 flex items-center gap-2">
-									<span className="font-mono-code font-bold text-[#38bdf8] text-xs">&gt;_</span>
+									<span className="font-mono-code font-bold text-[#38bdf8] text-xs">
+										&gt;_
+									</span>
 									sanskriti@dev:~ [little easter egg]
 								</span>
 							</div>
@@ -225,7 +227,9 @@ const DevTerminal = ({ isOpen, onClose }) => {
 							onSubmit={handleSubmit}
 							className="p-3 bg-[#0a0a10] border-t border-white/[0.08] flex items-center gap-2 shrink-0"
 						>
-							<span className="text-[#e06b75] font-mono-code text-base pl-2">➜</span>
+							<span className="text-[#e06b75] font-mono-code text-base pl-2">
+								➜
+							</span>
 							<span className="text-[#38bdf8] font-mono-code text-base">~</span>
 							<input
 								type="text"

@@ -145,7 +145,7 @@ const Contact = () => {
 												<span className="text-[9px] text-slate-500 uppercase tracking-widest block font-semibold">
 													Email Address
 												</span>
-												<span className="text-slate-200 text-xs sm:text-sm font-medium">
+												<span className="font-serif text-slate-200 text-xs sm:text-sm font-medium">
 													sanskriti0409@gmail.com
 												</span>
 											</div>
@@ -177,7 +177,7 @@ const Contact = () => {
 												<span className="text-[9px] text-slate-500 uppercase tracking-widest block font-semibold">
 													Direct Phone / WhatsApp
 												</span>
-												<span className="text-slate-200 text-xs sm:text-sm font-medium">
+												<span className="font-serif text-slate-200 text-xs sm:text-sm font-medium">
 													+91 6306642481
 												</span>
 											</div>
@@ -252,7 +252,7 @@ const Contact = () => {
 
 									{/* Textarea */}
 									<div className="relative">
-										<div className="absolute top-3 left-4 text-[9px] font-bold text-rose-400/60 uppercase tracking-[0.25em] font-editorial">
+										<div className="absolute top-3 left-4 text-[9px] font-bold text-rose-400/60 uppercase tracking-[0.25em]">
 											Message Preview
 										</div>
 										<textarea

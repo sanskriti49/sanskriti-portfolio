@@ -147,7 +147,7 @@ const PortfolioMain = () => {
 			style={{ backgroundColor: "#07070a", fontFamily: "'Inter', sans-serif" }}
 		>
 			<CursorGlow />
-			<ScrollProgress />
+			{/* <ScrollProgress /> */}
 			<BackToTop />
 
 			{/* Developer Shell Easter Egg: lazy loaded on demand */}
@@ -200,7 +200,6 @@ const PortfolioMain = () => {
 					<EditorialWorkbench />
 				</Suspense>
 
-				{/* 07. The Record: TCS CodeVita Top 3% Heroic Milestone, AWS, VIT CSE */}
 				<Suspense fallback={<SectionFallback />}>
 					<EditorialRecord />
 				</Suspense>

@@ -71,7 +71,7 @@ export default function Toolbox() {
 				<div className="relative">
 					<div
 						aria-hidden="true"
-						className="pointer-events-none absolute -inset-x-10 -bottom-8 -top-16 -z-10 bg-[radial-gradient(ellipse_at_20%_35%,rgb(11_11_14/0.85),rgb(11_11_14/0.55)_50%,transparent_80%)] backdrop-blur-[3px] [mask-image:linear-gradient(90deg,#000_0%,#000_50%,transparent_92%)]"
+						className="pointer-events-none absolute -inset-x-10 -bottom-8 -top-16 -z-10 rounded-[40px]  bg-[radial-gradient(ellipse_at_20%_35%,rgb(11_11_14/0.85),rgb(11_11_14/0.55)_50%,transparent_80%)] backdrop-blur-[3px] [mask-image:linear-gradient(90deg,#000_0%,#000_50%,transparent_92%)]"
 					/>
 
 					<div className="reveal max-w-2xl">
@@ -90,7 +90,7 @@ export default function Toolbox() {
 						role="tablist"
 						aria-label="Tool categories"
 						onKeyDown={onKeyDown}
-						className="reveal relative mt-12 flex w-fit max-w-full gap-1 overflow-x-auto rounded-full border border-white/10 bg-ink/85 p-1.5 shadow-[0_10px_40px_-12px_rgb(0_0_0/0.8)] backdrop-blur-xl [scrollbar-width:none]"
+						className="reveal relative mt-12 flex w-fit max-w-full gap-1 overflow-x-auto rounded-full border border-white/10 border-radius bg-ink/85 p-1.5 shadow-[0_10px_40px_-12px_rgb(0_0_0/0.8)] backdrop-blur-xl [scrollbar-width:none]"
 					>
 						<span
 							aria-hidden="true"

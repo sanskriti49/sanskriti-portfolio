@@ -1,0 +1,224 @@
+import { useEffect, useRef, useState } from "react";
+import Dither from "./Dither";
+import { ArrowDown } from "./Icons";
+import { profile } from "../data";
+import { Magnetic, canMove, draw, ring, useParallax } from "./fx";
+
+const CAPTIONS = [
+	"Open to full-stack and backend roles",
+	"Yes, that's my actual face.",
+	"Powered by coffee and unit tests.",
+	"Ask me about slow queries.",
+];
+
+// React Bits' BlurText: each word sharpens into place, one after another.
+// A part may also carry pointer handlers (used for the margin note).
+function BlurText({ parts, start = 120, step = 70 }) {
+	let n = 0;
+	return parts.map((part, pi) => (
+		<span
+			key={pi}
+			className={part.className}
+			onPointerMove={part.onPointerMove}
+			onPointerLeave={part.onPointerLeave}
+		>
+			{part.text.split(" ").map((word, wi, arr) => {
+				const d = start + n++ * step;
+				return (
+					<span key={wi}>
+						<span className="blur-word" style={{ "--d": `${d}ms` }}>
+							{word}
+						</span>
+						{(wi < arr.length - 1 || pi < parts.length - 1) && " "}
+					</span>
+				);
+			})}
+		</span>
+	));
+}
+
+const css = `
+@keyframes hero-focus{from{filter:blur(14px);transform:scale(1.08);opacity:.6}}
+@keyframes hero-roll{from{opacity:0;transform:translateY(.5em)}}
+.hero-focus{animation:hero-focus 1400ms cubic-bezier(.2,.8,.2,1) 250ms both}
+.hero-roll{animation:hero-roll 380ms cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){.hero-focus,.hero-roll{animation:none}}
+`;
+
+export default function Hero() {
+	const sceneRef = useRef(null);
+	const h1Ref = useRef(null);
+	const noteRef = useRef(null);
+	const cardRef = useRef(null);
+	const backTimer = useRef(0);
+	const [ci, setCi] = useState(0);
+
+	useParallax(sceneRef);
+	useEffect(() => () => clearTimeout(backTimer.current), []);
+
+	/* margin note: a little annotation follows the cursor over "stuff underneath" */
+	const note = {
+		onPointerMove: (e) => {
+			if (!canMove(e) || !noteRef.current || !h1Ref.current) return;
+			const r = h1Ref.current.getBoundingClientRect();
+			const s = noteRef.current.style;
+			s.transform = `translate3d(${(e.clientX - r.left + 14).toFixed(0)}px, ${(e.clientY - r.top - 46).toFixed(0)}px, 0) rotate(-3deg)`;
+			s.opacity = 1;
+		},
+		onPointerLeave: () => {
+			if (noteRef.current) noteRef.current.style.opacity = 0;
+		},
+	};
+
+	/* portrait tilt */
+	const tilt = (e) => {
+		if (!canMove(e) || !cardRef.current) return;
+		const r = e.currentTarget.getBoundingClientRect();
+		const x = (e.clientX - r.left) / r.width - 0.5;
+		const y = (e.clientY - r.top) / r.height - 0.5;
+		const s = cardRef.current.style;
+		s.transition = "transform 120ms ease-out";
+		s.transform = `perspective(900px) rotateX(${(-y * 7).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg) scale(1.01)`;
+	};
+	const settle = () => {
+		const s = cardRef.current?.style;
+		if (!s) return;
+		s.transition = "transform 700ms cubic-bezier(.22,1,.36,1)";
+		s.transform = "";
+	};
+
+	/* caption: click for a new line, it drifts back to the real message */
+	const nextCaption = () => {
+		setCi((i) => (i + 1) % CAPTIONS.length);
+		clearTimeout(backTimer.current);
+		backTimer.current = setTimeout(() => setCi(0), 6000);
+	};
+
+	return (
+		<section
+			ref={sceneRef}
+			id="top"
+			className="relative isolate flex min-h-[100svh] flex-col overflow-hidden"
+		>
+			<style>{css}</style>
+
+			{/* far layer: the waves barely drift */}
+			<div className="absolute -inset-6 -z-10" data-depth="-3">
+				<Dither />
+			</div>
+			<div className="absolute inset-0 -z-10">
+				{/* Keep the copy side calm and let the waves live on the right */}
+				<div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(11_11_14/0.5)_0%,rgb(11_11_14/0.78)_45%,rgb(11_11_14/0.35)_100%)] lg:bg-[linear-gradient(90deg,#0b0b0e_0%,rgb(11_11_14/0.86)_30%,rgb(11_11_14/0.12)_58%,rgb(11_11_14/0)_72%)]" />
+				<div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink to-transparent" />
+				<div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ink via-ink/75 to-transparent" />
+			</div>
+
+			<div className="mx-auto grid w-full max-w-6xl flex-1 items-center gap-12 px-5 pb-12 pt-32 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:pt-28">
+				{/* mid layer */}
+				<div className="lg:col-span-7" data-depth="-6">
+					<p className="reveal text-lg text-mist">Hi, I'm Sanskriti.</p>
+					<h1
+						ref={h1Ref}
+						className="font-display relative mt-5 text-[clamp(2.7rem,6.2vw,5.4rem)] font-light leading-[1.04] tracking-[-0.025em]"
+					>
+						<BlurText
+							parts={[
+								{ text: "I build things people see, and the" },
+								{
+									text: "stuff underneath",
+									className: "cursor-help font-normal italic text-rose",
+									...note,
+								},
+								{ text: "them." },
+							]}
+						/>
+						<span
+							ref={noteRef}
+							aria-hidden="true"
+							className="pointer-events-none absolute left-0 top-0 z-10 whitespace-nowrap border-b border-rose/60 pb-0.5 text-lg font-normal italic tracking-normal text-paper opacity-0 transition-[opacity,transform] duration-150 ease-out [text-shadow:0_1px_12px_rgb(0_0_0/0.9)]"
+						>
+							queues, indexes, 3am logs
+						</span>
+					</h1>
+					<p
+						className="reveal mt-7 max-w-lg text-lg leading-relaxed text-mist"
+						style={{ "--delay": "700ms" }}
+					>
+						Full-stack engineer and CS student at VIT Bhopal. Most recently I
+						interned at GeekyAnts, working on the backend of a B2B marketplace.
+					</p>
+					<div
+						className="reveal mt-10 flex flex-wrap items-center gap-x-4 gap-y-2"
+						style={{ "--delay": "820ms" }}
+					>
+						<Magnetic>
+							<a
+								href="#work"
+								className="group inline-flex items-center gap-2.5 rounded-full bg-paper px-6 py-3 font-medium text-ink transition-[background-color,scale] duration-200 hover:bg-rose active:scale-[0.97]"
+							>
+								See my work
+								<ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+							</a>
+						</Magnetic>
+						<Magnetic>
+							<a href="#contact" className="link-line text-paper">
+								Get in touch
+							</a>
+						</Magnetic>
+					</div>
+				</div>
+
+				{/* near layer: drifts the other way */}
+				<div
+					className="mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:col-span-5 lg:mr-0 lg:max-w-[380px]"
+					data-depth="9"
+				>
+					<figure className="reveal" style={{ "--delay": "200ms" }}>
+						<div onPointerMove={tilt} onPointerLeave={settle}>
+							<div
+								ref={cardRef}
+								className="relative overflow-hidden rounded-[28px] bg-ink-3 shadow-[0_40px_80px_-30px_rgb(0_0_0/0.9)] ring-1 ring-white/10"
+							>
+								<picture>
+									<source type="image/webp" srcSet="/images/sanskriti.webp" />
+									<img
+										src="/images/sanskriti.jpg"
+										alt="Portrait of Sanskriti Gupta"
+										width="640"
+										height="800"
+										fetchPriority="high"
+										className="hero-focus aspect-[4/5] w-full object-cover"
+									/>
+								</picture>
+							</div>
+						</div>
+						<figcaption
+							aria-live="polite"
+							className="mt-4 flex justify-center text-sm text-mist lg:justify-end"
+						>
+							<button
+								type="button"
+								onClick={nextCaption}
+								className={`${draw} ${ring} cursor-pointer transition-colors hover:text-paper`}
+							>
+								<span key={ci} className="hero-roll inline-block">
+									{CAPTIONS[ci]}
+								</span>
+							</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+
+			<div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 pb-8 text-sm text-dim sm:px-8">
+				<span>{profile.location}</span>
+				<a
+					href="#about"
+					className="inline-flex items-center gap-2 transition-colors hover:text-paper"
+				>
+					Scroll <ArrowDown className="nudge h-3.5 w-3.5" />
+				</a>
+			</div>
+		</section>
+	);
+}

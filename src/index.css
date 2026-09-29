@@ -1,229 +1,252 @@
-/* ==========================================================================
-   Typography Imports (Google Fonts: Cormorant Garamond, Inter, JetBrains Mono)
-   ========================================================================== */
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Libertinus+Serif+Display&display=swap");
-
-/* ==========================================================================
-   Tailwind CSS & Plugins
-   ========================================================================== */
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
 
-@custom-variant dark (&:is(.dark *));
-
-/* ==========================================================================
-   Local Custom Typeface: P22 Mackinac Pro
-   ========================================================================== */
+/* Self-hosted, Latin-subset variable fonts */
 @font-face {
-	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-Book_25.otf") format("opentype");
-	font-weight: 400;
+	font-family: "Fraunces";
+	src: url("/fonts/fraunces.woff2") format("woff2");
+	font-weight: 300 600;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-BookItalic_15.otf")
-		format("opentype");
-	font-weight: 400;
+	font-family: "Fraunces";
+	src: url("/fonts/fraunces-italic.woff2") format("woff2");
+	font-weight: 300 600;
 	font-style: italic;
 	font-display: swap;
 }
 @font-face {
-	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-Medium_26.otf")
-		format("opentype");
-	font-weight: 500;
+	font-family: "Geist";
+	src: url("/fonts/geist.woff2") format("woff2");
+	font-weight: 400 600;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-MedItalic_18.otf")
-		format("opentype");
-	font-weight: 500;
-	font-style: italic;
-	font-display: swap;
-}
-@font-face {
-	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-Bold_16.otf") format("opentype");
-	font-weight: 700;
+	font-family: "Geist Mono";
+	src: url("/fonts/geist-mono.woff2") format("woff2");
+	font-weight: 400 500;
 	font-style: normal;
 	font-display: swap;
 }
-@font-face {
-	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-BoldItalic_11.otf")
-		format("opentype");
-	font-weight: 700;
-	font-style: italic;
-	font-display: swap;
-}
-@font-face {
-	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-ExtraBold_12.otf")
-		format("opentype");
-	font-weight: 800;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: "P22Mackinac";
-	src: url("/fonts/P22-Mackinac/P22MackinacPro-ExBoldItalic_17.otf")
-		format("opentype");
-	font-weight: 800;
-	font-style: italic;
-	font-display: swap;
+
+@theme {
+	--font-display: "Fraunces", Georgia, serif;
+	--font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+	--color-ink: #0b0b0e;
+	--color-ink-2: #111116;
+	--color-ink-3: #17171d;
+	--color-paper: #f4f1ea;
+	--color-mist: #b9b5bf;
+	--color-dim: #85818d;
+	--color-line: rgb(255 255 255 / 0.09);
+	--color-rose: #ec8ca0;
+	--color-rose-deep: #e06b75;
 }
 
-/* ==========================================================================
-   Tailwind Theme Tokens & Custom Fonts
-   ========================================================================== */
-@theme inline {
-	--font-sans: "Geist Variable", sans-serif;
-	--font-heading: var(--font-sans);
-	--font-mackinac: "P22Mackinac", "Cormorant Garamond", Georgia, serif;
-	--font-editorial: "Cormorant Garamond", "P22Mackinac", Georgia, serif;
-	--font-mono: "Cormorant Garamond", "P22Mackinac", Georgia, serif;
-	--font-mono-code:
-		"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		monospace;
-	--font-kalnia: "Kalnia Glaze", "Courier New", Courier, monospace;
-	--font-serif: "Libertinus Serif Display", "Courier New", Courier;
-
-	--color-ring: var(--ring);
-	--color-input: var(--input);
-	--color-border: var(--border);
-	--color-destructive: var(--destructive);
-	--color-accent-foreground: var(--accent-foreground);
-	--color-accent: var(--accent);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-muted: var(--muted);
-	--color-secondary-foreground: var(--secondary-foreground);
-	--color-secondary: var(--secondary);
-	--color-primary-foreground: var(--primary-foreground);
-	--color-primary: var(--primary);
-	--color-popover-foreground: var(--popover-foreground);
-	--color-popover: var(--popover);
-	--color-card-foreground: var(--card-foreground);
-	--color-card: var(--card);
-	--color-foreground: var(--foreground);
-	--color-background: var(--background);
-
-	--radius-sm: calc(var(--radius) * 0.6);
-	--radius-md: calc(var(--radius) * 0.8);
-	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) * 1.4);
-	--radius-2xl: calc(var(--radius) * 1.8);
-	--radius-3xl: calc(var(--radius) * 2.2);
-	--radius-4xl: calc(var(--radius) * 2.6);
-}
-
-/* ==========================================================================
-   Refined Typography Helper Classes (Letter spacing & adjustments)
-   ========================================================================== */
-.font-editorial {
-	font-size-adjust: 0.46;
-	letter-spacing: 0.02em;
-}
-
-.font-mono {
-	font-size-adjust: 0.56;
-	letter-spacing: 0.03em;
-}
-
-/* ==========================================================================
-   Global Responsive Scrolling & Scrollbar
-   ========================================================================== */
 html {
-	scroll-behavior: auto;
+	background: var(--color-ink);
+	color-scheme: dark;
+	scroll-behavior: smooth;
+	scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }
 
 body {
+	margin: 0;
+	background: var(--color-ink);
+	color: var(--color-paper);
+	font-family: var(--font-sans);
+	font-size: 17px;
+	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 	overflow-x: hidden;
+}
+
+::selection {
+	background: rgb(236 140 160 / 0.3);
+	color: #fff;
+}
+
+@layer base {
+	:focus-visible {
+		outline: 2px solid var(--color-rose);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+}
+
+.font-display {
+	font-variation-settings: "SOFT" 50;
+	font-optical-sizing: auto;
+}
+
+/* Scroll reveal. Content is visible by default and only hidden once JS
+   has confirmed it can reveal it again. */
+.js .reveal {
+	opacity: 0;
+	transform: translateY(18px);
+	transition:
+		opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+		transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+	transition-delay: var(--delay, 0ms);
+}
+.js .reveal.is-in {
+	opacity: 1;
+	transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+	.js .reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
+
+/* Underline that draws in from the left on hover */
+.link-line {
+	background-image: linear-gradient(currentColor, currentColor);
+	background-size: 0% 1px;
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	transition: background-size 0.35s ease;
+	padding-bottom: 2px;
+}
+.link-line:hover,
+.link-line:focus-visible {
+	background-size: 100% 1px;
 }
 
 * {
 	scrollbar-width: thin;
-	scrollbar-color: #1a1a28 transparent;
+	scrollbar-color: #2a2a33 transparent;
 }
 
-::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
-	background-color: #08080c;
+.curved-text {
+	font-family: var(--font-display);
+	font-size: 64px;
+	font-weight: 300;
+	font-style: italic;
+	letter-spacing: -0.01em;
+	fill: var(--color-paper);
+}
+.curved-spark {
+	fill: var(--color-rose);
+	font-style: normal;
+	font-size: 40px;
 }
 
-::-webkit-scrollbar-thumb {
-	background: #1e1e2e;
-	border-radius: 4px;
+/* React Bits style BlurText: words sharpen into place on load */
+.blur-word {
+	display: inline-block;
+	animation: blur-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+	animation-delay: var(--d, 0ms);
 }
-
-::-webkit-scrollbar-thumb:hover {
-	background: #2e2e42;
-}
-
-:root {
-	--background: oklch(0.145 0 0);
-	--foreground: oklch(0.985 0 0);
-	--card: oklch(0.205 0 0);
-	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.205 0 0);
-	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.922 0 0);
-	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.269 0 0);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.269 0 0);
-	--muted-foreground: oklch(0.708 0 0);
-	--accent: oklch(0.269 0 0);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.704 0.191 22.216);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.556 0 0);
-	--radius: 0.625rem;
-}
-
-.dark {
-	--background: oklch(0.145 0 0);
-	--foreground: oklch(0.985 0 0);
-	--card: oklch(0.205 0 0);
-	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.205 0 0);
-	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.922 0 0);
-	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.269 0 0);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.269 0 0);
-	--muted-foreground: oklch(0.708 0 0);
-	--accent: oklch(0.269 0 0);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.704 0.191 22.216);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.556 0 0);
-}
-
-/* ==========================================================================
-   Base Layer
-   ========================================================================== */
-@layer base {
-	* {
-		@apply border-border outline-ring/50;
+@keyframes blur-in {
+	from {
+		opacity: 0;
+		filter: blur(12px);
+		transform: translateY(0.25em);
 	}
-	body {
-		@apply bg-background text-foreground;
+	to {
+		opacity: 1;
+		filter: blur(0);
+		transform: none;
 	}
-	html {
-		@apply font-sans;
+}
+@media (prefers-reduced-motion: reduce) {
+	.blur-word {
+		animation: none;
+	}
+}
+
+/* React Bits style SpotlightCard: a soft light follows the cursor */
+.spotlight {
+	position: relative;
+	isolation: isolate;
+}
+.spotlight::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: inherit;
+	background: radial-gradient(
+		420px circle at var(--x, 50%) var(--y, -20%),
+		rgb(236 140 160 / 0.14),
+		transparent 60%
+	);
+	opacity: 0;
+	transition: opacity 0.4s ease;
+}
+.spotlight:hover::before {
+	opacity: 1;
+}
+
+@keyframes nudge {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(4px);
+	}
+}
+.nudge {
+	animation: nudge 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+	.nudge {
+		animation: none;
+	}
+}
+
+.tilt {
+	transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+	transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+	transform-style: preserve-3d;
+	will-change: transform;
+}
+.tilt[data-active="true"] {
+	transition-duration: 0.12s;
+}
+.tilt-glare {
+	pointer-events: none;
+	position: absolute;
+	inset: 0;
+	border-radius: 1rem;
+	background: radial-gradient(
+		500px circle at var(--gx, 50%) var(--gy, 50%),
+		rgb(255 255 255 / 0.12),
+		transparent 55%
+	);
+	opacity: 0;
+	transition: opacity 0.4s ease;
+}
+.tilt[data-active="true"] .tilt-glare {
+	opacity: 1;
+}
+
+.panel-in {
+	animation: panel-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes panel-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.panel-in {
+		animation: none;
 	}
 }

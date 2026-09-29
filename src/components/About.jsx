@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { reduced, useInView } from "./fx";
+import { reduced, useInView } from "./Fx";
 
 const GRADE = 8.54;
 const GRADE_LINES = [

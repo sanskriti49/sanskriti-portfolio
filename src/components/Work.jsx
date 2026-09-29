@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { projects } from "../data";
 import { ArrowUpRight, Sparkle } from "./Icons";
 import Tilt from "./Tilt";
-import { Magnetic, canMove, useInView } from "./fx";
+import { Magnetic, canMove, useInView } from "./Fx";
 
 const css = `
 @keyframes wk-load{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(.85);opacity:1}80%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}

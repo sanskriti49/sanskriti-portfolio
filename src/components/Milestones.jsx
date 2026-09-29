@@ -3,7 +3,7 @@ import CountUp from "./CountUp";
 import { ArrowUpRight } from "./Icons";
 import { milestones } from "../data";
 import { spotlight } from "../lib/pointer";
-import { Magnetic, reduced, ring, useInView } from "./fx";
+import { Magnetic, reduced, ring, useInView } from "./Fx";
 
 // Each card is a "submission". It runs when it scrolls in, then gets a verdict.
 const VERDICTS = ["Accepted", "All cases passed", "Verified", "Shipped"];

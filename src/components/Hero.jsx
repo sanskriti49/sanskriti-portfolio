@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Dither from "./Dither";
 import { ArrowDown } from "./Icons";
 import { profile } from "../data";
-import { Magnetic, canMove, draw, ring, useParallax } from "./fx";
+import { Magnetic, canMove, draw, ring, useParallax } from "./Fx";
 
 const CAPTIONS = [
 	"Open to full-stack and backend roles",

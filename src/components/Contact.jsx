@@ -562,98 +562,100 @@ export default function Contact({ onOpenShell }) {
 				</div>
 
 				{/* contact links */}
-				<div data-depth="5" className="relative">
-					<div
-						aria-hidden="true"
-						className="pointer-events-none absolute left-[-32px] top-[-28px] -z-10 h-[calc(100%+56px)] w-[min(40rem,calc(100vw-3rem))] rounded-[64px] bg-[radial-gradient(ellipse_at_20%_40%,rgb(11_11_14/0.5)_0%,rgb(11_11_14/0.34)_42%,rgb(11_11_14/0.16)_72%,transparent_100%)] backdrop-blur-[1.5px]"
-					/>
-					<div
-						ref={mailRef}
-						className="reveal mt-12 flex flex-wrap items-center gap-x-6 gap-y-3"
-						style={{ "--delay": "180ms" }}
-					>
-						<Email address={profile.email} wave={wave} drawn={mailIn} />
+				<div data-depth="5">
+					<div className="relative w-fit max-w-full">
+						<div
+							aria-hidden="true"
+							className="pointer-events-none absolute -left-8 -top-7 -z-10 h-[calc(100%+3.5rem)] w-[calc(100%+4rem)] rounded-[64px] bg-[radial-gradient(ellipse_at_18%_40%,rgb(11_11_14/0.5)_0%,rgb(11_11_14/0.34)_42%,rgb(11_11_14/0.16)_72%,transparent_100%)] backdrop-blur-[1.5px]"
+						/>
+						<div
+							ref={mailRef}
+							className="reveal mt-12 flex flex-wrap items-center gap-x-6 gap-y-3"
+							style={{ "--delay": "180ms" }}
+						>
+							<Email address={profile.email} wave={wave} drawn={mailIn} />
 
-						<Magnetic>
-							<button
-								type="button"
-								onClick={copy}
-								className={`${draw} ${ring} cursor-pointer py-1 text-sm text-mist transition-[color,scale] duration-200 before:absolute before:inset-x-0 before:-bottom-1 before:h-px before:bg-white/20 hover:text-paper active:scale-[0.96]`}
-							>
-								<span aria-live="polite">
-									<span key={label} className="ct-roll inline-block">
-										{label}
+							<Magnetic>
+								<button
+									type="button"
+									onClick={copy}
+									className={`${draw} ${ring} cursor-pointer py-1 text-sm text-mist transition-[color,scale] duration-200 before:absolute before:inset-x-0 before:-bottom-1 before:h-px before:bg-white/20 hover:text-paper active:scale-[0.96]`}
+								>
+									<span aria-live="polite">
+										<span key={label} className="ct-roll inline-block">
+											{label}
+										</span>
 									</span>
-								</span>
-							</button>
-						</Magnetic>
-					</div>
+								</button>
+							</Magnetic>
+						</div>
 
-					{/* useful, contextual time information */}
-					<p
-						className="reveal mt-5 flex min-h-5 max-w-xl items-start gap-2.5 text-sm tabular-nums text-dim"
-						style={{ "--delay": "210ms" }}
-					>
-						<Availability now={now} />
-					</p>
+						{/* useful, contextual time information */}
+						<p
+							className="reveal mt-5 flex min-h-5 max-w-xl items-start gap-2.5 text-sm tabular-nums text-dim"
+							style={{ "--delay": "210ms" }}
+						>
+							<Availability now={now} />
+						</p>
 
-					<ul
-						className="reveal mt-9 flex flex-wrap gap-x-8 gap-y-2"
-						style={{ "--delay": "240ms" }}
-					>
-						{socials.map(({ label: name, href, Icon }) => (
-							<li key={name} className="flex">
+						<ul
+							className="reveal mt-9 flex flex-wrap gap-x-8 gap-y-2"
+							style={{ "--delay": "240ms" }}
+						>
+							{socials.map(({ label: name, href, Icon }) => (
+								<li key={name} className="flex">
+									<Magnetic>
+										<a
+											href={href}
+											target="_blank"
+											rel="noreferrer"
+											className={`${item} ${draw} ${ring}`}
+										>
+											<span className="inline-flex transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-110">
+												<Icon />
+											</span>
+
+											{name}
+
+											<span
+												aria-hidden="true"
+												className="pointer-events-none absolute left-0 top-full mt-3 translate-y-1 whitespace-nowrap text-xs text-dim opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+											>
+												{handleOf(href)}
+											</span>
+										</a>
+									</Magnetic>
+								</li>
+							))}
+
+							<li className="flex">
 								<Magnetic>
 									<a
-										href={href}
+										href={profile.resume}
 										target="_blank"
 										rel="noreferrer"
-										className={`${item} ${draw} ${ring}`}
+										className={`${item} ${draw} ${ring} !gap-1.5`}
 									>
-										<span className="inline-flex transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-110">
-											<Icon />
-										</span>
-
-										{name}
-
-										<span
-											aria-hidden="true"
-											className="pointer-events-none absolute left-0 top-full mt-3 translate-y-1 whitespace-nowrap text-xs text-dim opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-										>
-											{handleOf(href)}
+										Resume
+										<span className="inline-flex transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+											<ArrowUpRight />
 										</span>
 									</a>
 								</Magnetic>
 							</li>
-						))}
 
-						<li className="flex">
-							<Magnetic>
-								<a
-									href={profile.resume}
-									target="_blank"
-									rel="noreferrer"
-									className={`${item} ${draw} ${ring} !gap-1.5`}
-								>
-									Resume
-									<span className="inline-flex transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-										<ArrowUpRight />
-									</span>
-								</a>
-							</Magnetic>
-						</li>
-
-						<li className="flex">
-							<Magnetic>
-								<a
-									href={`tel:${profile.phoneHref}`}
-									className={`${item} ${draw} ${ring}`}
-								>
-									{profile.phone}
-								</a>
-							</Magnetic>
-						</li>
-					</ul>
+							<li className="flex">
+								<Magnetic>
+									<a
+										href={`tel:${profile.phoneHref}`}
+										className={`${item} ${draw} ${ring}`}
+									>
+										{profile.phone}
+									</a>
+								</Magnetic>
+							</li>
+						</ul>
+					</div>
 				</div>
 
 				{/* closing rule */}

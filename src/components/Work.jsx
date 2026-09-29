@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { projects } from "../data";
 import { ArrowUpRight, Sparkle } from "./Icons";
 import Tilt from "./Tilt";
@@ -7,10 +7,23 @@ import { Magnetic, canMove, useInView } from "./Fx";
 const css = `
 @keyframes wk-load{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(.85);opacity:1}80%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
 @keyframes wk-resolve{from{opacity:.15}45%{opacity:1;color:var(--color-rose,#e06b75)}}
+@keyframes wk-done{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .wk-load{animation:wk-load 1100ms cubic-bezier(.3,.7,.3,1) both}
 .wk-tok{animation:wk-resolve 700ms ease-out both;animation-delay:calc(var(--i) * 70ms)}
-@media (prefers-reduced-motion:reduce){.wk-load{display:none}.wk-tok{animation:none}}
+.wk-done{animation:wk-done 400ms ease-out both;animation-delay:calc(var(--n) * 70ms + 650ms)}
+@media (prefers-reduced-motion:reduce){.wk-load{display:none}.wk-tok,.wk-done{animation:none}}
 `;
+
+// Edit these freely: they're the jokes.
+const LIVE_LABELS = ["Visit", "Go on", "Poke it", "It's live"];
+const SRC_LABELS = ["Source", "Snoop", "Read me", "No judging"];
+const QUIPS = [
+	"0 regrets",
+	"0 vulnerabilities (I checked once)",
+	"1 of which I'd rather not discuss",
+	"peer deps mostly at peace",
+];
+const pick = (list) => list[Math.floor(Math.random() * list.length)];
 
 function Links({ project }) {
 	return (
@@ -48,12 +61,17 @@ function Links({ project }) {
 }
 
 // Loads like a page: a thin progress line runs across the top and the
-// screenshot fades in from grey. A small label trails the cursor.
+// screenshot fades in from grey. A small label trails the cursor and gets a
+// new line every time you re-enter. A rubber stamp slams down on hover.
 function Shot({ project, aspect }) {
 	const contain = project.fit === "contain";
 	const [ref, loaded] = useInView(0.35);
 	const labelRef = useRef(null);
+	const [label, setLabel] = useState(project.live ? "Visit" : "Source");
 
+	const enter = (e) => {
+		if (canMove(e)) setLabel(pick(project.live ? LIVE_LABELS : SRC_LABELS));
+	};
 	const move = (e) => {
 		if (!canMove(e) || !labelRef.current) return;
 		const r = e.currentTarget.getBoundingClientRect();
@@ -77,6 +95,7 @@ function Shot({ project, aspect }) {
 			rel="noreferrer"
 			tabIndex={-1}
 			aria-hidden="true"
+			onPointerEnter={enter}
 			onPointerMove={move}
 			onPointerLeave={leave}
 			className={`group relative block overflow-hidden rounded-2xl ring-1 ring-white/10 ${
@@ -108,40 +127,61 @@ function Shot({ project, aspect }) {
 					} ${contain ? "object-contain p-6" : "object-cover object-top"}`}
 				/>
 			</picture>
+
+			{/* Rubber stamp: slams in on hover (always visible on touch screens) */}
+			<span
+				aria-hidden="true"
+				className="pointer-events-none absolute bottom-3 left-3 z-10 -rotate-12 scale-150 rounded-md border-2 border-rose/80 bg-black/55 px-2.5 py-1 font-mono text-[12px] text-rose opacity-0 backdrop-blur-sm transition-[opacity,scale,rotate] duration-200 ease-[cubic-bezier(.3,1.6,.5,1)] group-hover:-rotate-6 group-hover:scale-100 group-hover:opacity-100 motion-reduce:transition-none [@media(hover:none)]:-rotate-6 [@media(hover:none)]:scale-100 [@media(hover:none)]:opacity-100"
+			>
+				{project.live ? "works on yours too" : "works on my machine"}
+			</span>
+
 			<span
 				ref={labelRef}
-				className="pointer-events-none absolute left-0 top-0 z-10 grid size-14 place-items-center rounded-full bg-paper text-[13px] font-medium text-ink opacity-0 transition-[opacity,scale,transform] duration-150 ease-out [scale:.6]"
+				className="pointer-events-none absolute left-0 top-0 z-10 grid h-11 place-items-center whitespace-nowrap rounded-full bg-paper px-4 text-[13px] font-medium text-ink opacity-0 transition-[opacity,scale,transform] duration-150 ease-out [scale:.6]"
 			>
-				{project.live ? "Visit" : "Source"}
+				{label}
 			</span>
 		</a>
 	);
 }
 
-// Reads like a dependency install: packages resolve left to right.
+// Reads like a dependency install: packages resolve left to right,
+// then npm files its report.
 function Stack({ items }) {
 	const [ref, on] = useInView(0.6);
+	const quip = QUIPS[items.join("").length % QUIPS.length];
 	return (
-		<p
-			ref={ref}
-			className="mt-6 flex flex-wrap gap-x-2 font-mono text-[13px] text-dim"
-		>
-			{items.map((s, i) => (
-				<span key={s} className="inline-flex gap-2">
-					<span
-						className={`transition-colors duration-200 hover:text-rose motion-reduce:opacity-100 ${on ? "wk-tok" : "opacity-15"}`}
-						style={{ "--i": i }}
-					>
-						{s}
-					</span>
-					{i < items.length - 1 && (
-						<span aria-hidden="true" className="text-dim/40">
-							/
-						</span>
-					)}
+		<div ref={ref} className="mt-6 font-mono text-[13px] text-dim">
+			<p className="flex flex-wrap gap-x-2">
+				<span aria-hidden="true" className="text-dim/50">
+					$ npm i
 				</span>
-			))}
-		</p>
+				{items.map((s, i) => (
+					<span key={s} className="inline-flex gap-2">
+						<span
+							className={`transition-colors duration-200 hover:text-rose motion-reduce:opacity-100 ${on ? "wk-tok" : "opacity-15"}`}
+							style={{ "--i": i }}
+						>
+							{s}
+						</span>
+						{i < items.length - 1 && (
+							<span aria-hidden="true" className="text-dim/40">
+								/
+							</span>
+						)}
+					</span>
+				))}
+			</p>
+			<p
+				aria-hidden="true"
+				className={`mt-1.5 text-[12px] text-dim/70 motion-reduce:opacity-100 ${on ? "wk-done" : "opacity-0"}`}
+				style={{ "--n": items.length }}
+			>
+				added {items.length} {items.length === 1 ? "package" : "packages"},{" "}
+				{quip}
+			</p>
+		</div>
 	);
 }
 
@@ -211,7 +251,8 @@ function Small({ project, delay }) {
 	);
 }
 
-// first commit ---------- real users, drawn once as the header arrives
+// first commit ---------- real users, drawn once as the header arrives.
+// A dot rides the line like a commit shipping, with a nod to the messy middle.
 function Journey() {
 	const [ref, on] = useInView(0.8);
 	return (
@@ -221,11 +262,25 @@ function Journey() {
 			className="mt-8 flex max-w-md items-center gap-3 text-sm text-dim"
 		>
 			<span>first commit</span>
-			<span
-				className={`h-px flex-1 origin-left bg-line transition-transform duration-[1400ms] ease-[cubic-bezier(.65,0,.35,1)] motion-reduce:scale-x-100 motion-reduce:transition-none ${
-					on ? "scale-x-100" : "scale-x-0"
-				}`}
-			/>
+			<span className="relative h-px flex-1">
+				<span
+					className={`absolute inset-0 origin-left bg-line transition-transform duration-[1400ms] ease-[cubic-bezier(.65,0,.35,1)] motion-reduce:scale-x-100 motion-reduce:transition-none ${
+						on ? "scale-x-100" : "scale-x-0"
+					}`}
+				/>
+				<span
+					className={`absolute top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-rose shadow-[0_0_10px_var(--color-rose,#e06b75)] transition-[left,opacity] duration-[1400ms] ease-[cubic-bezier(.65,0,.35,1)] motion-reduce:hidden ${
+						on ? "left-[calc(100%-6px)]" : "left-0"
+					}`}
+				/>
+				<span
+					className={`absolute left-1/2 top-2.5 -translate-x-1/2 whitespace-nowrap text-[12px] text-dim/70 transition-opacity duration-500 motion-reduce:opacity-100 ${
+						on ? "opacity-100 delay-700" : "opacity-0"
+					}`}
+				>
+					lots of "fix typo" commits
+				</span>
+			</span>
 			<span
 				className={`transition-colors duration-500 motion-reduce:text-rose motion-reduce:delay-0 ${
 					on ? "text-rose delay-[1400ms]" : ""
@@ -233,6 +288,78 @@ function Journey() {
 			>
 				real users
 			</span>
+		</div>
+	);
+}
+
+// A todo item you can actually tick. Ticking it is the call to action.
+function NextUp() {
+	const [done, setDone] = useState(false);
+	return (
+		<div className="reveal mx-auto mt-24 max-w-md sm:mt-32">
+			<button
+				type="button"
+				role="checkbox"
+				aria-checked={done}
+				onClick={() => setDone((v) => !v)}
+				className="group flex w-full cursor-pointer items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-left outline-none transition-colors hover:border-white/20 focus-visible:ring-2 focus-visible:ring-white/60"
+			>
+				<span
+					aria-hidden="true"
+					className={`grid size-6 shrink-0 place-items-center rounded-md border transition-colors duration-300 ${
+						done
+							? "border-rose bg-rose text-ink"
+							: "border-white/25 group-hover:border-white/50"
+					}`}
+				>
+					<svg viewBox="0 0 16 16" className="size-3.5">
+						<path
+							d="M3 8.5l3.2 3.2L13 4.8"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							pathLength="1"
+							strokeDasharray="1"
+							strokeDashoffset={done ? 0 : 1}
+							className="transition-[stroke-dashoffset] delay-100 duration-300 motion-reduce:transition-none"
+						/>
+					</svg>
+				</span>
+				<span
+					className={`relative font-display text-2xl font-light tracking-tight transition-colors duration-500 ${
+						done ? "text-dim" : "text-paper"
+					}`}
+				>
+					Build something with you
+					<span
+						aria-hidden="true"
+						className="absolute left-0 top-1/2 h-px bg-rose transition-[width] duration-500 ease-out motion-reduce:transition-none"
+						style={{ width: done ? "100%" : 0 }}
+					/>
+				</span>
+			</button>
+
+			<div
+				className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out motion-reduce:transition-none ${
+					done ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+				}`}
+			>
+				<div className="overflow-hidden">
+					<p className="pt-4 text-[15px] text-mist">
+						Marked as done. Well, started.{" "}
+						<a
+							href="#contact"
+							tabIndex={done ? 0 : -1}
+							className="link-line inline-flex items-center gap-1.5 text-paper"
+						>
+							Say hi
+							<ArrowUpRight />
+						</a>
+					</p>
+				</div>
+			</div>
 		</div>
 	);
 }
@@ -267,6 +394,8 @@ export default function Work() {
 					))}
 				</div>
 			</div>
+
+			<NextUp />
 		</section>
 	);
 }

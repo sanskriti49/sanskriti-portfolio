@@ -89,7 +89,7 @@ const availability = (now) => {
 	};
 };
 
-/* "[https://github.com/name/](https://github.com/name/)" -> "@name" */
+/* "https://github.com/name/" -> "@name" */
 const handleOf = (href) => {
 	try {
 		const part = new URL(href).pathname
@@ -371,40 +371,62 @@ function Email({ address, wave, drawn }) {
 	);
 }
 
-/* Shell trigger */
+/* Comic-style impact ticks: [x1, y1, x2, y2], radiating from the bottom-left */
+const TICKS = [
+	[9.7, 15.9, 17.5, 13.9],
+	[7.7, 12.3, 13.3, 6.7],
+	[4.1, 10.3, 6.1, 2.5],
+];
+
+/* Shell trigger: a pill that gets "knocked" to draw attention */
 function Knock({ onOpen }) {
 	const [ref, visible] = useInView(0.9, false);
 	const [dwell, setDwell] = useState(false);
+	const [knocking, setKnocking] = useState(false);
+	const openTimer = useRef(0);
 
 	useEffect(() => {
 		if (!visible || dwell) return;
 
-		const t = setTimeout(() => setDwell(true), 8000);
+		const t = setTimeout(() => setDwell(true), 3500);
 
 		return () => clearTimeout(t);
 	}, [visible, dwell]);
+
+	useEffect(() => () => clearTimeout(openTimer.current), []);
+
+	const open = () => {
+		if (motionQuery?.matches) return onOpen();
+
+		setKnocking(true);
+
+		openTimer.current = setTimeout(() => {
+			setKnocking(false);
+			onOpen();
+		}, 420);
+	};
 
 	return (
 		<button
 			ref={ref}
 			type="button"
-			onClick={onOpen}
+			onClick={open}
 			aria-label="Open the portfolio shell"
-			className="group inline-flex w-fit cursor-pointer flex-row-reverse items-center gap-3 py-1 text-dim transition-colors hover:text-rose focus-visible:text-rose focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-rose/60 active:translate-y-px sm:flex-row"
+			className={`group relative inline-flex min-h-11 w-fit cursor-pointer items-center gap-2 rounded-full border border-rose/30 bg-rose/[0.06] py-2 pl-5 pr-4 text-[15px] text-rose transition-[color,background-color,border-color] duration-200 hover:border-rose hover:bg-rose/10 hover:text-paper focus-visible:border-rose focus-visible:text-paper focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-rose/60 active:scale-[0.96] ${
+				knocking
+					? "ct-knock"
+					: dwell
+						? "ct-nudge"
+						: "opacity-0 focus-visible:opacity-100"
+			}`}
 		>
-			<span
-				aria-hidden="true"
-				className="relative block h-5 w-24 text-left sm:text-right"
-			>
-				<span
-					className={`absolute inset-0 transition duration-500 group-hover:-translate-y-1 group-hover:opacity-0 group-focus-visible:-translate-y-1 group-focus-visible:opacity-0 ${
-						dwell ? "opacity-100" : "opacity-0"
-					}`}
-				>
-					psst
+			<span aria-hidden="true" className="grid">
+				<span className="col-start-1 row-start-1 transition duration-300 group-hover:-translate-y-1 group-hover:opacity-0 group-focus-visible:-translate-y-1 group-focus-visible:opacity-0">
+					psst…
+					<span className="hidden [@media(hover:none)]:inline"> tap me</span>
 				</span>
 
-				<span className="absolute inset-0 translate-y-1 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+				<span className="col-start-1 row-start-1 translate-y-1 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
 					knock, knock
 				</span>
 			</span>
@@ -413,11 +435,34 @@ function Knock({ onOpen }) {
 				aria-hidden="true"
 				className="ct-caret block h-[1.05em] w-[0.5em] bg-current group-hover:[animation:none]"
 			/>
+
+			{/* impact ticks */}
+			<svg
+				aria-hidden="true"
+				viewBox="0 0 20 20"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.75"
+				strokeLinecap="round"
+				className="pointer-events-none absolute -right-3.5 -top-3.5 size-5 overflow-visible text-rose transition-opacity duration-200 group-hover:opacity-0 group-focus-visible:opacity-0"
+			>
+				{TICKS.map(([x1, y1, x2, y2], i) => (
+					<line
+						key={i}
+						className="ct-tick"
+						x1={x1}
+						y1={y1}
+						x2={x2}
+						y2={y2}
+						style={{ "--k": i }}
+					/>
+				))}
+			</svg>
 		</button>
 	);
 }
 
-/* Live reply status */
+/* Live reply status: solid dot when around, hollow ring when away */
 function Availability({ now }) {
 	if (!now) return null;
 
@@ -427,12 +472,10 @@ function Availability({ now }) {
 		<>
 			<span
 				aria-hidden="true"
-				className="relative mt-[0.4em] inline-flex size-2 shrink-0"
-			>
-				{awake && (
-					<span className="absolute inset-0 animate-ping rounded-full bg-pink-400/60 motion-reduce:hidden" />
-				)}
-			</span>
+				className={`mt-[0.4em] inline-block size-2 shrink-0 rounded-full ${
+					awake ? "bg-pink-400" : "border border-current"
+				}`}
+			/>
 
 			<span>
 				{clockFmt.format(now)} in Bhopal, {offsetNote(now)}. {text}
@@ -462,6 +505,41 @@ const css = `
     }
 }
 
+@keyframes ct-pop {
+    from {
+        opacity: 0;
+        transform: translateY(.6rem) scale(.85);
+    }
+    60% {
+        transform: translateY(-.15rem) scale(1.05);
+    }
+}
+
+/* knock, knock ... pause. Shared 3.2s cycle with ct-tick */
+@keyframes ct-bump {
+    0%, 12%, 34%, 100% { scale: 1; rotate: 0deg; }
+    5%  { scale: 1.05; rotate: -2deg; }
+    27% { scale: 1.05; rotate: 2deg; }
+}
+
+@keyframes ct-tick {
+    0%   { opacity: 0; transform: scale(.7); }
+    5%   { opacity: 1; transform: scale(1); }
+    15%  { opacity: 0; transform: scale(1.18); }
+    22%  { opacity: 0; transform: scale(.7); }
+    27%  { opacity: 1; transform: scale(1); }
+    37%  { opacity: 0; transform: scale(1.18); }
+    100% { opacity: 0; transform: scale(1.18); }
+}
+
+@keyframes ct-knock {
+    0%, 100% { translate: 0 0; rotate: 0deg; }
+    20% { translate: -3px 0; rotate: -4deg; }
+    40% { translate: 3px 0; rotate: 4deg; }
+    60% { translate: -2px 0; rotate: -2deg; }
+    80% { translate: 2px 0; rotate: 2deg; }
+}
+
 .ct-char {
     transition: transform 220ms cubic-bezier(.2,.8,.2,1);
 }
@@ -479,10 +557,39 @@ const css = `
     animation: ct-blink 1.15s steps(1) infinite;
 }
 
+.ct-tick {
+    opacity: 0;
+    transform-box: view-box;
+    transform-origin: 2px 18px;
+}
+
+.ct-nudge {
+    animation:
+        ct-pop 520ms cubic-bezier(.2,.8,.2,1) both,
+        ct-bump 3.2s ease-in-out 1s infinite;
+}
+
+.ct-nudge .ct-tick {
+    animation: ct-tick 3.2s ease-out infinite;
+    animation-delay: calc(1s + var(--k) * 60ms);
+}
+
+.ct-nudge:hover,
+.ct-nudge:focus-visible {
+    animation-play-state: paused;
+}
+
+.ct-knock {
+    animation: ct-knock 420ms ease-in-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .ct-wave .ct-char,
     .ct-roll,
-    .ct-caret {
+    .ct-caret,
+    .ct-nudge,
+    .ct-nudge .ct-tick,
+    .ct-knock {
         animation: none;
     }
 }
@@ -667,7 +774,7 @@ export default function Contact({ onOpenShell }) {
 					}`}
 				/>
 
-				<footer className="flex flex-col gap-3 pt-8 text-sm text-dim sm:flex-row sm:items-center sm:justify-between">
+				<footer className="flex flex-col items-start gap-5 pt-8 text-sm text-dim sm:flex-row sm:items-center sm:justify-between">
 					<p>
 						© {new Date().getFullYear()} Sanskriti Gupta. Designed and built in
 						Bhopal.
